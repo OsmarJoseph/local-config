@@ -74,14 +74,43 @@ keymap.set("n", "<F6>b", ":NvimTreeToggle<CR>") -- toggle file explorer
 keymap.set("n", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
 keymap.set("i", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
 keymap.set("c", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
-keymap.set("n", "<F6><S-f>", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>") -- find string in current working directory as you type
-keymap.set("i", "<F6><S-f>", "<cmd>:lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>") -- find string in current working directory as you type
-keymap.set("c", "<F6><S-f>", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>") -- find string in current working directory as you type
-keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
 keymap.set("n", "<F6><S-p>", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("i", "<F6><S-p>", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("c", "<F6><S-p>", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
+
+function vim.getVisualSelection()
+  vim.cmd('noau normal! "vy"')
+  local text = vim.fn.getreg("v")
+  vim.fn.setreg("v", {})
+
+  text = string.gsub(text, "\n", "")
+  if #text > 0 then
+    return text
+  else
+    return ""
+  end
+end
+
+local tb = require("telescope.builtin")
+local live_grep_args = require("telescope").extensions.live_grep_args.live_grep_args
+
+local opts = { noremap = true, silent = true }
+
+keymap.set("n", "<space>fc", ":Telescope current_buffer_fuzzy_find<cr>", opts)
+keymap.set("v", "<space>fc", function()
+  local text = vim.getVisualSelection()
+  tb.current_buffer_fuzzy_find({ default_text = text })
+end, opts)
+
+keymap.set("n", "<F6><S-f>", live_grep_args)
+keymap.set("i", "<F6><S-f>", live_grep_args)
+keymap.set("c", "<F6><S-f>", live_grep_args)
+
+keymap.set("v", "<F6><S-f>", function()
+  local text = vim.getVisualSelection()
+  live_grep_args({ default_text = text })
+end, opts)
 
 -- telescope git commands (not on youtube nvim video)
 keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
@@ -104,7 +133,6 @@ keymap.set("n", "<F6>f", "/")
 
 -- harpoon
 local mark = require("harpoon.mark")
-local ui = require("harpoon.ui")
 
 keymap.set("n", "<leader>a", mark.add_file)
 keymap.set("n", "<C-e>", ui.toggle_quick_menu)
