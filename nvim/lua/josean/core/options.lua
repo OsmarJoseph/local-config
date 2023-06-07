@@ -20,6 +20,9 @@ opt.smartcase = true -- if you include mixed case in your search, assumes you wa
 -- cursor line
 opt.cursorline = true -- highlight the current cursor line
 
+-- clipboard
+opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+
 -- swap and backup
 opt.swapfile = false -- disable swap file
 opt.backup = false -- disable backup

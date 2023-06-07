@@ -26,14 +26,11 @@ keymap.set("n", "<leader>l", ":lopen<CR>")
 keymap.set("n", "[l", ":lprev<CR>zz")
 keymap.set("n", "]l", ":lnext<CR>zz")
 
--- save on system clipboard
-keymap.set("v", "<leader>y", '"+y')
-keymap.set("n", "<leader>y", '"+y')
-keymap.set("n", "<leader>Y", '"+Y')
-
 -- delete without yanking
 keymap.set("v", "<leader>d", '"_d')
 keymap.set("n", "<leader>d", '"_d')
+keymap.set("v", "<leader>D", '"_D')
+keymap.set("n", "<leader>D", '"_D')
 
 -- change ReplaceWithRegister command
 keymap.set("n", "rp", "<Plug>ReplaceWithRegisterOperator")
@@ -101,10 +98,6 @@ keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if ne
 -- format on command + s
 keymap.set("n", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>")
 keymap.set("i", "<F6>s", "<Esc><cmd>lua vim.lsp.buf.format()<CR>i")
-
--- copy on command + c and v
-keymap.set("v", "<F6>c", "y")
-keymap.set("n", "<F6>v", "p")
 
 -- search on command + f
 keymap.set("n", "<F6>f", "/")
