@@ -74,9 +74,6 @@ keymap.set("n", "<F6>b", ":NvimTreeToggle<CR>") -- toggle file explorer
 keymap.set("n", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
 keymap.set("i", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
 keymap.set("c", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
-keymap.set("n", "<F6><S-p>", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
-keymap.set("i", "<F6><S-p>", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
-keymap.set("c", "<F6><S-p>", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
 
 function vim.getVisualSelection()
@@ -133,9 +130,14 @@ keymap.set("n", "<F6>f", "/")
 
 -- harpoon
 local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
 
-keymap.set("n", "<leader>a", mark.add_file)
-keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+keymap.set("n", "<leader>p", mark.add_file)
+keymap.set("n", "<C-p>", ui.toggle_quick_menu)
+keymap.set("n", "<F6><S-p>", "<cmd>Telescope harpoon marks<cr>") -- list open harpoon in current neovim instance
+keymap.set("i", "<F6><S-p>", "<cmd>Telescope harpoon marks<cr>") -- list open harpoon in current neovim instance
+keymap.set("c", "<F6><S-p>", "<cmd>Telescope harpoon marks<cr>") -- list open harpoon in current neovim instance
+keymap.set("v", "<F6><S-p>", "<cmd>Telescope harpoon marks<cr>") -- list open harpoon in current neovim instance
 
 keymap.set("n", "<F6>1", function()
   ui.nav_file(1)
