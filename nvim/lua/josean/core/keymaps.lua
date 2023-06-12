@@ -53,8 +53,8 @@ keymap.set("n", "<C-j>", "<C-w>j")
 keymap.set("n", "<C-k>", "<C-w>k")
 keymap.set("n", "<C-l>", "<C-w>l")
 
-keymap.set("n", "<leader>n", ":tabnew<CR>") -- open new tab
-keymap.set("n", "<leader>w", ":tabclose<CR>") -- close current tab
+keymap.set("n", "<leader>tne", ":tabnew<CR>") -- open new tab
+keymap.set("n", "<leader>tw", ":tabclose<CR>") -- close current tab
 keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
 keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 
@@ -124,6 +124,7 @@ keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if ne
 -- format on command + s
 keymap.set("n", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>")
 keymap.set("i", "<F6>s", "<Esc><cmd>lua vim.lsp.buf.format()<CR>i")
+keymap.set("v", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>i")
 
 -- search on command + f
 keymap.set("n", "<F6>f", "/")
