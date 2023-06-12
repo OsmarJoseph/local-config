@@ -166,18 +166,20 @@ keymap.set("c", "<Down>", "<C-n>")
 keymap.set("c", "<Up>", "<C-p>")
 keymap.set("c", "<Enter>", 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true, noremap = true })
 
--- keymapto move lines
-keymap.set("n", "<A-Up>", ":m-2<CR>gv=")
-keymap.set("n", "<A-Down>", ":m+<CR>gv=")
+-- keymap to move lines
+keymap.set("n", "<A-Down>", ":lua vim.api.nvim_command('move +1')<CR>==")
+keymap.set("n", "<A-Up>", ":lua vim.api.nvim_command('move -2')<CR>==")
 keymap.set("v", "<A-Up>", ":m '<-2<CR>gv=gv")
 keymap.set("v", "<A-Down>", ":m '>+1<CR>gv=gv")
--- keymapto move words
+
+-- keymap to move words
 keymap.set("n", "<A-Left>", "b")
 keymap.set("i", "<A-Left>", "<S-Left>")
 keymap.set("c", "<A-Left>", "<S-Left>")
 keymap.set("n", "<A-Right>", "e")
 keymap.set("i", "<A-Right>", "<S-Right>")
 keymap.set("c", "<A-Right>", "<S-Right>")
+
 -- delete line
 keymap.set("n", "<A-0>", "d0")
 keymap.set("i", "<A-0>", "<C-u>")
