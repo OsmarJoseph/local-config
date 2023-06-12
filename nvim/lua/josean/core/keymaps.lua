@@ -75,6 +75,10 @@ keymap.set("n", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within c
 keymap.set("i", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
 keymap.set("c", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
+keymap.set("n", "<F6><S-b>", "<cmd>Telescope buffers<cr>") -- list open buffers
+keymap.set("i", "<F6><S-b>", "<cmd>Telescope buffers<cr>") -- list open buffers
+keymap.set("c", "<F6><S-b>", "<cmd>Telescope buffers<cr>") -- list open buffers
+keymap.set("v", "<F6><S-b>", "<cmd>Telescope buffers<cr>") -- list open buffers
 
 function vim.getVisualSelection()
   vim.cmd('noau normal! "vy"')
