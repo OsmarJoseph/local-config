@@ -71,9 +71,6 @@ keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
 keymap.set("n", "<F6>b", ":NvimTreeToggle<CR>") -- toggle file explorer
 
 -- telescope
-keymap.set("n", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
-keymap.set("i", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
-keymap.set("c", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
 keymap.set("n", "<F6><S-b>", "<cmd>Telescope buffers<cr>") -- list open buffers
 keymap.set("i", "<F6><S-b>", "<cmd>Telescope buffers<cr>") -- list open buffers
@@ -112,6 +109,14 @@ keymap.set("v", "<F6><S-f>", function()
   local text = vim.getVisualSelection()
   live_grep_args({ default_text = text })
 end, opts)
+
+keymap.set("n", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
+keymap.set("i", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
+keymap.set("c", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
+keymap.set("v", "<F6>p", function()
+  local text = vim.getVisualSelection()
+  tb.find_files({ default_text = text })
+end, opts) -- find files within current working directory, respects .gitignore
 
 -- telescope git commands (not on youtube nvim video)
 keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
