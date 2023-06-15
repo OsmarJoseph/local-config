@@ -48,6 +48,8 @@ keymap.set("n", "<F6>-", "<C-w>s") -- split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
 keymap.set("n", "<F6>w", ":close<CR>") -- close current split window
 keymap.set("c", "<F6>w", ":close<CR>") -- close current split window
+keymap.set("n", "<F6><S-w>", ":on<CR>") -- close all split windows except current
+keymap.set("c", "<F6><S-w>", ":on<CR>") -- close all split windows except current
 keymap.set("n", "<C-h>", "<C-w>h")
 keymap.set("n", "<C-j>", "<C-w>j")
 keymap.set("n", "<C-k>", "<C-w>k")
