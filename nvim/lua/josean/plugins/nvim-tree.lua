@@ -44,6 +44,10 @@ nvimtree.setup({
       },
     },
   },
+
+  live_filter = {
+    always_show_folders = false,
+  },
 })
 
 -- open nvim-tree on setup
