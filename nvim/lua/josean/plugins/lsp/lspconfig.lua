@@ -82,6 +82,12 @@ lspconfig["eslint"].setup({
   on_attach = on_attach,
 })
 
+-- configure eslint server
+lspconfig["jsonls"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
 -- configure typescript server with plugin
 typescript.setup({
   server = {
