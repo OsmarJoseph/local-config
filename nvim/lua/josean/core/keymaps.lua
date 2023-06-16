@@ -127,7 +127,7 @@ keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git bra
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 keymap.set("n", "<leader>gt", "<cmd>Git<cr>") -- open vim fugitive
 keymap.set("n", "<F6>g", "<cmd>Git<cr>") -- open vim fugitive
-keymap.set("n", "<leader>gtd", "<cmd>Gvdiff<cr>") -- open vim fugitive diff
+keymap.set("n", "dv", "<cmd>Gvdiffsplit<cr>") -- open vim fugitive diff
 
 -- restart lsp server (not on youtube nvim video)
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
