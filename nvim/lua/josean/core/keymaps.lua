@@ -129,9 +129,6 @@ keymap.set("n", "<leader>gt", "<cmd>Git<cr>") -- open vim fugitive
 keymap.set("n", "<F6>g", "<cmd>Git<cr>") -- open vim fugitive
 keymap.set("n", "dv", "<cmd>Gvdiffsplit<cr>") -- open vim fugitive diff
 
--- restart lsp server (not on youtube nvim video)
-keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
-
 -- format on command + s
 keymap.set("n", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>")
 keymap.set("i", "<F6>s", "<Esc><cmd>lua vim.lsp.buf.format()<CR>i")
@@ -228,3 +225,6 @@ keymap.set("n", "<F6>d", "<Plug>(VM-Find-Under)")
 keymap.set("v", "<F6>d", "<Plug>(VM-Find-Subword-Under)")
 keymap.set("n", "<F6>l", "<Plug>(VM-Select-All)")
 keymap.set("v", "<F6>l", "<Plug>(VM-Select-All)")
+
+-- rest
+keymap.set("n", "<leader>run", "<Plug>RestNvim")

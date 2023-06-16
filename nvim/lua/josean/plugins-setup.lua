@@ -135,6 +135,8 @@ return packer.startup(function(use)
   use("mg979/vim-visual-multi") -- multiple cursors
   use("tpope/vim-abolish") -- search & replace
 
+  use("rest-nvim/rest.nvim") -- rest client
+
   if packer_bootstrap then
     require("packer").sync()
   end
