@@ -10,11 +10,11 @@ local formatting = null_ls.builtins.formatting -- to setup formatters
 -- to setup format on save
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-vim.format_with_prettier = function()
+vim.api.nvim_create_user_command("FormatWithPrettier", function()
   vim.api.nvim_command("write")
   vim.cmd("!prettier --write %")
   vim.cmd(":e %")
-end
+end, {})
 
 -- configure null_ls
 null_ls.setup({
