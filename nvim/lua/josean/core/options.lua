@@ -46,7 +46,7 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 opt.scrolloff = 8 -- keep 8 lines above and below cursor when scrolling
 
-vim.updatetime = 50
+opt.updatetime = 50
 
 -- Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -57,3 +57,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank({ higroup = "IncSearch", timeout = 250 })
   end,
 })
+
+-- fold
+opt.foldmethod = "indent"
+opt.foldenable = false
