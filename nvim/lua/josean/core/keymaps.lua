@@ -161,6 +161,19 @@ keymap.set("n", "<F6>4", function()
   ui.nav_file(4)
 end)
 
+keymap.set("i", "<F6>1", function()
+  ui.nav_file(1)
+end)
+keymap.set("i", "<F6>2", function()
+  ui.nav_file(2)
+end)
+keymap.set("i", "<F6>3", function()
+  ui.nav_file(3)
+end)
+keymap.set("i", "<F6>4", function()
+  ui.nav_file(4)
+end)
+
 -- undotree
 keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>")
 
