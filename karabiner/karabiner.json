@@ -105,7 +105,7 @@
                                     {
                                         "key_code": "f6",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "f",
@@ -113,7 +113,7 @@
                                         "modifiers": [
                                             "left_shift"
                                         ],
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -145,12 +145,12 @@
                                     {
                                         "key_code": "f6",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "p",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -181,12 +181,12 @@
                                     {
                                         "key_code": "f6",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "hyphen",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -219,7 +219,7 @@
                                         "key_code": "f6",
                                         "lazy": true,
                                         "modifiers": [],
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "hyphen",
@@ -227,7 +227,7 @@
                                         "modifiers": [
                                             "left_shift"
                                         ],
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -260,7 +260,7 @@
                                         "key_code": "f6",
                                         "lazy": true,
                                         "modifiers": [],
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "p",
@@ -268,7 +268,7 @@
                                         "modifiers": [
                                             "left_shift"
                                         ],
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -299,12 +299,12 @@
                                     {
                                         "key_code": "f6",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "period",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -339,7 +339,7 @@
                                         "modifiers": [
                                             "left_alt"
                                         ],
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -374,7 +374,7 @@
                                         "modifiers": [
                                             "left_alt"
                                         ],
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -410,7 +410,7 @@
                                         "modifiers": [
                                             "left_alt"
                                         ],
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -446,7 +446,7 @@
                                         "modifiers": [
                                             "left_alt"
                                         ],
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -482,7 +482,7 @@
                                         "modifiers": [
                                             "left_alt"
                                         ],
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -518,7 +518,7 @@
                                         "modifiers": [
                                             "left_alt"
                                         ],
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -633,7 +633,7 @@
                                         "modifiers": [
                                             "left_alt"
                                         ],
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -665,12 +665,12 @@
                                         "key_code": "f6",
                                         "lazy": true,
                                         "modifiers": [],
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "slash",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -704,7 +704,7 @@
                                         "modifiers": [
                                             "left_alt"
                                         ],
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -738,7 +738,7 @@
                                         "modifiers": [
                                             "left_alt"
                                         ],
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -769,12 +769,12 @@
                                     {
                                         "key_code": "f6",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "s",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -806,12 +806,12 @@
                                         "key_code": "f6",
                                         "lazy": true,
                                         "modifiers": [],
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "f",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -844,7 +844,7 @@
                                         "key_code": "f6",
                                         "lazy": true,
                                         "modifiers": [],
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "e",
@@ -852,7 +852,7 @@
                                         "modifiers": [
                                             "left_shift"
                                         ],
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -883,12 +883,12 @@
                                     {
                                         "key_code": "f6",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "b",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -919,12 +919,12 @@
                                     {
                                         "key_code": "f6",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "d",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -956,12 +956,12 @@
                                     {
                                         "key_code": "f6",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "l",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -992,12 +992,12 @@
                                     {
                                         "key_code": "f6",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "g",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -1028,12 +1028,12 @@
                                     {
                                         "key_code": "f6",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "1",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -1064,12 +1064,12 @@
                                     {
                                         "key_code": "f6",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "2",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -1100,12 +1100,12 @@
                                     {
                                         "key_code": "f6",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "3",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -1136,12 +1136,12 @@
                                     {
                                         "key_code": "f6",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "4",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -1172,12 +1172,12 @@
                                     {
                                         "key_code": "f6",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "w",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -1209,7 +1209,7 @@
                                     {
                                         "key_code": "f6",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "b",
@@ -1217,7 +1217,7 @@
                                         "modifiers": [
                                             "left_shift"
                                         ],
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -1249,7 +1249,7 @@
                                     {
                                         "key_code": "f6",
                                         "lazy": true,
-                                        "repeat": false
+                                        "repeat": true
                                     },
                                     {
                                         "key_code": "w",
@@ -1257,7 +1257,7 @@
                                         "modifiers": [
                                             "left_shift"
                                         ],
-                                        "repeat": false
+                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
