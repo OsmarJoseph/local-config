@@ -55,14 +55,14 @@ keymap.set("n", "<C-j>", "<C-w>j")
 keymap.set("n", "<C-k>", "<C-w>k")
 keymap.set("n", "<C-l>", "<C-w>l")
 
+-- tabs
 keymap.set("n", "<leader>tne", ":tabnew<CR>") -- open new tab
 keymap.set("n", "<leader>tw", ":tabclose<CR>") -- close current tab
 keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
 keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 
-----------------------
--- Plugin Keybinds
-----------------------
+-- buffers
+keymap.set("n", "<leader>bp", ":b#<CR>") -- go to previous buffer
 
 -- vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
@@ -161,6 +161,10 @@ keymap.set("n", "<F6>4", function()
   ui.nav_file(4)
 end)
 
+keymap.set("n", "<F6>5", function()
+  ui.nav_file(5)
+end)
+
 keymap.set("i", "<F6>1", function()
   ui.nav_file(1)
 end)
@@ -172,6 +176,9 @@ keymap.set("i", "<F6>3", function()
 end)
 keymap.set("i", "<F6>4", function()
   ui.nav_file(4)
+end)
+keymap.set("i", "<F6>5", function()
+  ui.nav_file(5)
 end)
 
 -- undotree
