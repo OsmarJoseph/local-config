@@ -8,7 +8,7 @@ chatGPT.setup({
   edit_with_instructions = {
     diff = false,
     keymaps = {
-      close = "<C-c>",
+      close = "<F6>w",
       accept = "<C-y>",
       toggle_diff = "<C-d>",
       toggle_settings = "<C-o>",
@@ -34,7 +34,7 @@ chatGPT.setup({
       },
     },
     keymaps = {
-      close = { "<F6>w" },
+      close = "<F6>w",
       yank_last = "<C-y>",
       yank_last_code = "<C-k>",
       scroll_up = "<C-u>",
