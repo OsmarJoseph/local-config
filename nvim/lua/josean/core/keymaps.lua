@@ -26,6 +26,9 @@ keymap.set("n", "<leader>l", ":lopen<CR>")
 keymap.set("n", "[l", ":lprev<CR>zz")
 keymap.set("n", "]l", ":lnext<CR>zz")
 
+-- create new line on insert mode
+keymap.set("i", "<A-3>", "<C-m>")
+
 -- delete without yanking
 keymap.set("v", "<leader>d", '"_d')
 keymap.set("n", "<leader>d", '"_d')
