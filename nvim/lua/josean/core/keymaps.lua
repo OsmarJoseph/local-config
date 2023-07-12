@@ -72,9 +72,14 @@ keymap.set("n", "<F6>t", ":new<CR>") -- go to previous buffer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
 
 -- nvim-tree
+local nvim_tree = require("nvim-tree.api")
+
 keymap.set("n", "<F6><S-e>", ":NvimTreeToggle<CR>") -- toggle file explorer
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
 keymap.set("n", "<F6>b", ":NvimTreeToggle<CR>") -- toggle file explorer
+keymap.set("n", "<leader>mn", nvim_tree.marks.navigate.next)
+keymap.set("n", "<leader>mp", nvim_tree.marks.navigate.prev)
+keymap.set("n", "<leader>ms", nvim_tree.marks.navigate.select)
 
 -- telescope
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
