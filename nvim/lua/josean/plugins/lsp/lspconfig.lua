@@ -46,7 +46,7 @@ local on_attach = function(client, bufnr)
     keymap.set("n", "<leader>ami", ":TypescriptAddMissingImports<CR>")
     vim.cmd([[
     augroup strdr4605
-      autocmd FileType typescript,typescriptreact compiler tsc | setlocal makeprg=npx\ tsc
+      autocmd FileType typescript,typescriptreact compiler tsc | setlocal makeprg=yarn\ tsc
     augroup END
     ]])
   end
@@ -140,6 +140,9 @@ lspconfig["lua_ls"].setup({
       -- make the language server recognize "vim" global
       diagnostics = {
         globals = { "vim" },
+      },
+      completion = {
+        callSnippet = "Replace",
       },
       workspace = {
         -- make language server aware of runtime files
