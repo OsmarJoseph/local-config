@@ -74,10 +74,6 @@ local plugins = {
   "onsails/lspkind.nvim", -- vs-code like icons for autocompletion
   "folke/neodev.nvim",
 
-  -- formatting & linting
-  "jose-elias-alvarez/null-ls.nvim", -- configure formatters & linters
-  "jayp0521/mason-null-ls.nvim", -- bridges gap b/w mason & null-ls
-
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
   -- auto closing
