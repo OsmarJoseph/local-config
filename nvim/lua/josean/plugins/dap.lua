@@ -47,17 +47,16 @@ for _, language in ipairs({ "typescript", "javascript", "typescriptreact" }) do
 end
 
 dapui.setup()
-require("nvim-dap-virtual-text").setup()
+require("nvim-dap-virtual-text").setup({})
 
-vim.api.nvim_exec(
+vim.cmd(
   [[
   augroup DapFloatMapping
     autocmd!
     autocmd FileType dap-float nnoremap <buffer><silent> <F6>w <cmd>close!<CR>
     autocmd FileType dap-float nnoremap <buffer><silent> <Esc> <cmd>close!<CR>
   augroup END
-]],
-  false
+]]
 )
 
 dap.listeners.after.event_initialized["dapui_config"] = function()

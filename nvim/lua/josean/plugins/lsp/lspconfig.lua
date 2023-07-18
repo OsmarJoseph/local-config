@@ -1,3 +1,5 @@
+local rt = require("rust-tools")
+
 -- import lspconfig plugin safely
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status then
@@ -51,8 +53,12 @@ local on_attach = function(client, bufnr)
     ]])
   end
 
+  if (client.name == "rust_analyzer") then
+    vim.keymap.set("n", "<leader>run", ":RustRunnables<CR>")
+  end
+
   if client.name == "tsserver" then
-   client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+    client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
   end
 
 
@@ -155,6 +161,24 @@ lspconfig["lua_ls"].setup({
         },
       },
     },
+  },
+})
+
+local mason_registry = require("mason-registry")
+
+local codelldb = mason_registry.get_package("codelldb")
+local extension_path = codelldb:get_install_path() .. "/extension/"
+local codelldb_path = extension_path .. "adapter/codelldb"
+local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
+
+rt.setup({
+  dap = {
+    adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)
+  },
+  server = {
+    cmd = { "rustup", "run", "stable", "rust-analyzer" },
+    capabilities = capabilities,
+    on_attach = on_attach,
   },
 })
 

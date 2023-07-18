@@ -41,6 +41,7 @@
         "/Users/osmarjoseph/.local/share/nvim/lazy/nvim-ts-autotag/lua",
         "/Users/osmarjoseph/.local/share/nvim/lazy/cmp_luasnip/lua",
         "/Users/osmarjoseph/.config/nvim/lua",
-        "${3rd}/luv/library"
+        "${3rd}/luv/library",
+        "${3rd}/luassert/library"
     ]
 }

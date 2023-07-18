@@ -114,6 +114,7 @@ local plugins = {
   { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
   "theHamsta/nvim-dap-virtual-text",
   "mxsdev/nvim-dap-vscode-js",
+  "simrat39/rust-tools.nvim",
 
   {
     "microsoft/vscode-js-debug",

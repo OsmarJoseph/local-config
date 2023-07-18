@@ -256,4 +256,4 @@ keymap.set("n", "<F6>l", "<Plug>(VM-Select-All)")
 keymap.set("v", "<F6>l", "<Plug>(VM-Select-All)")
 
 -- rest
-keymap.set("n", "<leader>run", "<Plug>RestNvim")
+keymap.set("n", "<leader>rest", "<Plug>RestNvim")
