@@ -4,6 +4,8 @@ if not cmp_status then
   return
 end
 
+local types = require("cmp.types")
+
 -- import luasnip plugin safely
 local luasnip_status, luasnip = pcall(require, "luasnip")
 if not luasnip_status then
@@ -21,6 +23,11 @@ require("luasnip/loaders/from_vscode").lazy_load()
 
 vim.opt.completeopt = "menu,menuone,noselect"
 
+local function deprioritize_snippet(entry1, entry2)
+  if entry1:get_kind() == types.lsp.CompletionItemKind.Snippet then return false end
+  if entry2:get_kind() == types.lsp.CompletionItemKind.Snippet then return true end
+end
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -36,9 +43,9 @@ cmp.setup({
   -- sources for autocompletion
   sources = cmp.config.sources({
     { name = "nvim_lsp" }, -- lsp
-    { name = "luasnip" }, -- snippets
-    { name = "buffer" }, -- text within current buffer
-    { name = "path" }, -- file system paths
+    { name = "luasnip" },  -- snippets
+    { name = "buffer" },   -- text within current buffer
+    { name = "path" },     -- file system paths
   }),
   -- configure lspkind for vs-code like icons
   formatting = {
@@ -47,4 +54,22 @@ cmp.setup({
       ellipsis_char = "...",
     }),
   },
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      deprioritize_snippet,
+      -- the rest of the comparators are pretty much the defaults
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.scopes,
+      cmp.config.compare.score,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.locality,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
+  },
+
 })
