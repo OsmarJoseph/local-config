@@ -1,0 +1,16 @@
+{
+  "Create React Component": {
+    "prefix": "rfcm",
+    "body": [
+      "import { memo } from 'react';",
+      "",
+      "export const ${TM_DIRECTORY} = memo(() => {",
+      "  return (",
+      "    <div>$0</div>",
+      "  );",
+      "});",
+      ""
+    ],
+    "description": "Create a React component with memoization"
+  }
+}

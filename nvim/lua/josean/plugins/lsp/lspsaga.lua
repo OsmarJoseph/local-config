@@ -34,7 +34,9 @@ saga.setup({
     },
   },
   rename = {
-    quit = "<ESC>",
+    keys = {
+      quit = "<ESC>",
+    },
     in_select = false,
   },
   lightbulb = {
