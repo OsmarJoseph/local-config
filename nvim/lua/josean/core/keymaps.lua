@@ -59,10 +59,10 @@ keymap.set("n", "<C-k>", "<C-w>k")
 keymap.set("n", "<C-l>", "<C-w>l")
 
 -- tabs
-keymap.set("n", "<leader>tne", ":tabnew<CR>") -- open new tab
+keymap.set("n", "<leader>tn", ":tabnew<CR>") -- open new tab
 keymap.set("n", "<leader>tw", ":tabclose<CR>") -- close current tab
-keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
-keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
+keymap.set("n", "<F6>]", ":tabn<CR>") --  go to next tab
+keymap.set("n", "<F6>[", ":tabp<CR>") --  go to previous tab
 
 -- buffers
 keymap.set("n", "<F6><S-t>", ":bp<CR>") -- go to previous buffer
