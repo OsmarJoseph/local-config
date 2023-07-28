@@ -15,9 +15,14 @@ local plugins = {
 
   "nvim-lua/plenary.nvim", -- lua functions that many plugins
 
-  "rose-pine/neovim",      -- preferred colorscheme
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
 
-  "szw/vim-maximizer",     -- maximizes and restores current window
+  "szw/vim-maximizer", -- maximizes and restores current window
 
   -- essential plugins
   "tpope/vim-surround",               -- add, delete, change surroundings (it's awesome)

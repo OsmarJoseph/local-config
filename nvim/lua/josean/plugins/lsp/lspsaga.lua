@@ -14,7 +14,8 @@ saga.setup({
   },
   finder = {
     keys = {
-      expand_or_jump = "<CR>", -- open definition or jump to it
+      quit = "<ESC>",
+      toggle_or_open = "<CR>", -- open definition or jump to it
     },
   },
   code_action = {
@@ -46,8 +47,9 @@ saga.setup({
     virtual_text = false,
   },
   ui = {
+    border = 'double',
     colors = {
-      normal_bg = "#022746",
+      normal_bg = "#15161e",
     },
   },
 })
