@@ -82,6 +82,8 @@ local plugins = {
   { "nvim-treesitter/nvim-treesitter",          build = ":TSUpdate" },
   "nvim-treesitter/nvim-treesitter-context",
 
+  "lukas-reineke/indent-blankline.nvim",
+
   -- auto closing
   "windwp/nvim-ts-autotag", -- autoclose tags
 
