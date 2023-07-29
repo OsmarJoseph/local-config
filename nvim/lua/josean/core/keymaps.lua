@@ -46,11 +46,11 @@ keymap.set("n", "<leader>+", "<C-a>") -- increment
 keymap.set("n", "<leader>-", "<C-x>") -- decrement
 
 -- window management
-keymap.set("n", "<F6>\\", "<C-w>v") -- split window vertically
-keymap.set("n", "<F6>-", "<C-w>s") -- split window horizontally
+keymap.set("n", "<F6>\\", "<C-w>v")     -- split window vertically
+keymap.set("n", "<F6>-", "<C-w>s")      -- split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
-keymap.set("n", "<F6>w", ":close<CR>") -- close current split window
-keymap.set("c", "<F6>w", ":close<CR>") -- close current split window
+keymap.set("n", "<F6>w", ":close<CR>")  -- close current split window
+keymap.set("c", "<F6>w", ":close<CR>")  -- close current split window
 keymap.set("n", "<F6><S-w>", ":on<CR>") -- close all split windows except current
 keymap.set("c", "<F6><S-w>", ":on<CR>") -- close all split windows except current
 keymap.set("n", "<C-h>", "<C-w>h")
@@ -59,14 +59,14 @@ keymap.set("n", "<C-k>", "<C-w>k")
 keymap.set("n", "<C-l>", "<C-w>l")
 
 -- tabs
-keymap.set("n", "<leader>tn", ":tabnew<CR>") -- open new tab
+keymap.set("n", "<leader>tn", ":tabnew<CR>")   -- open new tab
 keymap.set("n", "<leader>tw", ":tabclose<CR>") -- close current tab
-keymap.set("n", "<F6>]", ":tabn<CR>") --  go to next tab
-keymap.set("n", "<F6>[", ":tabp<CR>") --  go to previous tab
+keymap.set("n", "<F6>]", ":tabn<CR>")          --  go to next tab
+keymap.set("n", "<F6>[", ":tabp<CR>")          --  go to previous tab
 
 -- buffers
 keymap.set("n", "<F6><S-t>", ":bp<CR>") -- go to previous buffer
-keymap.set("n", "<F6>t", ":new<CR>") -- go to previous buffer
+keymap.set("n", "<F6>t", ":new<CR>")    -- go to previous buffer
 
 -- vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
@@ -76,17 +76,17 @@ local nvim_tree = require("nvim-tree.api")
 
 keymap.set("n", "<F6><S-e>", ":NvimTreeToggle<CR>") -- toggle file explorer
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
-keymap.set("n", "<F6>b", ":NvimTreeToggle<CR>") -- toggle file explorer
+keymap.set("n", "<F6>b", ":NvimTreeToggle<CR>")     -- toggle file explorer
 keymap.set("n", "<leader>mn", nvim_tree.marks.navigate.next)
 keymap.set("n", "<leader>mp", nvim_tree.marks.navigate.prev)
 keymap.set("n", "<leader>ms", nvim_tree.marks.navigate.select)
 
 -- telescope
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
-keymap.set("n", "<F6><S-b>", "<cmd>Telescope buffers<cr>") -- list open buffers
-keymap.set("i", "<F6><S-b>", "<cmd>Telescope buffers<cr>") -- list open buffers
-keymap.set("c", "<F6><S-b>", "<cmd>Telescope buffers<cr>") -- list open buffers
-keymap.set("v", "<F6><S-b>", "<cmd>Telescope buffers<cr>") -- list open buffers
+keymap.set("n", "<F6><S-b>", "<cmd>Telescope buffers<cr>")    -- list open buffers
+keymap.set("i", "<F6><S-b>", "<cmd>Telescope buffers<cr>")    -- list open buffers
+keymap.set("c", "<F6><S-b>", "<cmd>Telescope buffers<cr>")    -- list open buffers
+keymap.set("v", "<F6><S-b>", "<cmd>Telescope buffers<cr>")    -- list open buffers
 
 function vim.getVisualSelection()
   vim.cmd('noau normal! "vy"')
@@ -121,6 +121,9 @@ keymap.set("v", "<F6><S-f>", function()
   live_grep_args({ default_text = text })
 end, opts)
 
+-- Telescope resume
+keymap.set("n", "<leader>re", "<cmd>Telescope resume<cr>")
+keymap.set("n", "<leader>pi", "<cmd>Telescope pickers<cr>")
 keymap.set("n", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
 keymap.set("i", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
 keymap.set("c", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
@@ -130,13 +133,13 @@ keymap.set("v", "<F6>p", function()
 end, opts) -- find files within current working directory, respects .gitignore
 
 -- telescope git commands (not on youtube nvim video)
-keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
+keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>")   -- list all git commits (use <cr> to checkout) ["gc" for git commits]
 keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
-keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
-keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
-keymap.set("n", "<leader>gt", "<cmd>Git<cr>") -- open vim fugitive
-keymap.set("n", "<F6>g", "<cmd>Git<cr>") -- open vim fugitive
-keymap.set("n", "dv", "<cmd>Gvdiffsplit<cr>") -- open vim fugitive diff
+keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>")  -- list git branches (use <cr> to checkout) ["gb" for git branch]
+keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>")    -- list current changes per file with diff preview ["gs" for git status]
+keymap.set("n", "<leader>gt", "<cmd>Git<cr>")                     -- open vim fugitive
+keymap.set("n", "<F6>g", "<cmd>Git<cr>")                          -- open vim fugitive
+keymap.set("n", "dv", "<cmd>Gvdiffsplit<cr>")                     -- open vim fugitive diff
 
 -- format on command + s
 keymap.set("n", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>")
@@ -212,7 +215,7 @@ keymap.set("v", "<A-Down>", ":m '>+1<CR>gv=gv")
 -- keymap to move words
 keymap.set("n", "<A-Left>", "b")
 keymap.set("i", "<A-Left>", "<S-Left>")
-keymap.set("c", "<A-Left>", "<S-Left>")
+keymap.set("c", "<A-Left>", "<C-f>")
 keymap.set("n", "<A-Right>", "e")
 keymap.set("i", "<A-Right>", "<S-Right>")
 keymap.set("c", "<A-Right>", "<S-Right>")

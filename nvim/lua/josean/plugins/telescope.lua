@@ -30,6 +30,9 @@ telescope.setup({
       "--smart-case",
       "--hidden", -- thats the new thing
     },
+    cache_picker = {
+      num_pickers = 10,
+    }
   },
   extensions = {
     live_grep_args = {
