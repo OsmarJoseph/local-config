@@ -46,11 +46,6 @@ local on_attach = function(client, bufnr)
     keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
     keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>")    -- remove unused variables (not in youtube nvim video)
     keymap.set("n", "<leader>ami", ":TypescriptAddMissingImports<CR>")
-    vim.cmd([[
-    augroup strdr4605
-      autocmd FileType typescript,typescriptreact compiler tsc | setlocal makeprg=yarn\ tsc
-    augroup END
-    ]])
   end
 
   if (client.name == "rust_analyzer") then
@@ -187,3 +182,9 @@ vim.api.nvim_create_user_command("FormatWithPrettier", function()
   vim.cmd("!prettier --write %")
   vim.cmd(":e %")
 end, {})
+
+vim.cmd([[
+  augroup strdr4605
+  autocmd FileType typescript,typescriptreact compiler tsc | setlocal makeprg=yarn\ tsc
+  augroup END
+]])
