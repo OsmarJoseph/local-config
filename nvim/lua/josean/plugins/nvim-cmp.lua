@@ -59,9 +59,8 @@ cmp.setup({
     priority_weight = 2,
     comparators = {
       deprioritize_snippet,
-      -- the rest of the comparators are pretty much the defaults
-      cmp.config.compare.offset,
       cmp.config.compare.exact,
+      cmp.config.compare.offset,
       cmp.config.compare.scopes,
       cmp.config.compare.score,
       cmp.config.compare.recently_used,
