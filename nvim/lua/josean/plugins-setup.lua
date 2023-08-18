@@ -111,7 +111,6 @@ local plugins = {
   "norcalli/nvim-colorizer.lua",           -- normal color highlight
   "themaxmarchuk/tailwindcss-colors.nvim", -- tailwind color highlight
 
-  "mg979/vim-visual-multi",                -- multiple cursors
   "tpope/vim-abolish",                     -- search & replace
 
   "rest-nvim/rest.nvim",                   -- rest client

@@ -252,11 +252,5 @@ keymap.set("v", "<A-2>", "e")
 -- select file
 keymap.set("n", "<A-4>", "ggVG")
 
--- multicursor
-keymap.set("n", "<F6>d", "<Plug>(VM-Find-Under)")
-keymap.set("v", "<F6>d", "<Plug>(VM-Find-Subword-Under)")
-keymap.set("n", "<F6>l", "<Plug>(VM-Select-All)")
-keymap.set("v", "<F6>l", "<Plug>(VM-Select-All)")
-
 -- rest
 keymap.set("n", "<leader>rest", "<Plug>RestNvim")
