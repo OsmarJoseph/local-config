@@ -61,3 +61,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- fold
 opt.foldmethod = "indent"
 opt.foldenable = false
+
+-- spell
+opt.spelllang = "en_us,pt"
+opt.spell = true
+opt.spellfile = os.getenv("HOME") .. "/.config/nvim/spell/en.utf-8.add," .. os.getenv("HOME") .. "/.config/nvim/spell/pt.utf-8.add"
