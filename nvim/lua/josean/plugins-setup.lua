@@ -127,6 +127,22 @@ local plugins = {
     "microsoft/vscode-js-debug",
     build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
   },
+
+  {
+    "epwalsh/obsidian.nvim",
+    lazy = true,
+    event = { "BufReadPre " .. vim.fn.expand "~" .. "/Repos/notes/**.md" },
+    -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
+    -- event = { "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+  {
+    "ixru/nvim-markdown",
+    lazy = true,
+    event = { "BufReadPre " .. vim.fn.expand "~" .. "/Repos/notes/**.md" },
+  },
 }
 
 local opts = {}

@@ -1,4 +1,5 @@
 local rt = require("rust-tools")
+local notesPath = require("josean.plugins.obsidian")
 
 -- import lspconfig plugin safely
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
@@ -20,14 +21,31 @@ end
 
 local keymap = vim.keymap -- for conciseness
 
+local function format_with_prettier()
+  local current_bufnr = vim.api.nvim_get_current_buf()
+  local start_line = 1
+  local end_line = vim.fn.line('$') -- Last line of the buffer
+  local formatted_content = vim.fn.systemlist({
+    'prettier', '--stdin-filepath', vim.fn.expand('%:p')
+  }, table.concat(vim.fn.getline(start_line, end_line), '\n'))
+
+  if formatted_content and #formatted_content > 0 then
+    -- Set the buffer lines to the formatted content
+    vim.api.nvim_buf_set_lines(current_bufnr, start_line - 1, end_line, false, formatted_content)
+  end
+end
+
 -- enable keybinds only for when lsp server available
 local on_attach = function(client, bufnr)
   -- keybind options
   local opts = { noremap = true, silent = true, buffer = bufnr }
 
   -- set keybinds
-  keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", opts)                          -- show definition, references
-  keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)                 -- got to declaration
+  keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", opts) -- show definition, references
+
+  if (client.name ~= "marksman") then
+    keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)               -- got to declaration
+  end
   keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts)                 -- see definition and make edits in window
   keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)        -- go to implementation
   keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)            -- go to implementation
@@ -66,6 +84,22 @@ local on_attach = function(client, bufnr)
   end
   if client.name == "tailwindcss" then
     require("tailwindcss-colors").buf_attach(bufnr)
+  end
+  local isInNotesPath = vim.fn.expand("%:p:h"):find(notesPath) ~= nil
+
+  if (client.name == "marksman" and isInNotesPath) then
+    client.server_capabilities.documentFormattingProvider = true
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "FormatWithPrettierAndWrite",
+    })
+    -- format on command + s
+    keymap.set("n", "<F6>s", format_with_prettier)
+    keymap.set("i", "<F6>s", "<Esc><cmd>FormatWithPrettier<CR>i")
+  else
+    keymap.set("n", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>")
+    keymap.set("i", "<F6>s", "<Esc><cmd>lua vim.lsp.buf.format()<CR>i")
+    keymap.set("v", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>i")
   end
 end
 
@@ -111,6 +145,14 @@ lspconfig["cssls"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
+
+-- configure markdown server
+lspconfig["marksman"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { "markdown" },
+})
+
 
 -- configure tailwindcss server
 lspconfig["tailwindcss"].setup({
@@ -178,9 +220,12 @@ rt.setup({
 })
 
 vim.api.nvim_create_user_command("FormatWithPrettier", function()
+  format_with_prettier()
+end, {})
+
+vim.api.nvim_create_user_command("FormatWithPrettierAndWrite", function()
+  format_with_prettier()
   vim.api.nvim_command("write")
-  vim.cmd("!prettier --write %")
-  vim.cmd(":e %")
 end, {})
 
 vim.cmd([[
