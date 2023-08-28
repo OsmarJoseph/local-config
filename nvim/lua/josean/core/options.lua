@@ -64,5 +64,11 @@ opt.foldenable = false
 
 -- spell
 opt.spelllang = "en_us,pt"
-opt.spell = true
 opt.spellfile = os.getenv("HOME") .. "/.config/nvim/spell/en.utf-8.add," .. os.getenv("HOME") .. "/.config/nvim/spell/pt.utf-8.add"
+
+
+vim.cmd([[
+  augroup spellcheck
+  autocmd FileType typescript,typescriptreact,markdown,octo setlocal spell
+  augroup END
+]])
