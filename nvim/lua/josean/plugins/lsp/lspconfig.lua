@@ -21,10 +21,17 @@ end
 
 local keymap = vim.keymap -- for conciseness
 
-local function format_with_prettier()
+local function format_with_prettier(range)
   local current_bufnr = vim.api.nvim_get_current_buf()
-  local start_line = 1
-  local end_line = vim.fn.line('$') -- Last line of the buffer
+
+  local start_line, end_line
+  if range then
+    start_line, end_line = vim.fn.line("'<"), vim.fn.line("'>")
+  else
+    start_line = 1
+    end_line = vim.fn.line('$') -- Last line of the buffer
+  end
+
   local formatted_content = vim.fn.systemlist({
     'prettier', '--stdin-filepath', vim.fn.expand('%:p')
   }, table.concat(vim.fn.getline(start_line, end_line), '\n'))
@@ -219,9 +226,9 @@ rt.setup({
   },
 })
 
-vim.api.nvim_create_user_command("FormatWithPrettier", function()
-  format_with_prettier()
-end, {})
+vim.api.nvim_create_user_command("FormatWithPrettier", function(opts)
+  format_with_prettier(opts.range ~= 0)
+end, {range = true})
 
 vim.api.nvim_create_user_command("FormatWithPrettierAndWrite", function()
   format_with_prettier()
