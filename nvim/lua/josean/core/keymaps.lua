@@ -252,5 +252,8 @@ keymap.set("v", "<A-2>", "e")
 -- select file
 keymap.set("n", "<A-4>", "ggVG")
 
+-- add C cedilha
+keymap.set("i", "<A-c>", "ç")
+
 -- rest
 keymap.set("n", "<leader>rest", "<Plug>RestNvim")
