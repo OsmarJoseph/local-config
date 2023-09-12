@@ -42,6 +42,12 @@ local function format_with_prettier(range)
   end
 end
 
+local function format_rust()
+  vim.cmd("lua vim.lsp.buf.format()")
+  vim.cmd("w")
+end
+
+
 -- enable keybinds only for when lsp server available
 local on_attach = function(client, bufnr)
   -- keybind options
@@ -71,10 +77,6 @@ local on_attach = function(client, bufnr)
     keymap.set("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
     keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>")    -- remove unused variables (not in youtube nvim video)
     keymap.set("n", "<leader>ami", ":TypescriptAddMissingImports<CR>")
-  end
-
-  if (client.name == "rust_analyzer") then
-    vim.keymap.set("n", "<leader>run", ":RustRunnables<CR>")
   end
 
   if client.name == "tsserver" then
@@ -107,6 +109,11 @@ local on_attach = function(client, bufnr)
     keymap.set("n", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>")
     keymap.set("i", "<F6>s", "<Esc><cmd>lua vim.lsp.buf.format()<CR>i")
     keymap.set("v", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>i")
+  end
+
+  if (client.name == "rust_analyzer") then
+    vim.keymap.set("n", "<leader>run", ":RustRunnables<CR>")
+    keymap.set("n", "<F6>s", format_rust)
   end
 end
 
@@ -228,7 +235,7 @@ rt.setup({
 
 vim.api.nvim_create_user_command("FormatWithPrettier", function(opts)
   format_with_prettier(opts.range ~= 0)
-end, {range = true})
+end, { range = true })
 
 vim.api.nvim_create_user_command("FormatWithPrettierAndWrite", function()
   format_with_prettier()
