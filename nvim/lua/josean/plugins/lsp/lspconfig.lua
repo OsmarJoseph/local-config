@@ -43,8 +43,8 @@ local function format_with_prettier(range)
 end
 
 local function format_rust()
-  vim.cmd("lua vim.lsp.buf.format()")
   vim.cmd("w")
+  vim.cmd("lua vim.lsp.buf.format()")
 end
 
 
