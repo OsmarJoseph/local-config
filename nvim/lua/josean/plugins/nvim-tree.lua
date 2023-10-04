@@ -26,6 +26,8 @@ local function my_on_attach(bufnr)
   -- custom mappings
   vim.keymap.set('n', 'W', collapse_all_and_keep_buffers, opts('collapse all and keep buffers', bufnr))
   vim.keymap.set('n', '<leader>W', api.tree.collapse_all, opts('collapse all', bufnr))
+  vim.keymap.set("n", "[m", api.marks.navigate.prev)
+  vim.keymap.set("n", "]m", api.marks.navigate.next)
 end
 
 -- configure nvim-tree
