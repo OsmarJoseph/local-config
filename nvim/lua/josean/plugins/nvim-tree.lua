@@ -24,7 +24,8 @@ local function my_on_attach(bufnr)
   api.config.mappings.default_on_attach(bufnr)
 
   -- custom mappings
-  vim.keymap.set('n', 'W', collapse_all_and_keep_buffers, opts('collapse all', bufnr))
+  vim.keymap.set('n', 'w', collapse_all_and_keep_buffers, opts('collapse all and keep buffers', bufnr))
+  vim.keymap.set('n', 'W', api.tree.collapse_all, opts('collapse all', bufnr))
 end
 
 -- configure nvim-tree
