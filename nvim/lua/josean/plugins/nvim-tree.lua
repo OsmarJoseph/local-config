@@ -4,10 +4,28 @@ if not setup then
   return
 end
 
+local api = require("nvim-tree.api")
+
 -- recommended settings from nvim-tree documentation
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.cmd(':command! -nargs=1 Browse silent execute "!open" shellescape(<q-args>,1)') -- enables :Browse command for GBrowse
+
+local function opts(desc, bufnr)
+  return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+end
+
+local function collapse_all_and_keep_buffers()
+  api.tree.collapse_all(true)
+end
+
+local function my_on_attach(bufnr)
+  -- default mappings
+  api.config.mappings.default_on_attach(bufnr)
+
+  -- custom mappings
+  vim.keymap.set('n', 'W', collapse_all_and_keep_buffers, opts('collapse all', bufnr))
+end
 
 -- configure nvim-tree
 nvimtree.setup({
@@ -28,7 +46,7 @@ nvimtree.setup({
       glyphs = {
         folder = {
           arrow_closed = "", -- arrow when folder is closed
-          arrow_open = "", -- arrow when folder is open
+          arrow_open = "",   -- arrow when folder is open
         },
       },
     },
@@ -48,6 +66,7 @@ nvimtree.setup({
   live_filter = {
     always_show_folders = false,
   },
+  on_attach = my_on_attach,
 })
 
 -- open nvim-tree on setup
