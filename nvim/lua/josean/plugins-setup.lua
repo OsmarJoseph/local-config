@@ -81,9 +81,7 @@ local plugins = {
 
   { "nvim-treesitter/nvim-treesitter",          build = ":TSUpdate" },
   "nvim-treesitter/nvim-treesitter-context",
-
-  "lukas-reineke/indent-blankline.nvim",
-
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl",                              opts = {} },
   -- auto closing
   "windwp/nvim-ts-autotag", -- autoclose tags
 
@@ -115,10 +113,10 @@ local plugins = {
 
   "rest-nvim/rest.nvim",                   -- rest client
 
-  { "jackMort/ChatGPT.nvim", dependencies = { "MunifTanjim/nui.nvim" } },
+  { "jackMort/ChatGPT.nvim",               dependencies = { "MunifTanjim/nui.nvim" } },
 
   -- debugger
-  { "rcarriga/nvim-dap-ui",  dependencies = { "mfussenegger/nvim-dap" } },
+  { "rcarriga/nvim-dap-ui",                dependencies = { "mfussenegger/nvim-dap" } },
   "theHamsta/nvim-dap-virtual-text",
   "mxsdev/nvim-dap-vscode-js",
   "simrat39/rust-tools.nvim",
