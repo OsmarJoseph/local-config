@@ -24,3 +24,5 @@ Workspace
 analytics
 backend
 dropdown
+isConnected/!
+required
