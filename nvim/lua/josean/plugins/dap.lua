@@ -74,6 +74,7 @@ end
 vim.keymap.set("n", "<leader>ui", dapui.toggle)
 
 vim.keymap.set("n", "<leader>dpc", dap.continue)
+vim.keymap.set("n", "<leader>dpt", dap.terminate)
 vim.keymap.set("n", "<leader>dpv", dap.step_over)
 vim.keymap.set("n", "<leader>dpi", dap.step_into)
 vim.keymap.set("n", "<leader>dpo", dap.step_out)

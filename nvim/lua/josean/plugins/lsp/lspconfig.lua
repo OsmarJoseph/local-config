@@ -53,6 +53,8 @@ local on_attach = function(client, bufnr)
   -- keybind options
   local opts = { noremap = true, silent = true, buffer = bufnr }
 
+  local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+
   -- set keybinds
   keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", opts) -- show definition, references
 
@@ -73,12 +75,12 @@ local on_attach = function(client, bufnr)
 
   -- typescript specific keymaps (e.g. rename file and update imports)
   if client.name == "tsserver" then
-    keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>")      -- rename file and update imports
-    keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>")    -- remove unused variables (not in youtube nvim video)
+    keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>")   -- rename file and update imports
+    keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
     keymap.set("n", "<leader>ami", ":TypescriptAddMissingImports<CR>")
   end
 
-  if client.name == "tsserver" then
+  if client.name == "tsserver" and filetype ~= "javascript" then
     client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
   end
 

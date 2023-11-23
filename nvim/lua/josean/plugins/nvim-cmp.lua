@@ -59,7 +59,6 @@ cmp.setup({
     priority_weight = 2,
     comparators = {
       deprioritize_snippet,
-      cmp.config.compare.exact,
       cmp.config.compare.offset,
       cmp.config.compare.scopes,
       cmp.config.compare.score,
@@ -69,6 +68,7 @@ cmp.setup({
       cmp.config.compare.sort_text,
       cmp.config.compare.length,
       cmp.config.compare.order,
+      cmp.config.compare.exact,
     },
   },
 
