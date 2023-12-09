@@ -259,3 +259,7 @@ keymap.set("n", "<leader>rest", "<Plug>RestNvim")
 -- insert console.log
 keymap.set("n", "<F6>l", "oconsole.log(<Esc>")
 keymap.set("i", "<F6>l", "<Esc>oconsole.log(<Esc>")
+
+-- macros 
+keymap.set("n", "Q", "@qj")
+keymap.set("v", "Q", ":norm @q<CR>")
