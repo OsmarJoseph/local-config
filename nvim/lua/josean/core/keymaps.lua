@@ -222,6 +222,10 @@ keymap.set("c", "<A-Right>", "<S-Right>")
 keymap.set("n", "<A-0>", "d0")
 keymap.set("i", "<A-0>", "<C-u>")
 keymap.set("c", "<A-0>", "<C-u>")
+
+-- delete char forward
+keymap.set("i", "<C-d>", '<Esc>l"_xi')
+
 -- delete word
 keymap.set("n", "<A-5>", "db")
 keymap.set("i", "<A-5>", "<C-w>")
@@ -260,6 +264,6 @@ keymap.set("n", "<leader>rest", "<Plug>RestNvim")
 keymap.set("n", "<F6>l", "oconsole.log(<Esc>")
 keymap.set("i", "<F6>l", "<Esc>oconsole.log(<Esc>")
 
--- macros 
+-- macros
 keymap.set("n", "Q", "@qj")
 keymap.set("v", "Q", ":norm @q<CR>")
