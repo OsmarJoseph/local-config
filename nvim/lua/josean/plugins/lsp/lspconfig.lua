@@ -72,6 +72,8 @@ local on_attach = function(client, bufnr)
   keymap.set("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)            -- jump to next diagnostic in buffer
   keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<CR>", opts)                       -- show documentation for what is under cursor
   keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts)                  -- see outline on right hand side
+  opts.desc = "Restart LSP"
+  keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)                          -- mapping to restart lsp if necessary
 
   -- typescript specific keymaps (e.g. rename file and update imports)
   if client.name == "tsserver" then
