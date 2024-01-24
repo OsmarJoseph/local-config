@@ -46,10 +46,12 @@ require("tokyonight").setup({
     }
 
     highlights.SagaTitle = { bg = colors.black, fg = colors.info }
+    highlights.WinbarNC = { bg = "none", fg = colors.fg_dark }
+    highlights.Winbar = { bg = "none", fg = colors.fg_dark }
+    highlights.StatusLine = { bg = "none", fg = colors.fg_dark }
     highlights.ActionPreviewTitle = { bg = colors.black, fg = colors.info }
     highlights.FloatBorder = { bg = colors.black, fg = colors.border_highlight }
     highlights.SagaCount = { fg = colors.info, bg = colors.black }
     highlights.RenameNormal = { bg = colors.black, fg = colors.magenta }
   end,
 })
-

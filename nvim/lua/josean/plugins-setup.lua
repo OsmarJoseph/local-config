@@ -136,11 +136,6 @@ local plugins = {
       "nvim-lua/plenary.nvim",
     },
   },
-  {
-    "ixru/nvim-markdown",
-    lazy = true,
-    event = { "BufReadPre " .. vim.fn.expand "~" .. "/Repos/notes/**.md" },
-  },
 }
 
 local opts = {}
