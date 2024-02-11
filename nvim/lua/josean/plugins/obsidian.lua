@@ -9,9 +9,6 @@ require("obsidian").setup(
     -- the first workspace is opened by default.
     detect_cwd = false,
 
-    -- Optional, if you keep notes in a specific subdirectory of your vault.
-    notes_subdir = "notes",
-
     -- Optional, set the log level for obsidian.nvim. This is an integer corresponding to one of the log
     -- levels defined by "vim.log.levels.*".
     log_level = vim.log.levels.INFO,
@@ -20,7 +17,7 @@ require("obsidian").setup(
       -- Optional, if you keep daily notes in a separate directory.
       folder = "dailies",
       -- Optional, if you want to change the date format for the ID of daily notes.
-      date_format = "%d-%m-%Y",
+      date_format = "%Y-%m-%d",
       -- Optional, if you want to change the date format of the default alias of daily notes.
       alias_format = "%B %-d, %Y",
       -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
