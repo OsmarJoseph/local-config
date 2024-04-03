@@ -86,7 +86,7 @@ keymap.set("i", "<F6><S-b>", "<cmd>Telescope buffers<cr>")    -- list open buffe
 keymap.set("c", "<F6><S-b>", "<cmd>Telescope buffers<cr>")    -- list open buffers
 keymap.set("v", "<F6><S-b>", "<cmd>Telescope buffers<cr>")    -- list open buffers
 
-function vim.getVisualSelection()
+local function getVisualSelection()
   vim.cmd('noau normal! "vy"')
   local text = vim.fn.getreg("v")
   vim.fn.setreg("v", {})
@@ -106,7 +106,7 @@ local opts = { noremap = true, silent = true }
 
 keymap.set("n", "<space>fc", ":Telescope current_buffer_fuzzy_find<cr>", opts)
 keymap.set("v", "<space>fc", function()
-  local text = vim.getVisualSelection()
+  local text = getVisualSelection()
   tb.current_buffer_fuzzy_find({ default_text = text })
 end, opts)
 
@@ -115,7 +115,7 @@ keymap.set("i", "<F6><S-f>", live_grep_args)
 keymap.set("c", "<F6><S-f>", live_grep_args)
 
 keymap.set("v", "<F6><S-f>", function()
-  local text = vim.getVisualSelection()
+  local text = getVisualSelection()
   live_grep_args({ default_text = text })
 end, opts)
 
@@ -126,7 +126,7 @@ keymap.set("n", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within c
 keymap.set("i", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
 keymap.set("c", "<F6>p", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
 keymap.set("v", "<F6>p", function()
-  local text = vim.getVisualSelection()
+  local text = getVisualSelection()
   tb.find_files({ default_text = text })
 end, opts) -- find files within current working directory, respects .gitignore
 
