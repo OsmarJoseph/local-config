@@ -136,6 +136,15 @@ local plugins = {
       "nvim-lua/plenary.nvim",
     },
   },
+
+  {
+    "OsmarJoseph/Export.nvim",
+    lazy = true,
+    event = "BufEnter *.ts",
+    config = function()
+      require('export').setup()
+    end,
+  },
 }
 
 local opts = {}
