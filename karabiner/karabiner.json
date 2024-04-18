@@ -18,7 +18,7 @@
                 },
                 "rules": [
                     {
-                        "description": "left-command + right_command + semicolon to delete_or_backspace",
+                        "description": "left-command + semicolon to command + delete_or_backspace",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -33,8 +33,7 @@
                                     "key_code": "semicolon",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "right_command"
+                                            "left_command"
                                         ]
                                     }
                                 },
@@ -51,7 +50,7 @@
                         ]
                     },
                     {
-                        "description": "map command + delete to option + 0",
+                      "description": "map left_command + delete to option + 0",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -66,14 +65,79 @@
                                     "key_code": "semicolon",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
-                                            "right_command"
+                                            "left_command"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
                                         "key_code": "0",
+                                        "lazy": true,
+                                        "modifiers": [
+                                            "left_alt"
+                                        ],
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left-option + semicolon to option + delete",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "dev.warp.Warp-Stable"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "semicolon",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_alt"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_or_backspace",
+                                        "modifiers": [
+                                          "left_alt"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "map option + delete to option + 5",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "dev.warp.Warp-Stable"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "semicolon",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_alt"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "5",
                                         "lazy": true,
                                         "modifiers": [
                                             "left_alt"
@@ -105,14 +169,14 @@
                         ]
                     },
                     {
-                        "description": "left-command + semicolon to delete_or_backspace",
+                        "description": "right-command + semicolon to delete_or_backspace",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "semicolon",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command"
+                                            "right_command"
                                         ]
                                     }
                                 },
@@ -126,14 +190,14 @@
                         ]
                     },
                     {
-                        "description": "left-command + shift + semicolon to delete_forward",
+                        "description": "right-command + shift + semicolon to delete_forward",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "semicolon",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_command",
+                                            "right_command",
                                             "left_shift"
                                         ]
                                     }
@@ -862,40 +926,6 @@
                                     {
                                         "key_code": "slash",
                                         "lazy": true,
-                                        "repeat": true
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "map option + delete to option + 5",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "delete_or_backspace",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_alt"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "5",
-                                        "lazy": true,
-                                        "modifiers": [
-                                            "left_alt"
-                                        ],
                                         "repeat": true
                                     }
                                 ],
