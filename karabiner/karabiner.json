@@ -86,6 +86,25 @@
                         ]
                     },
                     {
+                        "description": "disable delete key making it control + 1",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "delete_or_backspace"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "1",
+                                        "modifiers": [
+                                            "left_control"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "left-command + semicolon to delete_or_backspace",
                         "manipulators": [
                             {
