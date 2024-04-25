@@ -7,22 +7,22 @@ lalt - h : yabai -m window --focus west
 lalt - l : yabai -m window --focus east
 
 #change focus between external displays (left and right)
-lalt - s: yabai -m display --focus north
-lalt - g: yabai -m display --focus south
+ralt - s: yabai -m display --focus north
+ralt - g: yabai -m display --focus south
 
 # -- Modifying the Layout --
 
 # rotate layout clockwise
-shift + lalt - r : yabai -m space --rotate 270
+shift + ralt - r : yabai -m space --rotate 270
 
 # flip along y-axis
 shift + lalt - y : yabai -m space --mirror y-axis
 
 # flip along x-axis
-shift + lalt - x : yabai -m space --mirror x-axis
+shift + ralt - x : yabai -m space --mirror x-axis
 
 # toggle window float
-shift + lalt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+shift + ralt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 
 # -- Modifying Window Size --
@@ -31,7 +31,7 @@ shift + lalt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 shift + lalt - m : yabai -m window --toggle zoom-fullscreen
 
 # balance out tree of windows (resize to occupy same area)
-shift + lalt - e : yabai -m space --balance
+shift + ralt - e : yabai -m space --balance
 
 # -- Moving Windows Around --
 
@@ -48,8 +48,8 @@ ctrl + lalt - h : yabai -m window --warp west
 ctrl + lalt - l : yabai -m window --warp east
 
 # move window to display left and right
-shift + lalt - s : yabai -m window --display north; yabai -m display --focus north;
-shift + lalt - g : yabai -m window --display south; yabai -m display --focus south;
+shift + ralt - s : yabai -m window --display north; yabai -m display --focus north;
+shift + ralt - g : yabai -m window --display south; yabai -m display --focus south;
 
 
 # move window to prev and next space
@@ -57,11 +57,11 @@ shift + lalt - p : yabai -m window --space prev;
 shift + lalt - n : yabai -m window --space next;
 
 # move window to space #
-shift + lalt - 1 : yabai -m window --space 1;
-shift + lalt - 2 : yabai -m window --space 2;
-shift + lalt - 3 : yabai -m window --space 3;
-shift + lalt - 4 : yabai -m window --space 4;
-shift + lalt - 5 : yabai -m window --space 5;
+shift + ralt - 1 : yabai -m window --space 1;
+shift + ralt - 2 : yabai -m window --space 2;
+shift + ralt - 3 : yabai -m window --space 3;
+shift + ralt - 4 : yabai -m window --space 4;
+shift + ralt - 5 : yabai -m window --space 5;
 shift + lalt - 6 : yabai -m window --space 6;
 shift + lalt - 7 : yabai -m window --space 7;
 shift + lalt - 8 : yabai -m window --space 8;
@@ -70,11 +70,11 @@ shift + lalt - 9 : yabai -m window --space 9;
 # -- Starting/Stopping/Restarting Yabai --
 
 # stop/start/restart yabai
-ctrl + lalt - q : brew services stop yabai
-ctrl + lalt - s : brew services start yabai
-ctrl + lalt - r : brew services restart yabai
+ctrl + ralt - q : brew services stop yabai
+ctrl + ralt - s : brew services start yabai
+ctrl + ralt - r : brew services restart yabai
 
 # creating and removing spaces
 ctrl + lalt - n : yabai -m space --create
-ctrl + lalt - w : yabai -m space --destroy
+ctrl + ralt - w : yabai -m space --destroy
 
