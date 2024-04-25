@@ -1,0 +1,6 @@
+# this file must be linked to the path `~/` so ripgrep ignore the pattern
+
+*.svg
+*.png
+*.jpeg
+*.jpg
