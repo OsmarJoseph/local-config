@@ -395,8 +395,8 @@
                                     "key_code": "f",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_gui",
-                                            "left_shift"
+                                            "right_gui",
+                                            "right_shift"
                                         ]
                                     }
                                 },
@@ -962,7 +962,7 @@
                                     "key_code": "a",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_gui"
+                                            "right_gui"
                                         ]
                                     }
                                 },
@@ -1069,7 +1069,7 @@
                                     "key_code": "f",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_gui"
+                                            "right_gui"
                                         ]
                                     }
                                 },
@@ -1256,7 +1256,7 @@
                                     "key_code": "g",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_gui"
+                                            "right_gui"
                                         ]
                                     }
                                 },
@@ -1421,6 +1421,39 @@
                         ]
                     },
                     {
+                        "description": "map lcommand + rcommand + w to meta + ,",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "dev.warp.Warp-Stable"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_gui",
+                                            "right_gui"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "comma",
+                                        "modifiers": [
+                                            "left_alt"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "map command + w to f6 + w",
                         "manipulators": [
                             {
@@ -1436,7 +1469,7 @@
                                     "key_code": "w",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_gui"
+                                            "right_gui"
                                         ]
                                     }
                                 },
@@ -1472,8 +1505,8 @@
                                     "key_code": "b",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_gui",
-                                            "left_shift"
+                                            "right_gui",
+                                            "right_shift"
                                         ]
                                     }
                                 },
@@ -1512,8 +1545,8 @@
                                     "key_code": "w",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_gui",
-                                            "left_shift"
+                                            "right_gui",
+                                            "right_shift"
                                         ]
                                     }
                                 },
