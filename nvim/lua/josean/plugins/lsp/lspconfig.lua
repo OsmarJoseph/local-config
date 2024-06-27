@@ -21,7 +21,7 @@ end
 
 local keymap = vim.keymap -- for conciseness
 
-local function format_with_prettier(range)
+local function format_with_(formatter, range)
   local current_bufnr = vim.api.nvim_get_current_buf()
 
   local start_line, end_line
@@ -32,14 +32,36 @@ local function format_with_prettier(range)
     end_line = vim.fn.line('$') -- Last line of the buffer
   end
 
-  local formatted_content = vim.fn.systemlist({
-    'prettier', '--stdin-filepath', vim.fn.expand('%:p')
-  }, table.concat(vim.fn.getline(start_line, end_line), '\n'))
+  local command = {
+    formatter,
+  }
+
+  if (formatter == "biome") then
+    table.insert(command, 'format')
+    table.insert(command, '--stdin-file-path')
+  end
+
+  if (formatter == "prettier") then
+    table.insert(command, '--stdin-filepath')
+  end
+
+  table.insert(command, vim.fn.expand('%:p'))
+
+
+  local formatted_content = vim.fn.systemlist(command, table.concat(vim.fn.getline(start_line, end_line), '\n'))
 
   if formatted_content and #formatted_content > 0 then
     -- Set the buffer lines to the formatted content
     vim.api.nvim_buf_set_lines(current_bufnr, start_line - 1, end_line, false, formatted_content)
   end
+end
+
+local function format_with_biome(range)
+  format_with_("biome", range)
+end
+
+local function format_with_prettier(range)
+  format_with_("prettier", range)
 end
 
 local function format_rust()
@@ -235,6 +257,10 @@ rt.setup({
     on_attach = on_attach,
   },
 })
+
+vim.api.nvim_create_user_command("FormatWithBiome", function(opts)
+  format_with_biome(opts.range ~= 0)
+end, { range = true })
 
 vim.api.nvim_create_user_command("FormatWithPrettier", function(opts)
   format_with_prettier(opts.range ~= 0)
