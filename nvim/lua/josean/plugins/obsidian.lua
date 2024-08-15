@@ -1,4 +1,4 @@
-local notesPath = "/Users/osmarjoseph/Repos/notes"
+local notesPath = "/Users/osmarjoseph/Library/Mobile Documents/com~apple~CloudDocs/notes"
 
 require("obsidian").setup(
   {

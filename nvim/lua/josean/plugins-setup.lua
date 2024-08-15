@@ -129,9 +129,9 @@ local plugins = {
   {
     "epwalsh/obsidian.nvim",
     lazy = true,
-    event = { "BufReadPre " .. vim.fn.expand "~" .. "/Repos/notes/**.md" },
     -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
     -- event = { "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md" },
+    event = { "BufReadPre " .. vim.fn.expand "~" .. "/Library/Mobile Documents/com~apple~CloudDocs/notes/**.md" },
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
