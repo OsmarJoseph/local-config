@@ -111,14 +111,13 @@ local plugins = {
 
   "tpope/vim-abolish",                     -- search & replace
 
-  "rest-nvim/rest.nvim",                   -- rest client
-
   { "jackMort/ChatGPT.nvim",               dependencies = { "MunifTanjim/nui.nvim" } },
 
   -- debugger
   { "rcarriga/nvim-dap-ui",                dependencies = { "mfussenegger/nvim-dap" } },
   "theHamsta/nvim-dap-virtual-text",
   "mxsdev/nvim-dap-vscode-js",
+  { "nvim-neotest/nvim-nio" },
   "simrat39/rust-tools.nvim",
 
   {
@@ -129,6 +128,7 @@ local plugins = {
   {
     "epwalsh/obsidian.nvim",
     lazy = true,
+    ft = "markdown",
     -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand':
     -- event = { "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md" },
     event = { "BufReadPre " .. vim.fn.expand "~" .. "/Library/Mobile Documents/com~apple~CloudDocs/notes/**.md" },

@@ -5,9 +5,10 @@ require("obsidian").setup(
     -- Required, the path to your vault directory.
     dir = notesPath,
 
-    -- Optional, set to true to use the current directory as a vault; otherwise
-    -- the first workspace is opened by default.
-    detect_cwd = false,
+    -- Where to put new notes created from completion. Valid options are
+    --  * "current_dir" - put new notes in same directory as the current buffer.
+    --  * "notes_subdir" - put new notes in the default notes subdirectory.
+    new_notes_location = "current_dir",
 
     -- Optional, set the log level for obsidian.nvim. This is an integer corresponding to one of the log
     -- levels defined by "vim.log.levels.*".
@@ -31,28 +32,9 @@ require("obsidian").setup(
 
       -- Trigger completion at 2 chars.
       min_chars = 2,
-
-      -- Where to put new notes created from completion. Valid options are
-      --  * "current_dir" - put new notes in same directory as the current buffer.
-      --  * "notes_subdir" - put new notes in the default notes subdirectory.
-      new_notes_location = "current_dir",
-
-      -- Control how wiki links are completed with these (mutually exclusive) options:
-      --
-      -- 1. Whether to add the note ID during completion.
-      -- E.g. "[[Foo" completes to "[[foo|Foo]]" assuming "foo" is the ID of the note.
-      -- Mutually exclusive with 'prepend_note_path' and 'use_path_only'.
-      prepend_note_id = true,
-      -- 2. Whether to add the note path during completion.
-      -- E.g. "[[Foo" completes to "[[notes/foo|Foo]]" assuming "notes/foo.md" is the path of the note.
-      -- Mutually exclusive with 'prepend_note_id' and 'use_path_only'.
-      prepend_note_path = false,
-      -- 3. Whether to only use paths during completion.
-      -- E.g. "[[Foo" completes to "[[notes/foo]]" assuming "notes/foo.md" is the path of the note.
-      -- Mutually exclusive with 'prepend_note_id' and 'prepend_note_path'.
-      use_path_only = false,
     },
 
+    wiki_link_func = "prepend_note_id",
     -- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
     -- way then set 'mappings = {}'.
     mappings = {
@@ -107,14 +89,6 @@ require("obsidian").setup(
       end
       return out
     end,
-
-    -- Optional, customize the backlinks interface.
-    backlinks = {
-      -- The default height of the backlinks pane.
-      height = 10,
-      -- Whether or not to wrap lines.
-      wrap = true,
-    },
 
     -- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
     -- URL it will be ignored but you can customize this behavior here.
