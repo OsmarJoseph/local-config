@@ -18,7 +18,8 @@ harpoon:setup({
   settings = {
     save_on_toggle = true,
     sync_on_ui_close = true,
-    key = function()
+    -- commenting this out because there is a bug on harpoon
+    --[[ key = function()
       local branch = get_os_command_output({
         "git",
         "rev-parse",
@@ -31,7 +32,7 @@ harpoon:setup({
       else
         return vim.fn.getcwd()
       end
-    end,
+    end, ]]
   },
 })
 
