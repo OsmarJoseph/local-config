@@ -35,7 +35,11 @@ local plugins = {
   "nvim-tree/nvim-tree.lua",
 
   -- primagen
-  "theprimeagen/harpoon",
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
 
   -- vs-code like icons
   "nvim-tree/nvim-web-devicons",

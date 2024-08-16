@@ -148,48 +148,23 @@ keymap.set("v", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>i")
 keymap.set("n", "<F6>f", "/")
 
 -- harpoon
-local mark = require("harpoon.mark")
-local ui = require("harpoon.ui")
+-- local mark = require("harpoon.mark")
+local harpoon = require("harpoon")
 
-keymap.set("n", "<leader>p", mark.add_file)
-keymap.set("n", "<C-p>", ui.toggle_quick_menu)
-keymap.set("n", "<F6><S-p>", "<cmd>Telescope harpoon marks<cr>") -- list open harpoon in current neovim instance
-keymap.set("i", "<F6><S-p>", "<cmd>Telescope harpoon marks<cr>") -- list open harpoon in current neovim instance
-keymap.set("c", "<F6><S-p>", "<cmd>Telescope harpoon marks<cr>") -- list open harpoon in current neovim instance
-keymap.set("v", "<F6><S-p>", "<cmd>Telescope harpoon marks<cr>") -- list open harpoon in current neovim instance
+keymap.set("n", "<leader>p", function() harpoon:list():add() end)
+keymap.set("n", "<C-p>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
-keymap.set("n", "<F6>1", function()
-  ui.nav_file(1)
-end)
-keymap.set("n", "<F6>2", function()
-  ui.nav_file(2)
-end)
-keymap.set("n", "<F6>3", function()
-  ui.nav_file(3)
-end)
-keymap.set("n", "<F6>4", function()
-  ui.nav_file(4)
-end)
+keymap.set("n", "<F6>1", function() harpoon:list():select(1) end)
+keymap.set("n", "<F6>2", function() harpoon:list():select(2) end)
+keymap.set("n", "<F6>3", function() harpoon:list():select(3) end)
+keymap.set("n", "<F6>4", function() harpoon:list():select(4) end)
+keymap.set("n", "<F6>5", function() harpoon:list():select(5) end)
 
-keymap.set("n", "<F6>5", function()
-  ui.nav_file(5)
-end)
-
-keymap.set("i", "<F6>1", function()
-  ui.nav_file(1)
-end)
-keymap.set("i", "<F6>2", function()
-  ui.nav_file(2)
-end)
-keymap.set("i", "<F6>3", function()
-  ui.nav_file(3)
-end)
-keymap.set("i", "<F6>4", function()
-  ui.nav_file(4)
-end)
-keymap.set("i", "<F6>5", function()
-  ui.nav_file(5)
-end)
+keymap.set("i", "<F6>1", function() harpoon:list():select(1) end)
+keymap.set("i", "<F6>2", function() harpoon:list():select(2) end)
+keymap.set("i", "<F6>3", function() harpoon:list():select(3) end)
+keymap.set("i", "<F6>4", function() harpoon:list():select(4) end)
+keymap.set("i", "<F6>5", function() harpoon:list():select(5) end)
 
 -- undotree
 keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>")
