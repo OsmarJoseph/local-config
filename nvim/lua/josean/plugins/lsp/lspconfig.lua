@@ -86,7 +86,7 @@ local on_attach = function(client, bufnr)
   keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts)                 -- see definition and make edits in window
   keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)        -- go to implementation
   keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)            -- go to implementation
-  keymap.set("n", "<F6>.", "<cmd>Lspsaga code_action<CR>", opts)                  -- see available code actions
+  keymap.set("n", "<D-.>", "<cmd>Lspsaga code_action<CR>", opts)                  -- see available code actions
   keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)                  -- smart rename
   keymap.set("n", "<leader>Di", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)   -- show  diagnostics for line
   keymap.set("n", "<leader>di", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
@@ -128,17 +128,17 @@ local on_attach = function(client, bufnr)
       command = "FormatWithPrettierAndWrite",
     })
     -- format on command + s
-    keymap.set("n", "<F6>s", format_with_prettier)
-    keymap.set("i", "<F6>s", "<Esc><cmd>FormatWithPrettier<CR>i")
+    keymap.set("n", "<D-s>", format_with_prettier)
+    keymap.set("i", "<D-s>", "<Esc><cmd>FormatWithPrettier<CR>i")
   else
-    keymap.set("n", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>")
-    keymap.set("i", "<F6>s", "<Esc><cmd>lua vim.lsp.buf.format()<CR>i")
-    keymap.set("v", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>i")
+    keymap.set("n", "<D-s>", "<cmd>lua vim.lsp.buf.format()<CR>")
+    keymap.set("i", "<D-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR>i")
+    keymap.set("v", "<D-s>", "<cmd>lua vim.lsp.buf.format()<CR>i")
   end
 
   if (client.name == "rust_analyzer") then
     vim.keymap.set("n", "<leader>run", ":RustRunnables<CR>")
-    keymap.set("n", "<F6>s", format_rust)
+    keymap.set("n", "<D-s>", format_rust)
   end
 end
 

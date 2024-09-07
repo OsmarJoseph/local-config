@@ -20,7 +20,19 @@ normal.family = "GoMono Nerd Font Mono"
 
 [keyboard]
 bindings = [
-  # { key = "Back", mods = "Alt", chars = '\x1b\x7f' },
   { key="=", mods="Control", action="IncreaseFontSize"},
   { key="-", mods="Control", action="DecreaseFontSize"},
+
+  { key="A", mods="Command", chars="ggVG"}, # select file
+  { key = "Left",  mods = "Alt",     chars = "\u001bB", mode="~Alt"   },
+  { key = "Right", mods = "Alt",     chars = "\u001bF", mode="~Alt"   },
+
+  { key = "Left",  mods = "Command", chars = "\u001bOH",mode="~Alt"   },
+  { key = "Left",  mods = "Command", chars = "§", mode="Alt"   },
+
+  { key = "Right", mods = "Command", chars =  "\u001bOF", mode="~Alt" },
+  { key = "Right", mods = "Command", chars =  "¶", mode="Alt" },
+
+  { key = "Back",  mods = "Command", chars = "\u0015", mode="~Alt"     },
+  { key = "Back",  mods = "Command", chars = "º", mode="Alt"     },
 ]

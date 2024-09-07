@@ -58,7 +58,7 @@ local function open_harpoon()
   toggle_telescope(harpoon:list())
 end
 
-vim.keymap.set("n", "<F6><S-p>", open_harpoon, { desc = "Open harpoon window" })
-vim.keymap.set("i", "<F6><S-p>", open_harpoon, { desc = "Open harpoon window" })
-vim.keymap.set("c", "<F6><S-p>", open_harpoon, { desc = "Open harpoon window" })
-vim.keymap.set("v", "<F6><S-p>", open_harpoon, { desc = "Open harpoon window" })
+vim.keymap.set("n", "<S-D-p>", open_harpoon, { desc = "Open harpoon window" })
+vim.keymap.set("i", "<S-D-p>", open_harpoon, { desc = "Open harpoon window" })
+vim.keymap.set("c", "<S-D-p>", open_harpoon, { desc = "Open harpoon window" })
+vim.keymap.set("v", "<S-D-p>", open_harpoon, { desc = "Open harpoon window" })
