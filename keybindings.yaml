@@ -1,4 +1,12 @@
 ---
+"workspace:increase_font_size": ctrl-=
+"terminal:open_block_list_context_menu_via_keybinding": none
+"editor:delete_word_left": meta-5
+"terminal:executing_command_delete_word_left": meta-5
+"pane_group:navigate_next": none
+"editor_view:delete": none
+"editor:select_to_line_end": meta-9
+"pane_group:navigate_prev": none
 "input:open_completion_suggestions": ctrl-space
 "pane_group:navigate_up": ctrl-shift-K
 "editor:delete_word_right": none
