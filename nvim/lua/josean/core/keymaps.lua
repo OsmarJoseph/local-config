@@ -202,9 +202,9 @@ keymap.set("c", "<A-0>", "<C-u>")
 keymap.set("i", "<C-d>", '<Esc>l"_xi')
 
 -- delete word
-keymap.set("n", "<A-5>", "db")
-keymap.set("i", "<A-5>", "<C-w>")
-keymap.set("c", "<A-5>", "<C-w>")
+keymap.set("n", "<A-BS>", "db")
+keymap.set("i", "<A-BS>", "<C-w>")
+keymap.set("c", "<A-BS>", "<C-w>")
 -- keymapto move to start/end of line with command
 keymap.set("n", "<A-6>", "0")
 keymap.set("i", "<A-6>", "<Home>")
@@ -216,9 +216,10 @@ keymap.set("c", "<A-7>", "<End>")
 keymap.set("n", "<A-8>", "v0")
 keymap.set("i", "<A-8>", "<Esc>v0")
 keymap.set("v", "<A-8>", "k")
-keymap.set("n", "<A-9>", "v$")
-keymap.set("i", "<A-9>", "<Esc>v$")
-keymap.set("v", "<A-9>", "j")
+-- alt + 9
+keymap.set("n", "ª", "v$")
+keymap.set("i", "ª", "<Esc>v$")
+keymap.set("v", "ª", "j")
 -- select words with option + shift
 keymap.set("n", "<A-1>", "vb")
 keymap.set("i", "<A-1>", "<Esc>vb")
@@ -228,9 +229,6 @@ keymap.set("i", "<A-2>", "<Esc>ve")
 keymap.set("v", "<A-2>", "e")
 -- select file
 keymap.set("n", "<A-4>", "ggVG")
-
--- add C cedilha
-keymap.set("i", "<A-c>", "ç")
 
 -- insert console.log
 keymap.set("n", "<F6>l", "oconsole.log(<Esc>")

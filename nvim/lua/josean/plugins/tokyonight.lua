@@ -44,14 +44,15 @@ require("tokyonight").setup({
     highlights.DiagnosticVirtualTextWarn = {
       bg = 'none', fg = colors.warning,
     }
-
     highlights.SagaTitle = { bg = colors.black, fg = colors.info }
+    highlights.SagaCount = { fg = colors.info, bg = colors.black }
+    highlights.RenameNormal = { bg = colors.black, fg = colors.magenta }
+    highlights.ActionPreviewTitle = { bg = colors.black, fg = colors.info }
+    highlights.FloatBorder = { bg = colors.black, fg = colors.border_highlight }
+    --[[
     highlights.WinbarNC = { bg = "none", fg = colors.fg_dark }
     highlights.Winbar = { bg = "none", fg = colors.fg_dark }
     highlights.StatusLine = { bg = "none", fg = colors.fg_dark }
-    highlights.ActionPreviewTitle = { bg = colors.black, fg = colors.info }
-    highlights.FloatBorder = { bg = colors.black, fg = colors.border_highlight }
-    highlights.SagaCount = { fg = colors.info, bg = colors.black }
-    highlights.RenameNormal = { bg = colors.black, fg = colors.magenta }
+    ]]
   end,
 })

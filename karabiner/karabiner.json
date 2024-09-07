@@ -1,5 +1,4 @@
 {
-    "machine_specific": { "krbn-fa039272-0464-4a0c-ad2e-54f8b9f819c3": { "enable_multitouch_extension": true } },
     "profiles": [
         {
             "complex_modifications": {
@@ -11,7 +10,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -37,7 +36,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -62,14 +61,6 @@
                         "description": "left-option + semicolon to option + delete",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "semicolon",
                                     "modifiers": { "mandatory": ["left_alt"] }
@@ -78,34 +69,6 @@
                                     {
                                         "key_code": "delete_or_backspace",
                                         "modifiers": ["left_alt"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "map option + delete to option + 5",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "semicolon",
-                                    "modifiers": { "mandatory": ["left_alt"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "5",
-                                        "lazy": true,
-                                        "modifiers": ["left_alt"],
-                                        "repeat": true
                                     }
                                 ],
                                 "type": "basic"
@@ -173,7 +136,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_unless"
                                     }
@@ -209,7 +172,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -245,13 +208,13 @@
                         ]
                     },
                     {
-                        "description": "Press Command + \\\\ to trigger F6 + \\\\ in Warp",
+                        "description": "Press Command + \\\\ to trigger F6 + \\\\ in terminal",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -282,7 +245,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -315,7 +278,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "description": "",
                                         "type": "frontmost_application_if"
@@ -348,7 +311,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -380,7 +343,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -414,7 +377,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -448,7 +411,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -482,7 +445,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -514,7 +477,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -542,7 +505,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -570,7 +533,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -598,7 +561,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -626,7 +589,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -654,7 +617,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -731,7 +694,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -759,7 +722,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -792,7 +755,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -824,7 +787,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -857,7 +820,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -891,7 +854,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -923,7 +886,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -955,7 +918,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -987,7 +950,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -1019,7 +982,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -1051,7 +1014,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -1083,7 +1046,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -1115,7 +1078,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -1147,7 +1110,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -1173,7 +1136,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -1205,7 +1168,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -1238,7 +1201,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -1271,7 +1234,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -1303,7 +1266,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -1336,7 +1299,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -1369,7 +1332,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -1401,7 +1364,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "dev.warp.Warp-Stable"
+                                            "org.alacritty"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
