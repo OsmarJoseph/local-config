@@ -136,6 +136,102 @@
                         ]
                     },
                     {
+                        "description": "Press Command + \\\\ to trigger F6 + \\\\ in terminal",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "backslash",
+                                    "modifiers": { "mandatory": ["left_gui"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "backslash",
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Map Command + Shift + F to F6 + Shift + F",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": { "mandatory": ["right_gui", "right_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "f",
+                                        "lazy": true,
+                                        "modifiers": ["left_shift"],
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Map Command + P to F6 + P",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "description": "",
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "p",
+                                    "modifiers": { "mandatory": ["left_gui"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "p",
+                                        "lazy": true,
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Map Command + - to F6 + -",
                         "manipulators": [
                             {
@@ -159,6 +255,140 @@
                                     },
                                     {
                                         "key_code": "hyphen",
+                                        "lazy": true,
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Map Command + Shift + - to F6 + Shift + -",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "hyphen",
+                                    "modifiers": { "mandatory": ["left_gui", "left_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "modifiers": [],
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "hyphen",
+                                        "lazy": true,
+                                        "modifiers": ["left_shift"],
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "map command + shift + P to f6 + shift + P",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "p",
+                                    "modifiers": { "mandatory": ["left_gui", "left_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "modifiers": [],
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "p",
+                                        "lazy": true,
+                                        "modifiers": ["left_shift"],
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "map command + shift + M to f6 + shift + M",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": { "mandatory": ["left_gui", "left_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "modifiers": [],
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "m",
+                                        "lazy": true,
+                                        "modifiers": ["left_shift"],
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "map command + . to f6 + .",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "period",
+                                    "modifiers": { "mandatory": ["left_gui"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "period",
                                         "lazy": true,
                                         "repeat": true
                                     }
@@ -329,6 +559,71 @@
                         ]
                     },
                     {
+                        "description": "map command + / to f6 + /",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "slash",
+                                    "modifiers": { "mandatory": ["left_gui"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "modifiers": [],
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "slash",
+                                        "lazy": true,
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "map command + s to f6 + s",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_gui"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "s",
+                                        "lazy": true,
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "map command + f to f6 + f",
                         "manipulators": [
                             {
@@ -353,6 +648,136 @@
                                     },
                                     {
                                         "key_code": "f",
+                                        "lazy": true,
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "map command + shift + e to f6 + shift + e",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "e",
+                                    "modifiers": { "mandatory": ["left_gui", "left_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "modifiers": [],
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "e",
+                                        "lazy": true,
+                                        "modifiers": ["left_shift"],
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "map command + b to f6 + b",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "b",
+                                    "modifiers": { "mandatory": ["left_gui"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "b",
+                                        "lazy": true,
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "map command + shift + l to f6 + l",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "mandatory": ["left_gui", "left_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "l",
+                                        "lazy": true,
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "map command + g to f6 + g",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "g",
+                                    "modifiers": { "mandatory": ["right_gui"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "g",
                                         "lazy": true,
                                         "repeat": true
                                     }
@@ -490,38 +915,6 @@
                         ]
                     },
                     {
-                        "description": "map command + 5 to f6 + 5",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "org.alacritty"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "5",
-                                    "modifiers": { "mandatory": ["left_gui"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f6",
-                                        "lazy": true,
-                                        "repeat": true
-                                    },
-                                    {
-                                        "key_code": "5",
-                                        "lazy": true,
-                                        "repeat": true
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "map lcommand + rcommand + w to meta + ,",
                         "manipulators": [
                             {
@@ -580,6 +973,137 @@
                         ]
                     },
                     {
+                        "description": "map command + shift + b to f6 + shift + b",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "b",
+                                    "modifiers": { "mandatory": ["right_gui", "right_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "b",
+                                        "lazy": true,
+                                        "modifiers": ["left_shift"],
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "map command + shift + w to to f6 + shift + w",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": { "mandatory": ["right_gui", "right_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "w",
+                                        "lazy": true,
+                                        "modifiers": ["left_shift"],
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "map command + 5 to f6 + 5",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "5",
+                                    "modifiers": { "mandatory": ["left_gui"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "5",
+                                        "lazy": true,
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "command + shift + t to f6 + shift + t",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "t",
+                                    "modifiers": { "mandatory": ["left_gui", "left_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "t",
+                                        "lazy": true,
+                                        "modifiers": ["left_shift"],
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "command + t to f6 + t",
                         "manipulators": [
                             {
@@ -605,6 +1129,98 @@
                                         "key_code": "t",
                                         "lazy": true,
                                         "modifiers": [],
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "map command + [ to f6 + [",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "open_bracket",
+                                    "modifiers": { "mandatory": ["left_gui"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "open_bracket",
+                                        "lazy": true,
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "map command + ] to f6 + ]",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "close_bracket",
+                                    "modifiers": { "mandatory": ["left_gui"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f6",
+                                        "lazy": true,
+                                        "repeat": true
+                                    },
+                                    {
+                                        "key_code": "close_bracket",
+                                        "lazy": true,
+                                        "repeat": true
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "map command + d to option + 5",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "org.alacritty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": ["left_gui"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "5",
+                                        "lazy": true,
+                                        "modifiers": ["left_alt"],
                                         "repeat": true
                                     }
                                 ],
