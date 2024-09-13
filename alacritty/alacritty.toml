@@ -49,6 +49,6 @@ bindings = [
   { key="5", mods="Command", chars="∞s5" },  
   # window
   { key = "T", mods = "Command", chars ="∞c" }, # create a new tmux window
-  { key = "W", mods = "Command", chars ="∞x" }, # delete current tmux window
-  { key = "N", mods = "Command", chars ="∞e" }, # delete current tmux window
+  { key = "W", mods = "Command", chars ="∞x" }, # delete current tmux pane
+  { key = "N", mods = "Command", chars ="∞e" }, # open new session
 ]
