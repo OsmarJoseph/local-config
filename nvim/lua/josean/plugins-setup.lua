@@ -44,6 +44,8 @@ local plugins = {
   -- vs-code like icons
   "nvim-tree/nvim-web-devicons",
 
+  "christoomey/vim-tmux-navigator", -- navigate between vim & tmux panes
+
   -- statusline
   "nvim-lualine/lualine.nvim",
 

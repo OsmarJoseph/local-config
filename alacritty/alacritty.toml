@@ -1,5 +1,5 @@
 import = [ 
-  "~/.config/alacritty/themes/tokyo-night.toml"
+  "~/.config/tmux/plugins/tokyonight.nvim/extras/alacritty/tokyonight_night.toml"
 ]
 
 [env]
@@ -20,7 +20,9 @@ bindings = [
   { key="=", mods="Control", action="IncreaseFontSize"},
   { key="-", mods="Control", action="DecreaseFontSize"},
 
-  { key="Space", mods="Shift", action="ToggleViMode"},
+  { key="k", mods="Command", chars="clear\n" },
+
+  { key="Space", mods="Command|Shift", action="ToggleViMode"},
 
   { key="A", mods="Command", chars="ggVG"}, # select file
   { key = "Left",  mods = "Alt",     chars = "\u001bB", mode="~Alt"   },
