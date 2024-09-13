@@ -66,10 +66,6 @@ keymap.set("n", "<leader>tw", ":tabclose<CR>") -- close current tab
 keymap.set("n", "<F6>]", ":tabn<CR>")          --  go to next tab
 keymap.set("n", "<F6>[", ":tabp<CR>")          --  go to previous tab
 
--- buffers
-keymap.set("n", "<F6><S-t>", ":bp<CR>") -- go to previous buffer
-keymap.set("n", "<F6>t", ":new<CR>")    -- go to previous buffer
-
 -- vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
 

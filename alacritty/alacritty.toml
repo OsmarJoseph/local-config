@@ -2,6 +2,10 @@ import = [
   "~/.config/tmux/plugins/tokyonight.nvim/extras/alacritty/tokyonight_night.toml"
 ]
 
+[shell]
+program = "/bin/zsh"
+args = ["-l", "-c", "tmux attach || tmux"]
+
 [env]
 TERM = "xterm-256color"
 
@@ -20,8 +24,6 @@ bindings = [
   { key="=", mods="Control", action="IncreaseFontSize"},
   { key="-", mods="Control", action="DecreaseFontSize"},
 
-  { key="k", mods="Command", chars="clear\n" },
-
   { key="Space", mods="Command|Shift", action="ToggleViMode"},
 
   { key="A", mods="Command", chars="ggVG"}, # select file
@@ -36,4 +38,17 @@ bindings = [
 
   { key = "Back",  mods = "Command", chars = "\u0015", mode="~Alt"     },
   { key = "Back",  mods = "Command", chars = "º", mode="Alt"     },
+
+  # tmux mappings
+  { key="k", mods="Command", chars="clear\n" },
+  # switch sessions
+  { key="1", mods="Command", chars="∞s0" },  
+  { key="2", mods="Command", chars="∞s1" },  
+  { key="3", mods="Command", chars="∞s2" },  
+  { key="4", mods="Command", chars="∞s3" },  
+  { key="5", mods="Command", chars="∞s5" },  
+  # window
+  { key = "T", mods = "Command", chars ="∞c" }, # create a new tmux window
+  { key = "W", mods = "Command", chars ="∞x" }, # delete current tmux window
+  { key = "N", mods = "Command", chars ="∞e" }, # delete current tmux window
 ]
