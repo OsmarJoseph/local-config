@@ -29,7 +29,7 @@ export PATH="$PATH:/Users/osmarjoseph/development/flutter/bin"
 export ANDROID_HOME="/Users/$USER/Library/Android/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
-export PATH="$PATH:$HOME/.config/trans"
+export PATH="$PATH:$HOME/.config/scripts"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -37,12 +37,8 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # fzf
 eval "$(fzf --zsh)"
 
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
---color=fg:#c8d3f5,hl:#ff966c \
---color=fg+:#c8d3f5,hl+:#ff966c \
---color=info:#82aaff,prompt:#86e1fc,pointer:#86e1fc \
---color=marker:#c3e88d,spinner:#c3e88d,header:#c3e88d \
---color=gutter:-1"
+source $HOME/.config/tmux/plugins/tokyonight.nvim/extras/fzf/tokyonight_night.sh
+
 show_file_or_dir_preview="if [ -d {} ]; then ls {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'ls {}'"
@@ -108,3 +104,8 @@ export BAT_THEME="base16-256"
 
 eval $(thefuck --alias)
 eval $(thefuck --alias fk)
+
+
+eval "$(gh copilot alias -- zsh)"
+
+set -o ignoreeof 
