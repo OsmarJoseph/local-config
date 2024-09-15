@@ -24,8 +24,6 @@ bindings = [
   { key="=", mods="Control", action="IncreaseFontSize"},
   { key="-", mods="Control", action="DecreaseFontSize"},
 
-  { key="Space", mods="Command|Shift", action="ToggleViMode"},
-
   { key="A", mods="Command", chars="ggVG"}, # select file
   { key = "Left",  mods = "Alt",     chars = "\u001bB", mode="~Alt"   },
   { key = "Right", mods = "Alt",     chars = "\u001bF", mode="~Alt"   },

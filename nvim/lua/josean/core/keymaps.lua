@@ -187,9 +187,26 @@ keymap.set("v", "<A-Down>", ":m '>+1<CR>gv=gv")
 keymap.set("n", "<A-Left>", "b")
 keymap.set("i", "<A-Left>", "<S-Left>")
 keymap.set("c", "<A-Left>", "<C-f>")
-keymap.set("n", "<A-Right>", "e")
-keymap.set("i", "<A-Right>", "<S-Right>")
-keymap.set("c", "<A-Right>", "<S-Right>")
+
+local function is_copilot_panel_open()
+  local namespaces = vim.api.nvim_get_namespaces()
+
+  local extmarks = vim.api.nvim_buf_get_extmarks(0, namespaces['github-copilot'], 0, -1, {})
+  return #extmarks > 0
+end
+
+local function on_alt_right()
+  if is_copilot_panel_open() then
+    vim.api.nvim_input("<Plug>(copilot-accept-word)")
+  else
+    vim.api.nvim_input("<S-Right>")
+  end
+end
+
+-- alt + right on tmux
+keymap.set("n", "<A-F>", "e")
+keymap.set("i", "<A-F>", on_alt_right)
+keymap.set("c", "<A-F>", "<S-Right>")
 
 -- delete line
 -- command + delete, option + 0
