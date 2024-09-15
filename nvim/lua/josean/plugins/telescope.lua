@@ -18,6 +18,11 @@ telescope.setup({
     },
   },
   defaults = {
+    mappings = {
+      i = {
+        ['<C-u>'] = false,
+      }
+    },
     hidden = true,
     file_ignore_patterns = { ".git/", "node_modules/" },
     vimgrep_arguments = {
