@@ -184,9 +184,9 @@ keymap.set("v", "<A-Up>", ":m '<-2<CR>gv=gv")
 keymap.set("v", "<A-Down>", ":m '>+1<CR>gv=gv")
 
 -- keymap to move words
-keymap.set("n", "<A-Left>", "b")
-keymap.set("i", "<A-Left>", "<S-Left>")
-keymap.set("c", "<A-Left>", "<C-f>")
+keymap.set("n", "<M-b>", "b")
+keymap.set("i", "<M-b>", "<S-Left>")
+keymap.set("c", "<M-b>", "<C-f>")
 
 local function is_copilot_panel_open()
   local namespaces = vim.api.nvim_get_namespaces()
@@ -204,9 +204,9 @@ local function on_alt_right()
 end
 
 -- alt + right on tmux
-keymap.set("n", "<A-F>", "e")
-keymap.set("i", "<A-F>", on_alt_right)
-keymap.set("c", "<A-F>", "<S-Right>")
+keymap.set("n", "<M-f>", "e")
+keymap.set("i", "<M-f>", on_alt_right)
+keymap.set("c", "<M-f>", "<S-Right>")
 
 -- delete line
 -- command + delete, option + 0
@@ -218,19 +218,16 @@ keymap.set("c", "º", "<C-u>")
 keymap.set("i", "<C-d>", '<Esc>l"_xi')
 
 -- delete word
-keymap.set("n", "<A-BS>", "db")
-keymap.set("i", "<A-BS>", "<C-w>")
-keymap.set("c", "<A-BS>", "<C-w>")
--- keymapto move to start/end of line with command
--- command + left, option + 6
-keymap.set("n", "§", "0")
-keymap.set("i", "§", "<Home>")
-keymap.set("c", "§", "<Home>")
+keymap.set("n", "<C-w>", "db")
 
--- command + right, alt + 7
-keymap.set("n", "¶", "$")
-keymap.set("i", "¶", "<End>")
-keymap.set("c", "¶", "<End>")
+-- keymapto move to start/end of line with command
+keymap.set("n", "<C-a>", "0")
+keymap.set("i", "<C-a>", "<Home>")
+keymap.set("c", "<C-a>", "<Home>")
+
+keymap.set("n", "<C-e>", "$")
+keymap.set("i", "<C-e>", "<End>")
+keymap.set("c", "<C-e>", "<End>")
 -- select to start/end of line with command
 -- alt + 8
 keymap.set("n", "•", "v0")

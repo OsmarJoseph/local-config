@@ -25,17 +25,17 @@ bindings = [
   { key="-", mods="Control", action="DecreaseFontSize"},
 
   { key="A", mods="Command", chars="ggVG"}, # select file
-  { key = "Left",  mods = "Alt",     chars = "\u001bB", mode="~Alt"   },
-  { key = "Right", mods = "Alt",     chars = "\u001bF", mode="~Alt"   },
+  { key = "Left",  mods = "Alt",     chars = "\u001Bb" },
+  { key = "Right", mods = "Alt",     chars = "\u001Bf" },
 
-  { key = "Left",  mods = "Command", chars = "\u001bOH",mode="~Alt"   },
-  { key = "Left",  mods = "Command", chars = "§", mode="Alt"   },
+  { key = "Left",  mods = "Command", chars = "\u001bOH" },
 
-  { key = "Right", mods = "Command", chars =  "\u001bOF", mode="~Alt" },
-  { key = "Right", mods = "Command", chars =  "¶", mode="Alt" },
+  { key = "Right", mods = "Command", chars =  "\u001bOF" },
 
   { key = "Back",  mods = "Command", chars = "\u0015", mode="~Alt"     },
   { key = "Back",  mods = "Command", chars = "º", mode="Alt"     },
+
+  { key = "Back",  mods = "Alt", chars = "\u0017" },
 
   # tmux mappings
   { key="k", mods="Command", chars="clear\n" },
