@@ -187,10 +187,16 @@ run = 'move-node-to-workspace 5'
 if.app-id = 'com.apple.Safari.WebApp.18092D56-ABC5-43BB-B79E-CC01CDF72F57'
 run = 'move-node-to-workspace 6'
 
-
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
 run = 'move-node-to-workspace 7'
+
+[[on-window-detected]]
+if.app-id = 'com.figma.Desktop'
+run = 'move-node-to-workspace 8'
+
+
+
 
 # floating windows
 [[on-window-detected]]
@@ -213,3 +219,4 @@ run = 'layout floating'
 5 = 'secondary'
 6 = 'secondary'
 7 = 'secondary'
+8 = 'secondary'
