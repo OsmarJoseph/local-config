@@ -44,7 +44,6 @@ telescope.setup({
       auto_quoting = true, -- enable/disable auto-quoting
       mappings = {
         i = {
-          ["<C-a>"] = lga_actions.quote_prompt(),
           ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
         },
       },
