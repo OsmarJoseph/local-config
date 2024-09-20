@@ -214,12 +214,6 @@ keymap.set("n", "º", "d0")
 keymap.set("i", "º", "<C-u>")
 keymap.set("c", "º", "<C-u>")
 
--- delete char forward
-keymap.set("i", "<C-d>", '<Esc>l"_xi')
-
--- delete word
-keymap.set("n", "<C-w>", "db")
-
 -- keymapto move to start/end of line with command
 keymap.set("n", "<C-a>", "0")
 keymap.set("i", "<C-a>", "<Home>")

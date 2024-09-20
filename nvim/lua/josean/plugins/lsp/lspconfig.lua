@@ -165,7 +165,7 @@ lspconfig["eslint"].setup({
   on_attach = on_attach,
 })
 
--- configure eslint server
+-- configure json server
 lspconfig["jsonls"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
