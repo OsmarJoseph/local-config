@@ -58,14 +58,19 @@ local plugins = {
   }, -- fuzzy finder
 
   -- autocompletion
-  "hrsh7th/nvim-cmp",   -- completion plugin
-  "hrsh7th/cmp-buffer", -- source for text in buffer
-  "hrsh7th/cmp-path",   -- source for file system paths
-
-  -- snippets
-  "L3MON4D3/LuaSnip",             -- snippet engine
-  "saadparwaiz1/cmp_luasnip",     -- for autocompletion
-  "rafamadriz/friendly-snippets", -- useful snippets
+  {
+    "hrsh7th/nvim-cmp", -- completion plugin
+    event = "InsertEnter",
+    dependencies = {
+      "hrsh7th/cmp-buffer",           -- source for text in buffer
+      "hrsh7th/cmp-path",             -- source for file system paths
+      "hrsh7th/cmp-nvim-lsp",         -- for autocompletion
+      "L3MON4D3/LuaSnip",             -- snippet engine
+      "saadparwaiz1/cmp_luasnip",     -- for autocompletion
+      "rafamadriz/friendly-snippets", -- useful snippets
+      "onsails/lspkind.nvim",         -- vs-code like icons for autocompletion
+    }
+  },
 
   -- managing & installing lsp servers, linters & formatters
   "williamboman/mason.nvim",           -- in charge of managing lsp servers, linters & formatters
@@ -73,7 +78,6 @@ local plugins = {
 
   -- configuring lsp servers
   "neovim/nvim-lspconfig", -- easily configure language servers
-  "hrsh7th/cmp-nvim-lsp",  -- for autocompletion
   {
     "glepnir/lspsaga.nvim",
     dependencies = {
@@ -82,7 +86,6 @@ local plugins = {
     },
   },                                    -- enhanced lsp uis
   "jose-elias-alvarez/typescript.nvim", -- additional functionality for typescript server (e.g. rename file & update imports)
-  "onsails/lspkind.nvim",               -- vs-code like icons for autocompletion
 
   {
     "folke/lazydev.nvim",
