@@ -239,9 +239,42 @@ keymap.set("n", "<A-2>", "ve")
 keymap.set("i", "<A-2>", "<Esc>ve")
 keymap.set("v", "<A-2>", "e")
 
+local function wrap_with_console_log()
+  -- Get the current visual selection
+  local start_pos = vim.fn.getpos("v")
+  local end_pos = vim.fn.getpos(".")
+
+  -- Get lines from visual selection
+  local lines = vim.fn.getline(start_pos[2], end_pos[2])
+
+  -- Handle multi-line and single-line selections
+  if #lines == 1 then
+    -- Single line: Wrap the selected text in the same line
+    local line = lines[1]
+    local start_col = start_pos[3]
+    local end_col = end_pos[3]
+
+    local selected_text = string.sub(line, start_col, end_col)
+    local wrapped_text = "console.log(" .. selected_text .. ")"
+
+    -- Replace the selected text
+    local new_line = string.sub(line, 1, start_col - 1) .. wrapped_text .. string.sub(line, end_col + 1)
+    vim.fn.setline(start_pos[2], new_line)
+    vim.fn.cursor(start_pos[2], start_pos[3] + #wrapped_text)
+  else
+    -- Multi-line selection (wrap entire lines)
+    for i = 1, #lines do
+      lines[i] = "console.log(" .. lines[i] .. ")"
+    end
+    vim.fn.setline(start_pos[2], lines)
+  end
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+end
+
 -- insert console.log
 keymap.set("n", "<F6>l", "oconsole.log(<Esc>")
 keymap.set("i", "<F6>l", "<Esc>oconsole.log(<Esc>")
+keymap.set("v", "<F6>l", wrap_with_console_log)
 
 -- macros
 keymap.set("n", "Q", "@qj")
