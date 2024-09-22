@@ -86,7 +86,7 @@ local on_attach = function(client, bufnr)
   keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts)                 -- see definition and make edits in window
   keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)        -- go to implementation
   keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)            -- go to implementation
-  keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)            -- go to implementation
+  keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)                -- go to implementation
   keymap.set("n", "<F6>.", "<cmd>Lspsaga code_action<CR>", opts)                  -- see available code actions
   keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)                  -- smart rename
   keymap.set("n", "<leader>Di", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)   -- show  diagnostics for line
@@ -277,3 +277,38 @@ vim.cmd([[
   autocmd FileType typescript,typescriptreact compiler tsc | setlocal makeprg=yarn\ tsc
   augroup END
 ]])
+
+local function import_sort_run()
+  local current_bufnr = vim.api.nvim_get_current_buf()
+  local start_line = 1
+  local end_line = vim.fn.line('$')   -- Last line of the buffer
+  local import_sort_executable = vim.fn.expand("~/.config/sort.js")
+
+  -- Get the current file path
+  local current_file_path = vim.fn.expand("%:p")
+
+  -- Get the content of the buffer
+  local content = table.concat(vim.fn.getline(start_line, end_line), '\n')
+
+  -- Prepare the command
+  local command = {
+    "node",
+    import_sort_executable,
+    current_file_path,
+    content
+  }
+
+  -- Execute the command
+  local formatted_content = vim.fn.systemlist(command)
+
+  if formatted_content and #formatted_content > 0 then
+    -- Set the buffer lines to the formatted content
+    vim.api.nvim_buf_set_lines(current_bufnr, start_line - 1, end_line, false, formatted_content)
+  else
+    print("No formatted content returned.")
+  end
+end
+
+vim.api.nvim_create_user_command("Sort", function()
+  import_sort_run()
+end, {})
