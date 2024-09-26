@@ -1,4 +1,5 @@
 alias n='nvim'
+alias vim='nvim'
 alias G='git'
 alias nrg='nrg_function() {
 

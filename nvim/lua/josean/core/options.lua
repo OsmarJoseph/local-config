@@ -5,10 +5,12 @@ opt.relativenumber = true -- show relative line numbers
 opt.number = true         -- shows absolute line number on cursor line (when relative number is on)
 
 -- tabs & indentation
-opt.tabstop = 2       -- 2 spaces for tabs (prettier default)
-opt.shiftwidth = 2    -- 2 spaces for indent width
-opt.expandtab = true  -- expand tab to spaces
-opt.autoindent = true -- copy indent from current line when starting new one
+opt.tabstop = 2        -- 2 spaces for tabs (prettier default)
+opt.softtabstop = 2    -- 2 spaces for indent width
+opt.shiftwidth = 2     -- 2 spaces for indent width
+opt.expandtab = true   -- expand tab to spaces
+opt.autoindent = true  -- copy indent from current line when starting new one
+opt.smartindent = true -- copy indent from current line when starting new one
 
 -- line wrapping
 opt.wrap = false -- disable line wrapping
@@ -64,7 +66,8 @@ opt.foldenable = false
 
 -- spell
 opt.spelllang = "en_us,pt"
-opt.spellfile = os.getenv("HOME") .. "/.config/nvim/spell/en.utf-8.add," .. os.getenv("HOME") .. "/.config/nvim/spell/pt.utf-8.add"
+opt.spellfile = os.getenv("HOME") ..
+"/.config/nvim/spell/en.utf-8.add," .. os.getenv("HOME") .. "/.config/nvim/spell/pt.utf-8.add"
 
 -- obsidian
 opt.conceallevel = 2
