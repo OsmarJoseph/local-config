@@ -10,6 +10,9 @@ local keymap = vim.keymap -- for conciseness
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
+-- clear search highlights
+keymap.set("n", "<leader><CR>", ":source ~/.config/nvim/init.lua<CR>")
+
 -- keep cursor centered when scrolling
 keymap.set("n", "<C-u>", "<C-u>zz")
 keymap.set("n", "<C-d>", "<C-d>zz")
@@ -37,6 +40,7 @@ keymap.set("n", "<leader>D", '"_D')
 
 -- change ReplaceWithRegister command
 keymap.set("n", "rp", "<Plug>ReplaceWithRegisterOperator")
+keymap.del("n", "grr")
 
 -- delete single character without copying into register
 keymap.set("n", "x", '"_x')
