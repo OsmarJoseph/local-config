@@ -61,8 +61,6 @@ keymap.set("n", "<C-h>", ":TmuxNavigateLeft<CR>")
 keymap.set("n", "<C-j>", ":TmuxNavigateDown<CR>")
 keymap.set("n", "<C-k>", ":TmuxNavigateUp<CR>")
 keymap.set("n", "<C-l>", ":TmuxNavigateRight<CR>")
-keymap.set("n", "C-\\", ":TmuxNavigatePrevious<CR>")
-
 
 -- tabs
 keymap.set("n", "<leader>tn", ":tabnew<CR>")   -- open new tab
