@@ -1393,6 +1393,41 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "description": "map command + = to Control + ^",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "org.alacritty"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "equal_sign",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_gui"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "6",
+                    "lazy": true,
+                    "modifiers": [
+                      "left_control",
+                      "left_shift"
+                    ],
+                    "repeat": true
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
           }
         ]
       },
