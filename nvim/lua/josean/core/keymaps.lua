@@ -148,23 +148,33 @@ keymap.set("v", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>i")
 keymap.set("n", "<F6>f", "/")
 
 -- harpoon
--- local mark = require("harpoon.mark")
+
 local harpoon = require("harpoon")
 
-keymap.set("n", "<leader>p", function() harpoon:list():add() end)
-keymap.set("n", "<C-p>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+local function git_branch()
+  local pipe = io.popen("git branch --show-current")
+  if pipe then
+    local c = pipe:read("*l"):match("^%s*(.-)%s*$")
+    pipe:close()
+    return c
+  end
+  return "default list"
+end
 
-keymap.set("n", "<F6>1", function() harpoon:list():select(1) end)
-keymap.set("n", "<F6>2", function() harpoon:list():select(2) end)
-keymap.set("n", "<F6>3", function() harpoon:list():select(3) end)
-keymap.set("n", "<F6>4", function() harpoon:list():select(4) end)
-keymap.set("n", "<F6>5", function() harpoon:list():select(5) end)
+keymap.set("n", "<leader>p", function() harpoon:list(git_branch()):add() end)
+keymap.set("n", "<C-p>", function() harpoon.ui:toggle_quick_menu(harpoon:list(git_branch())) end)
 
-keymap.set("i", "<F6>1", function() harpoon:list():select(1) end)
-keymap.set("i", "<F6>2", function() harpoon:list():select(2) end)
-keymap.set("i", "<F6>3", function() harpoon:list():select(3) end)
-keymap.set("i", "<F6>4", function() harpoon:list():select(4) end)
-keymap.set("i", "<F6>5", function() harpoon:list():select(5) end)
+keymap.set("n", "<F6>1", function() harpoon:list(git_branch()):select(1) end)
+keymap.set("n", "<F6>2", function() harpoon:list(git_branch()):select(2) end)
+keymap.set("n", "<F6>3", function() harpoon:list(git_branch()):select(3) end)
+keymap.set("n", "<F6>4", function() harpoon:list(git_branch()):select(4) end)
+keymap.set("n", "<F6>5", function() harpoon:list(git_branch()):select(5) end)
+
+keymap.set("i", "<F6>1", function() harpoon:list(git_branch()):select(1) end)
+keymap.set("i", "<F6>2", function() harpoon:list(git_branch()):select(2) end)
+keymap.set("i", "<F6>3", function() harpoon:list(git_branch()):select(3) end)
+keymap.set("i", "<F6>4", function() harpoon:list(git_branch()):select(4) end)
+keymap.set("i", "<F6>5", function() harpoon:list(git_branch()):select(5) end)
 
 -- undotree
 keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>")
