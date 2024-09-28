@@ -10,6 +10,8 @@ if not lga_actions_setup then
   return
 end
 
+local actions = require("telescope.actions")
+
 -- configure telescope
 telescope.setup({
   pickers = {
@@ -21,6 +23,7 @@ telescope.setup({
     mappings = {
       i = {
         ['<C-u>'] = false,
+        ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
       }
     },
     hidden = true,
