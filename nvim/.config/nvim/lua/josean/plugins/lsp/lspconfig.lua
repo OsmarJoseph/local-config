@@ -281,8 +281,8 @@ vim.cmd([[
 local function import_sort_run()
   local current_bufnr = vim.api.nvim_get_current_buf()
   local start_line = 1
-  local end_line = vim.fn.line('$')   -- Last line of the buffer
-  local import_sort_executable = vim.fn.expand("~/.config/sort.js")
+  local end_line = vim.fn.line('$') -- Last line of the buffer
+  local import_sort_executable = vim.fn.expand("~/.config/nvim/sort.js")
 
   -- Get the current file path
   local current_file_path = vim.fn.expand("%:p")

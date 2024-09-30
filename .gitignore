@@ -2,11 +2,9 @@
 AWSVPNClient
 configstore
 flutter
-gh
-github-copilot
 iterm2
 yarn
 gh-copilot
 thefuck
-tmux/plugins
 node_modules
+tmux/.config/tmux/plugins
