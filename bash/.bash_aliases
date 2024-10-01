@@ -1,6 +1,9 @@
 alias n='nvim'
 alias vim='nvim'
 alias G='git'
+alias sesh='~/dotfiles/bash/sesh.sh'
+alias trans='~/dotfiles/bash/trans'
+
 alias nrg='nrg_function() {
 
 selected_file=$(rg $1 -l ~/Repos | fzf --preview "bat -n --color=always --line-range :500 {}") 
