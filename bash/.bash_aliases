@@ -1,8 +1,6 @@
 alias n='nvim'
 alias vim='nvim'
 alias G='git'
-alias sesh='~/dotfiles/bash/sesh.sh'
-alias trans='~/dotfiles/bash/trans'
 
 alias fw='fw_function() {
 

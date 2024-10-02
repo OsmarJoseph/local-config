@@ -29,6 +29,7 @@ export PATH="$PATH:/Users/osmarjoseph/development/flutter/bin"
 export ANDROID_HOME="/Users/$USER/Library/Android/sdk"
 export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="$PATH:$HOME/scripts"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
@@ -94,6 +95,14 @@ bindkey '^@' complete-word # ctrl+space to autocomplete
 bindkey '^I' autosuggest-accept
 bindkey '^T' fzf-completion
 bindkey '^D' fzf-cd-widget
+
+run_sessionnizer() {
+  ~/sessionizer.sh
+}
+
+zle -N run_sessionnizer
+
+bindkey '^A' run_sessionnizer
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
