@@ -97,7 +97,8 @@ setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_verify
 
-bindkey '^@' complete-word # ctrl+space to autocomplete
+export FZF_COMPLETION_TRIGGER=''
+bindkey '^@' fzf-completion # ctrl+space to autocomplete
 bindkey '^I' autosuggest-accept
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
