@@ -133,10 +133,10 @@ ctrl-8 = 'workspace 8'
 ctrl-9 = 'workspace 9'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-1 = ['move-node-to-workspace 1', 'focus-monitor main']
+alt-shift-1 = ['move-node-to-workspace 1', 'focus-monitor secondary']
 alt-shift-2 = ['move-node-to-workspace 2', 'focus-monitor main']
 alt-shift-3 = ['move-node-to-workspace 3', 'focus-monitor main']
-alt-shift-4 = ['move-node-to-workspace 4', 'focus-monitor secondary']
+alt-shift-4 = ['move-node-to-workspace 4', 'focus-monitor main']
 alt-shift-5 = ['move-node-to-workspace 5', 'focus-monitor secondary']
 alt-shift-6 = ['move-node-to-workspace 6', 'focus-monitor secondary']
 alt-shift-7 = ['move-node-to-workspace 7', 'focus-monitor secondary']
@@ -169,7 +169,7 @@ alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
 if.app-id = 'org.alacritty'
-run = 'move-node-to-workspace 1'
+run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefox'
@@ -177,7 +177,7 @@ run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run = 'move-node-to-workspace 3'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.linear'
@@ -212,10 +212,10 @@ if.app-id = 'com.riotgames.RiotGames.RiotClient'
 run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
-1 = 'main'                            
+1 = 'secondary'                            
 2 = 'main'
 3 = 'main'
-4 = 'secondary'
+4 = 'main'
 5 = 'secondary'
 6 = 'secondary'
 7 = 'secondary'
