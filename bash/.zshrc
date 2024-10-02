@@ -62,14 +62,6 @@ _fzf_comprun() {
   esac
 }
 
-## - Use fd instead of fzf --
-
-bindkey '^D' fzf-cd-widget
-
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
@@ -98,8 +90,9 @@ setopt hist_ignore_dups
 setopt hist_verify
 
 export FZF_COMPLETION_TRIGGER=''
-bindkey '^@' fzf-completion # ctrl+space to autocomplete
+bindkey '^@' complete-word # ctrl+space to autocomplete
 bindkey '^I' autosuggest-accept
+bindkey '^T' fzf-completion
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
