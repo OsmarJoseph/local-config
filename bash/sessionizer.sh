@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~ ~/Repos -mindepth 1 -maxdepth 5 -type d \( -path "$HOME/Library" -o -path "$HOME/.Trash" \) -prune -o -type d -print | fzf)
+selected=$(find ~ ~/Repos -mindepth 1 -maxdepth 5 -type d \( -path "$HOME/Library" -o -path "$HOME/.Trash" -o -path "*/node_modules" \) -prune -o -type d -print | fzf)
 fi
 
 if [[ -z $selected ]]; then

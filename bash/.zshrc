@@ -44,7 +44,13 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 --color=bg:-1 \
 --color=gutter:-1"
 
+
 show_file_or_dir_preview="if [ -d {} ]; then ls -a {} | tail -n +3 | head -200; else bat -n --color=always --line-range :500 {}; fi"
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git --exclude node_modules --exclude Library"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
+
 export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'ls -a {} | tail -n +3'"
 #
@@ -67,12 +73,12 @@ _fzf_comprun() {
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
+  fd --hidden --exclude .git --exclude node_modules --exclude Library . "$1"
 }
 
 ## Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-  fd --type=d --hidden --exclude .git . "$1"
+  fd --type=d --hidden --exclude .git --exclude node_modules --exclude Library . "$1"
 }
 
 # powerlevel10k
