@@ -1,10 +1,2 @@
-.DS_Store
-AWSVPNClient
-configstore
-flutter
-iterm2
-yarn
-gh-copilot
-thefuck
 node_modules
 tmux/.config/tmux/plugins
