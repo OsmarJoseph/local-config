@@ -102,8 +102,13 @@ bindkey '^I' autosuggest-accept
 bindkey '^T' fzf-completion
 bindkey '^D' fzf-cd-widget
 
+export ZSH_AUTOSUGGEST_STRATEGY=(
+    history
+    completion
+)
+
 run_sessionnizer() {
-  ~/sessionizer.sh
+  sessionizer
 }
 
 zle -N run_sessionnizer

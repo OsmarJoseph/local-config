@@ -13,6 +13,9 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 -- clear search highlights
 keymap.set("n", "<leader><CR>", ":source ~/.config/nvim/init.lua<CR>")
 
+-- clear search highlights
+keymap.set("n", "<C-z>", ":silent !tmux neww sessionizer<CR>")
+
 -- keep cursor centered when scrolling
 keymap.set("n", "<C-u>", "<C-u>zz")
 keymap.set("n", "<C-d>", "<C-d>zz")
