@@ -49,8 +49,8 @@ keymap.del("n", "grr")
 keymap.set("n", "x", '"_x')
 
 -- increment/decrement numbers
-keymap.set("n", "<leader>+", "<C-a>") -- increment
-keymap.set("n", "<leader>-", "<C-x>") -- decrement
+keymap.set("n", "<leader>+", "<Plug>SpeedDatingUp") -- increment
+keymap.set("n", "<leader>-", "<Plug>SpeedDatingDown") -- decrement
 
 -- window management
 keymap.set("n", "<F6>\\", "<C-w>v")     -- split window vertically

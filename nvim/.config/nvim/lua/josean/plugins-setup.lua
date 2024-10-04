@@ -26,6 +26,7 @@ local plugins = {
 
   -- essential plugins
   "tpope/vim-surround",               -- add, delete, change surroundings (it's awesome)
+  "tpope/vim-speeddating",            -- fix increment on dates
   "inkarkat/vim-ReplaceWithRegister", -- replace with register contents using motion (gr + motion)
 
   -- commenting with gc
