@@ -114,6 +114,14 @@ run_sessionnizer() {
 zle -N run_sessionnizer
 
 bindkey '^Z' run_sessionnizer
+# Custom widget to delete everything behind the cursor
+delete_to_start_of_line() {
+  zle kill-region
+  zle backward-kill-line
+}
+zle -N delete_to_start_of_line
+bindkey '^U' delete_to_start_of_line
+
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
