@@ -11,6 +11,8 @@ TERM = "xterm-256color"
 
 [window]
 decorations = "Buttonless"
+dynamic_padding = true
+startup_mode = "SimpleFullScreen"
 
 opacity = 0.9
 blur = true
