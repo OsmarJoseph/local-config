@@ -274,7 +274,7 @@ end, {})
 
 vim.cmd([[
   augroup strdr4605
-  autocmd FileType typescript,typescriptreact compiler tsc | setlocal makeprg=yarn\ tsc
+  autocmd FileType typescript,typescriptreact compiler tsc | setlocal makeprg=NODE_OPTIONS=\"--max_old_space_size=4096\"\ yarn\ tsc
   augroup END
 ]])
 
