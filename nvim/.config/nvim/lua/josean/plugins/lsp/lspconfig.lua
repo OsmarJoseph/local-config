@@ -160,6 +160,14 @@ lspconfig["html"].setup({
   on_attach = on_attach,
 })
 
+-- configure deno server
+lspconfig["denols"].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+  filetypes = { "typescript" },
+})
+
 -- configure eslint server
 lspconfig["eslint"].setup({
   capabilities = capabilities,
@@ -177,6 +185,8 @@ typescript.setup({
   server = {
     capabilities = capabilities,
     on_attach = on_attach,
+    root_dir = lspconfig.util.root_pattern("package.json"),
+    single_file_support = false
   },
 })
 

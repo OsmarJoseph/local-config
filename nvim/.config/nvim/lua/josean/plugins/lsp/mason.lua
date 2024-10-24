@@ -17,6 +17,7 @@ mason_lspconfig.setup({
   -- list of servers for mason to install
   ensure_installed = {
     "tsserver",
+    "denols",
     "html",
     "cssls",
     "tailwindcss",
