@@ -167,6 +167,18 @@ local plugins = {
       require('export').setup()
     end,
   },
+  {
+    "kwkarlwang/bufjump.nvim",
+    lazy = true,
+    event = "BufEnter",
+    config = function()
+      require('bufjump').setup({
+        forward_key = "<F6>i",
+        backward_key = "<F6>o",
+        on_success = nil
+      })
+    end,
+  }
 }
 
 local opts = {}

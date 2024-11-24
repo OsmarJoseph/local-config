@@ -24,6 +24,7 @@ telescope.setup({
       i = {
         ['<C-u>'] = false,
         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+        ["<C-l>"] = actions.send_to_loclist + actions.open_loclist,
       }
     },
     hidden = true,

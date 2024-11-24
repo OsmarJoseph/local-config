@@ -313,6 +313,80 @@
             ]
           },
           {
+            "description": "Map Command + O to F6 + O",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "org.alacritty"
+                    ],
+                    "description": "",
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "o",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_gui"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "f6",
+                    "lazy": true,
+                    "repeat": true
+                  },
+                  {
+                    "key_code": "o",
+                    "lazy": true,
+                    "repeat": true
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Map Command + I to F6 + I",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "org.alacritty"
+                    ],
+                    "description": "",
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "i",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_gui"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "f6",
+                    "lazy": true,
+                    "repeat": true
+                  },
+                  {
+                    "key_code": "i",
+                    "lazy": true,
+                    "repeat": true
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "Map Command + - to F6 + -",
             "manipulators": [
               {
