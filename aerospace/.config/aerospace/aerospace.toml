@@ -122,6 +122,7 @@ alt-shift-equal = 'resize smart +50'
 alt-shift-m = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+ctrl-0 = 'workspace 0'
 ctrl-1 = 'workspace 1'
 ctrl-2 = 'workspace 2'
 ctrl-3 = 'workspace 3'
@@ -133,6 +134,7 @@ ctrl-8 = 'workspace 8'
 ctrl-9 = 'workspace 9'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+alt-shift-0 = ['move-node-to-workspace 0', 'focus-monitor main']
 alt-shift-1 = ['move-node-to-workspace 1', 'focus-monitor secondary']
 alt-shift-2 = ['move-node-to-workspace 2', 'focus-monitor main']
 alt-shift-3 = ['move-node-to-workspace 3', 'focus-monitor main']
@@ -168,12 +170,16 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
-if.app-id = 'org.alacritty'
-run = 'move-node-to-workspace 3'
+if.app-id = 'net.whatsapp.WhatsApp'
+run = 'move-node-to-workspace 0'
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefox'
 run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'org.alacritty'
+run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
@@ -195,8 +201,9 @@ run = 'move-node-to-workspace 7'
 if.app-id = 'com.figma.Desktop'
 run = 'move-node-to-workspace 8'
 
-
-
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = 'move-node-to-workspace 9'
 
 # floating windows
 [[on-window-detected]]
@@ -212,6 +219,7 @@ if.app-id = 'com.riotgames.RiotGames.RiotClient'
 run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
+0 = 'main'                            
 1 = 'secondary'                            
 2 = 'main'
 3 = 'main'
