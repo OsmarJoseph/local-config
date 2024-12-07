@@ -1,5 +1,5 @@
 local rt = require("rust-tools")
-local notesPath = require("josean.plugins.obsidian")
+local obsidianConfig = require("josean.plugins.obsidian")
 
 -- import lspconfig plugin safely
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
@@ -113,7 +113,7 @@ local on_attach = function(client, bufnr)
   if client.name == "tailwindcss" then
     require("tailwindcss-colors").buf_attach(bufnr)
   end
-  local isInNotesPath = vim.fn.expand("%:p:h"):find(notesPath) ~= nil
+  local isInNotesPath = vim.fn.expand("%:p:h"):find(obsidianConfig.notesPath) ~= nil
 
   if (client.name == "marksman" and isInNotesPath) then
     client.server_capabilities.documentFormattingProvider = true
@@ -124,6 +124,8 @@ local on_attach = function(client, bufnr)
     -- format on command + s
     keymap.set("n", "<F6>s", format_with_prettier)
     keymap.set("i", "<F6>s", "<Esc><cmd>FormatWithPrettier<CR>i")
+
+    vim.api.nvim_create_user_command("ZK", obsidianConfig.create_zettelkasten_note, {})
   else
     keymap.set("n", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>")
     keymap.set("i", "<F6>s", "<Esc><cmd>lua vim.lsp.buf.format()<CR>i")
