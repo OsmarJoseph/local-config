@@ -13,12 +13,6 @@ if not cmp_nvim_lsp_status then
   return
 end
 
--- import typescript plugin safely
-local typescript_setup, typescript = pcall(require, "typescript")
-if not typescript_setup then
-  return
-end
-
 local keymap = vim.keymap -- for conciseness
 
 local function format_with_(formatter, range)
@@ -99,13 +93,13 @@ local on_attach = function(client, bufnr)
   keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)                          -- mapping to restart lsp if necessary
 
   -- typescript specific keymaps (e.g. rename file and update imports)
-  if client.name == "tsserver" then
-    keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>")   -- rename file and update imports
-    keymap.set("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
-    keymap.set("n", "<leader>ami", ":TypescriptAddMissingImports<CR>")
+  if client.name == "typescript-tools" then
+    keymap.set("n", "<leader>rf", ":TSToolsRenameFile<CR>")   -- rename file and update imports
+    keymap.set("n", "<leader>ru", ":TSToolsRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
+    keymap.set("n", "<leader>ami", ":TSToolsAddMissingImports<CR>")
   end
 
-  if client.name == "tsserver" and filetype ~= "javascript" then
+  if client.name == "typescript-tools" and filetype ~= "javascript" then
     client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
   end
 
@@ -219,14 +213,11 @@ lspconfig["jsonls"].setup({
   on_attach = on_attach,
 })
 
--- configure typescript server with plugin
-typescript.setup({
-  server = {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    root_dir = lspconfig.util.root_pattern("package.json"),
-    single_file_support = false
-  },
+require("typescript-tools").setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern("package.json"),
+  single_file_support = false
 })
 
 -- configure css server

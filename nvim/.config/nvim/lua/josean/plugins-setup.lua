@@ -85,8 +85,12 @@ local plugins = {
       { "nvim-tree/nvim-web-devicons" },
       { "nvim-treesitter/nvim-treesitter" },
     },
-  },                                    -- enhanced lsp uis
-  "jose-elias-alvarez/typescript.nvim", -- additional functionality for typescript server (e.g. rename file & update imports)
+  }, -- enhanced lsp uis
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
+  },
 
   {
     "folke/lazydev.nvim",
@@ -181,7 +185,7 @@ local plugins = {
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
+    branch = "main",
     dependencies = {
       { "github/copilot.vim" },    -- or zbirenbaum/copilot.lua
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
