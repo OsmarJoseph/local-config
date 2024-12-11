@@ -147,7 +147,8 @@ require("obsidian").setup(
       end
 
       for _, line in ipairs(content) do
-        for tag in line:gmatch("#(%w+)") do
+        local tag = line:match("^#(%w+)")
+        if tag then
           table.insert(content_tags, tag)
         end
       end
@@ -292,5 +293,5 @@ require("obsidian").setup(
     yaml_parser = "native",
   }
 )
----@return table 
+---@return table
 return { create_zettelkasten_note = create_zettelkasten_note, notesPath = notesPath }

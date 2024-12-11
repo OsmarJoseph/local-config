@@ -79,3 +79,9 @@ vim.cmd([[
   autocmd FileType typescript,typescriptreact,markdown,octo setlocal spell
   augroup END
 ]])
+
+-- Enable wildmenu
+opt.wildmenu = true
+
+-- Customize wildmode to complete until the next capital letter
+opt.wildmode = 'longest:full,full'

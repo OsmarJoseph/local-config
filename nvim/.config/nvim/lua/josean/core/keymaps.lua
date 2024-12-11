@@ -45,7 +45,7 @@ keymap.del("n", "grr")
 keymap.set("n", "x", '"_x')
 
 -- increment/decrement numbers
-keymap.set("n", "<leader>+", "<Plug>SpeedDatingUp") -- increment
+keymap.set("n", "<leader>+", "<Plug>SpeedDatingUp")   -- increment
 keymap.set("n", "<leader>-", "<Plug>SpeedDatingDown") -- decrement
 
 -- window management
@@ -288,5 +288,8 @@ keymap.set("i", "<F6>l", "<Esc>oconsole.log(<Esc>")
 keymap.set("v", "<F6>l", wrap_with_console_log)
 
 -- macros
-keymap.set("n", "Q", "@qj")
+keymap.set("n", "Q", "@q")
 keymap.set("v", "Q", ":norm @q<CR>")
+
+keymap.set("c", "<Left>", "<Space><BS><Left>", { noremap = true })
+keymap.set("c", "<Right>", "<Space><BS><Right>", { noremap = true })
