@@ -84,4 +84,4 @@ vim.cmd([[
 opt.wildmenu = true
 
 -- Customize wildmode to complete until the next capital letter
-opt.wildmode = 'longest:full,full'
+opt.wildmode = 'longest:full,longest:full'
