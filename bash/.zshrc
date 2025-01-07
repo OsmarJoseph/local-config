@@ -87,6 +87,8 @@ source $HOME/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+setopt VI
+
 # history setup
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
@@ -121,6 +123,32 @@ delete_to_start_of_line() {
 }
 zle -N delete_to_start_of_line
 bindkey '^U' delete_to_start_of_line
+
+bindkey -M vicmd '^[f' vi-forward-word
+#
+# Custom Ctrl+A: Exit Insert Mode, then move to the beginning of the line
+function ctrl_a_to_beginning() {
+    zle vi-cmd-mode       # Switch to Command Mode
+    zle vi-beginning-of-line # Move to the beginning of the line
+}
+zle -N ctrl_a_to_beginning
+
+# Custom Ctrl+E: Exit Insert Mode, then move to the end of the line
+function ctrl_e_to_end() {
+    zle vi-cmd-mode       # Switch to Command Mode
+    zle vi-end-of-line    # Move to the end of the line
+}
+zle -N ctrl_e_to_end
+
+bindkey -r '^A'
+bindkey -r '^E'
+# Bind in vi Insert Mode
+bindkey -M viins '^A' ctrl_a_to_beginning
+bindkey -M viins '^E' ctrl_e_to_end
+
+# Bind in vi Command Mode
+bindkey -M vicmd '^A' vi-beginning-of-line
+bindkey -M vicmd '^E' vi-end-of-line
 
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
