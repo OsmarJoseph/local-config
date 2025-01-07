@@ -208,7 +208,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -242,7 +242,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -282,7 +282,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "description": "",
                     "type": "frontmost_application_if"
@@ -319,7 +319,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "description": "",
                     "type": "frontmost_application_if"
@@ -356,7 +356,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "description": "",
                     "type": "frontmost_application_if"
@@ -393,7 +393,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -429,7 +429,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -470,7 +470,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -511,7 +511,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -552,7 +552,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -588,7 +588,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -624,7 +624,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -660,7 +660,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -696,7 +696,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -813,7 +813,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -850,7 +850,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -886,7 +886,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -923,7 +923,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -964,7 +964,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -1000,7 +1000,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -1037,7 +1037,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -1073,7 +1073,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -1109,7 +1109,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -1145,7 +1145,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -1181,7 +1181,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -1217,7 +1217,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -1253,7 +1253,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -1289,7 +1289,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -1329,7 +1329,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -1369,7 +1369,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -1405,7 +1405,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -1441,7 +1441,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -1475,7 +1475,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "org.alacritty"
+                      "com.mitchellh.ghostty"
                     ],
                     "type": "frontmost_application_if"
                   }

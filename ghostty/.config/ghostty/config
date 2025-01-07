@@ -1,0 +1,46 @@
+background-opacity = 0.9
+background-blur-radius = 35
+
+font-family = GoMono Nerd Font Mono
+font-thicken = true
+font-size = 25
+
+cursor-style = block
+shell-integration-features = no-cursor
+cursor-style-blink = false
+
+theme = "/Users/osmarjoseph/.config/tmux/plugins/tokyonight.nvim/extras/ghostty/tokyonight_night"
+
+macos-titlebar-style = hidden
+window-padding-x = 8,0
+window-padding-y = 0
+window-theme = light
+window-padding-color = extend
+window-colorspace = display-p3
+ 
+command = "/Users/osmarjoseph/.config/ghostty/command"
+
+keybind = global:cmd+0=toggle_quick_terminal
+
+keybind = ctrl+equal=increase_font_size:1
+keybind = ctrl+-=decrease_font_size:1
+
+keybind = cmd+a=text:ggVG
+
+keybind = cmd+backspace=text:\x15
+keybind = option+backspace=text:\x17
+
+keybind = cmd+k=text:clear\n
+
+keybind = cmd+1=text:∞s0  
+keybind = cmd+2=text:∞s1  
+keybind = cmd+3=text:∞s2  
+keybind = cmd+4=text:∞s3  
+keybind = cmd+5=text:∞s4  
+
+# create a new tmux window
+keybind = cmd+t=text:∞c 
+# delete current tmux pane
+keybind = cmd+w=text:∞x 
+# open new session
+keybind = cmd+n=text:∞e 

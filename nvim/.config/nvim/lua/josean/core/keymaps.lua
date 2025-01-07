@@ -219,12 +219,6 @@ keymap.set("n", "<M-f>", "e")
 keymap.set("i", "<M-f>", on_alt_right)
 keymap.set("c", "<M-f>", "<S-Right>")
 
--- delete line
--- command + delete, option + 0
-keymap.set("n", "º", "d0")
-keymap.set("i", "º", "<C-u>")
-keymap.set("c", "º", "<C-u>")
-
 -- keymapto move to start/end of line with command
 keymap.set("n", "<C-a>", "0")
 keymap.set("i", "<C-a>", "<Home>")
