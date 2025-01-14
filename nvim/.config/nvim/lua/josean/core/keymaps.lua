@@ -287,3 +287,6 @@ keymap.set("v", "Q", ":norm @q<CR>")
 
 keymap.set("c", "<Left>", "<Space><BS><Left>", { noremap = true })
 keymap.set("c", "<Right>", "<Space><BS><Right>", { noremap = true })
+
+-- do tab completion on command + space
+keymap.set("c", "<C-Space>", "<C-z>", { noremap = true })
