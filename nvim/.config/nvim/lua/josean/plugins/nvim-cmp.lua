@@ -65,7 +65,6 @@ cmp.setup({
       deprioritize_snippet,
       cmp.config.compare.offset,
       cmp.config.compare.exact,
-      cmp.config.compare.scopes,
       cmp.config.compare.score,
       cmp.config.compare.recently_used,
       cmp.config.compare.locality,
