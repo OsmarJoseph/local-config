@@ -166,3 +166,8 @@ eval $(thefuck --alias fk)
 eval "$(gh copilot alias -- zsh)"
 
 set -o ignoreeof 
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/osmarjoseph/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions

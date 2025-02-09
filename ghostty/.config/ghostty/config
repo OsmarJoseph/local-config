@@ -18,8 +18,6 @@ window-theme = light
 window-padding-color = extend
 window-colorspace = display-p3
  
-command = "/Users/osmarjoseph/.config/ghostty/command"
-
 keybind = global:cmd+0=toggle_quick_terminal
 
 keybind = ctrl+equal=increase_font_size:1
@@ -32,11 +30,11 @@ keybind = option+backspace=text:\x17
 
 keybind = cmd+k=text:clear\n
 
-keybind = cmd+1=text:∞s0  
-keybind = cmd+2=text:∞s1  
-keybind = cmd+3=text:∞s2  
-keybind = cmd+4=text:∞s3  
-keybind = cmd+5=text:∞s4  
+keybind = ctrl+1=text:∞s0  
+keybind = ctrl+2=text:∞s1  
+keybind = ctrl+3=text:∞s2  
+keybind = ctrl+4=text:∞s3  
+keybind = ctrl+5=text:∞s4  
 
 # create a new tmux window
 keybind = cmd+t=text:∞c 

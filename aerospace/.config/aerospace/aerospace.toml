@@ -119,31 +119,33 @@ alt-shift-l = 'move right'
 alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
 
-alt-shift-m = 'fullscreen'
+cmd-shift-m = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-ctrl-0 = 'workspace 0'
-ctrl-1 = 'workspace 1'
-ctrl-2 = 'workspace 2'
-ctrl-3 = 'workspace 3'
-ctrl-4 = 'workspace 4'
-ctrl-5 = 'workspace 5'
-ctrl-6 = 'workspace 6'
-ctrl-7 = 'workspace 7'
-ctrl-8 = 'workspace 8'
-ctrl-9 = 'workspace 9'
+ctrl-cmd-f = 'workspace f'
+ctrl-cmd-o = 'workspace o'
+ctrl-cmd-s = 'workspace s'
+ctrl-cmd-w = 'workspace w'
+ctrl-cmd-d = 'workspace d'
+ctrl-cmd-e = 'workspace e'
+ctrl-cmd-r = 'workspace r'
+ctrl-cmd-y = 'workspace y'
+ctrl-cmd-n = 'workspace n'
+ctrl-cmd-i = 'workspace i'
+ctrl-cmd-c = 'workspace c'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-0 = ['move-node-to-workspace 0', 'focus-monitor main']
-alt-shift-1 = ['move-node-to-workspace 1', 'focus-monitor secondary']
-alt-shift-2 = ['move-node-to-workspace 2', 'focus-monitor main']
-alt-shift-3 = ['move-node-to-workspace 3', 'focus-monitor main']
-alt-shift-4 = ['move-node-to-workspace 4', 'focus-monitor main']
-alt-shift-5 = ['move-node-to-workspace 5', 'focus-monitor secondary']
-alt-shift-6 = ['move-node-to-workspace 6', 'focus-monitor secondary']
-alt-shift-7 = ['move-node-to-workspace 7', 'focus-monitor secondary']
-alt-shift-8 = ['move-node-to-workspace 8', 'focus-monitor secondary']
-alt-shift-9 = ['move-node-to-workspace 9', 'focus-monitor secondary']
+alt-shift-f = ['move-node-to-workspace f', 'focus-monitor main']
+alt-shift-o = ['move-node-to-workspace o', 'focus-monitor main']
+alt-shift-s = ['move-node-to-workspace s', 'focus-monitor main']
+alt-shift-w = ['move-node-to-workspace w', 'focus-monitor main']
+alt-shift-d = ['move-node-to-workspace d', 'focus-monitor secondary']
+alt-shift-e = ['move-node-to-workspace e', 'focus-monitor secondary']
+alt-shift-r = ['move-node-to-workspace r', 'focus-monitor secondary']
+alt-shift-y = ['move-node-to-workspace y', 'focus-monitor secondary']
+alt-shift-n = ['move-node-to-workspace n', 'focus-monitor secondary']
+alt-shift-i = ['move-node-to-workspace i', 'focus-monitor secondary']
+alt-shift-c = ['move-node-to-workspace c', 'focus-monitor secondary']
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -171,41 +173,45 @@ alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
-run = 'move-node-to-workspace 0'
+run = 'move-node-to-workspace w'
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefox'
-run = 'move-node-to-workspace 2'
+run = 'move-node-to-workspace f'
 
 # this doesn't work with ghostty quick terminal
 
 ## [[on-window-detected]]
 ## if.app-id = 'com.mitchellh.ghostty'
-## run = 'move-node-to-workspace 3'
+## run = 'move-node-to-workspace o'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run = 'move-node-to-workspace 4'
+run = 'move-node-to-workspace s'
 
 [[on-window-detected]]
 if.app-id = 'com.linear'
-run = 'move-node-to-workspace 5'
+run = 'move-node-to-workspace r'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari.WebApp.18092D56-ABC5-43BB-B79E-CC01CDF72F57'
-run = 'move-node-to-workspace 6'
+run = 'move-node-to-workspace y'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
-run = 'move-node-to-workspace 7'
+run = 'move-node-to-workspace e'
 
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
-run = 'move-node-to-workspace 8'
+run = 'move-node-to-workspace i'
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
-run = 'move-node-to-workspace 9'
+run = 'move-node-to-workspace d'
+
+[[on-window-detected]]
+if.app-id = 'notion.id'
+run = 'move-node-to-workspace n'
 
 # floating windows
 [[on-window-detected]]
@@ -221,13 +227,14 @@ if.app-id = 'com.riotgames.RiotGames.RiotClient'
 run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
-0 = 'main'                            
-1 = 'secondary'                            
-2 = 'main'
-3 = 'main'
-4 = 'main'
-5 = 'secondary'
-6 = 'secondary'
-7 = 'secondary'
-8 = 'secondary'
-9 = 'secondary'
+f = 'main'                            
+o = 'main'
+s = 'main'                            
+w = 'main'
+c = 'secondary'
+d = 'secondary'
+e = 'secondary'
+r = 'secondary'
+n = 'secondary'
+y = 'secondary'
+i = 'secondary'
