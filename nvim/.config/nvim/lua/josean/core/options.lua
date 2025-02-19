@@ -69,7 +69,7 @@ opt.foldenable = false
 -- spell
 opt.spelllang = "en_us,pt"
 opt.spellfile = os.getenv("HOME") ..
-"/.config/nvim/spell/en.utf-8.add," .. os.getenv("HOME") .. "/.config/nvim/spell/pt.utf-8.add"
+    "/.config/nvim/spell/en.utf-8.add," .. os.getenv("HOME") .. "/.config/nvim/spell/pt.utf-8.add"
 
 -- obsidian
 opt.conceallevel = 2
@@ -85,3 +85,5 @@ opt.wildmenu = true
 
 -- Customize wildmode to complete until the next capital letter
 opt.wildmode = 'longest:full,longest:full'
+
+opt.autochdir = false

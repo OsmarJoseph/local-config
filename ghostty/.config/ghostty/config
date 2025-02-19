@@ -37,8 +37,5 @@ keybind = ctrl+4=text:∞s3
 keybind = ctrl+5=text:∞s4  
 
 # create a new tmux window
-keybind = cmd+t=text:∞c 
-# delete current tmux pane
-keybind = cmd+w=text:∞x 
 # open new session
 keybind = cmd+n=text:∞e 

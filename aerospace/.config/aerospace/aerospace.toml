@@ -119,11 +119,11 @@ alt-shift-l = 'move right'
 alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
 
-cmd-shift-m = 'fullscreen'
+alt-shift-m = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 ctrl-cmd-f = 'workspace f'
-ctrl-cmd-o = 'workspace o'
+ctrl-cmd-x = 'workspace x'
 ctrl-cmd-s = 'workspace s'
 ctrl-cmd-w = 'workspace w'
 ctrl-cmd-d = 'workspace d'
@@ -136,7 +136,7 @@ ctrl-cmd-c = 'workspace c'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-f = ['move-node-to-workspace f', 'focus-monitor main']
-alt-shift-o = ['move-node-to-workspace o', 'focus-monitor main']
+alt-shift-x = ['move-node-to-workspace x', 'focus-monitor main']
 alt-shift-s = ['move-node-to-workspace s', 'focus-monitor main']
 alt-shift-w = ['move-node-to-workspace w', 'focus-monitor main']
 alt-shift-d = ['move-node-to-workspace d', 'focus-monitor secondary']
@@ -183,7 +183,7 @@ run = 'move-node-to-workspace f'
 
 ## [[on-window-detected]]
 ## if.app-id = 'com.mitchellh.ghostty'
-## run = 'move-node-to-workspace o'
+## run = 'move-node-to-workspace x'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
@@ -228,7 +228,7 @@ run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
 f = 'main'                            
-o = 'main'
+x = 'main'
 s = 'main'                            
 w = 'main'
 c = 'secondary'
