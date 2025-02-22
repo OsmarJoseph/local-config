@@ -4,6 +4,32 @@
       "complex_modifications": {
         "rules": [
           {
+            "description": "command + control + D to command + control + b",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "d",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_command",
+                      "left_control"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "b",
+                    "modifiers": [
+                      "left_gui",
+                      "left_control"
+                    ]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "left-command + semicolon to command + delete_or_backspace",
             "manipulators": [
               {
