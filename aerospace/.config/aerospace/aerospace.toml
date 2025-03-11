@@ -214,6 +214,14 @@ run = 'move-node-to-workspace d'
 if.app-id = 'notion.id'
 run = 'move-node-to-workspace n'
 
+[[on-window-detected]]
+if.app-id = 'com.apple.iCal'
+run = 'move-node-to-workspace c'
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = 'move-node-to-workspace c'
+
 # floating windows
 [[on-window-detected]]
 if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
