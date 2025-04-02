@@ -3,7 +3,7 @@ background-blur-radius = 35
 
 font-family = GoMono Nerd Font Mono
 font-thicken = true
-font-size = 25
+font-size = 28
 
 cursor-style = block
 shell-integration-features = no-cursor
@@ -12,7 +12,7 @@ cursor-style-blink = false
 theme = "/Users/osmarjoseph/.config/tmux/plugins/tokyonight.nvim/extras/ghostty/tokyonight_night"
 
 macos-titlebar-style = hidden
-window-padding-x = 8,0
+window-padding-x = 0,0
 window-padding-y = 0
 window-theme = light
 window-padding-color = extend
