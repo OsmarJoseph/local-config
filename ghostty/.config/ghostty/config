@@ -1,5 +1,5 @@
-background-opacity = 0.9
-background-blur-radius = 35
+background-opacity = 0.92
+background-blur-radius = 70
 
 font-family = GoMono Nerd Font Mono
 font-thicken = true
@@ -14,7 +14,7 @@ theme = "/Users/osmarjoseph/.config/tmux/plugins/tokyonight.nvim/extras/ghostty/
 macos-titlebar-style = hidden
 window-padding-x = 0,0
 window-padding-y = 0
-window-theme = light
+window-theme = dark
 window-padding-color = extend
 window-colorspace = display-p3
  
