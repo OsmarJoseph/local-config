@@ -35,7 +35,3 @@ keybind = ctrl+2=text:∞s1
 keybind = ctrl+3=text:∞s2  
 keybind = ctrl+4=text:∞s3  
 keybind = ctrl+5=text:∞s4  
-
-# create a new tmux window
-# open new session
-keybind = cmd+n=text:∞e 
