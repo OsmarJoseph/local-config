@@ -1611,7 +1611,8 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "com.mitchellh.ghostty"
+                      "com.mitchellh.ghostty",
+                      "org.mozilla.firefox"
                     ],
                     "type": "frontmost_application_if"
                   }
