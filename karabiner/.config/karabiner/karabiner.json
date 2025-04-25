@@ -1608,15 +1608,6 @@
             "description": "map command + d to option + 5",
             "manipulators": [
               {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "com.mitchellh.ghostty",
-                      "org.mozilla.firefox"
-                    ],
-                    "type": "frontmost_application_if"
-                  }
-                ],
                 "from": {
                   "key_code": "d",
                   "modifiers": {

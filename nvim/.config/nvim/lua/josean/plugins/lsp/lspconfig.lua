@@ -36,6 +36,8 @@ local function format_with_(formatter, range)
   end
 
   if (formatter == "prettier") then
+    table.insert(command, '--print-width')
+    table.insert(command, '80')
     table.insert(command, '--stdin-filepath')
   end
 
@@ -301,9 +303,10 @@ rt.setup({
   },
 })
 
-vim.api.nvim_create_user_command("FormatWithBiome", function(opts)
+--[[ vim.api.nvim_create_user_command("FormatWithBiome", function(opts)
   format_with_biome(opts.range ~= 0)
 end, { range = true })
+]]
 
 vim.api.nvim_create_user_command("FormatWithPrettier", function(opts)
   format_with_prettier(opts.range ~= 0)

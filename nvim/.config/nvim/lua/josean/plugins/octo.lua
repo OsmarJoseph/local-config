@@ -239,7 +239,7 @@ octo.setup({
       select_last_entry = { lhs = "]Q", desc = "move to last changed file" },
       close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
       toggle_viewed = { lhs = "<leader><CR>", desc = "toggle viewer viewed state" },
-      goto_file = { lhs = "gf", desc = "go to file" },
+      goto_file = { lhs = "<CR>", desc = "go to file" },
     },
     file_panel = {
       submit_review = { lhs = "<localleader>vs", desc = "submit review" },
