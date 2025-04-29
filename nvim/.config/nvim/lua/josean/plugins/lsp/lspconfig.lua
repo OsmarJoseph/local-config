@@ -38,13 +38,12 @@ local function format_with_(formatter, range)
   if (formatter == "prettier") then
     table.insert(command, '--print-width')
     table.insert(command, '80')
-    table.insert(command, '--stdin-filepath')
     table.insert(command, '--log-level')
-    table.insert(command, 'silent')
+    table.insert(command, 'error')
+    table.insert(command, '--stdin-filepath')
   end
 
   table.insert(command, vim.fn.expand('%:p'))
-
 
   local formatted_content = vim.fn.systemlist(command, table.concat(vim.fn.getline(start_line, end_line), '\n'))
 
