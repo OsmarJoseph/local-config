@@ -100,7 +100,6 @@ setopt hist_verify
 
 export FZF_COMPLETION_TRIGGER=''
 bindkey '^@' complete-word # ctrl+space to autocomplete
-bindkey '^I' autosuggest-accept
 bindkey '^T' fzf-completion
 bindkey '^D' fzf-cd-widget
 

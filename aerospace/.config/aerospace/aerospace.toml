@@ -139,12 +139,12 @@ alt-shift-f = ['move-node-to-workspace f', 'focus-monitor main']
 alt-shift-x = ['move-node-to-workspace x', 'focus-monitor main']
 alt-shift-s = ['move-node-to-workspace s', 'focus-monitor main']
 alt-shift-w = ['move-node-to-workspace w', 'focus-monitor main']
+alt-shift-n = ['move-node-to-workspace n', 'focus-monitor main']
 # using alt-shift-d for visbug/inspector and figma
 cmd-alt-shift-d = ['move-node-to-workspace d', 'focus-monitor secondary']
 alt-shift-e = ['move-node-to-workspace e', 'focus-monitor secondary']
 alt-shift-r = ['move-node-to-workspace r', 'focus-monitor secondary']
 alt-shift-y = ['move-node-to-workspace y', 'focus-monitor secondary']
-alt-shift-n = ['move-node-to-workspace n', 'focus-monitor secondary']
 alt-shift-i = ['move-node-to-workspace i', 'focus-monitor secondary']
 alt-shift-c = ['move-node-to-workspace c', 'focus-monitor secondary']
 
@@ -211,6 +211,10 @@ if.app-id = 'com.hnc.Discord'
 run = 'move-node-to-workspace d'
 
 [[on-window-detected]]
+if.app-id = 'com.electron.dockerdesktop'
+run = 'move-node-to-workspace d'
+
+[[on-window-detected]]
 if.app-id = 'notion.id'
 run = 'move-node-to-workspace n'
 
@@ -240,10 +244,10 @@ f = 'main'
 x = 'main'
 s = 'main'                            
 w = 'main'
+n = 'main'
 c = 'secondary'
 d = 'secondary'
 e = 'secondary'
 r = 'secondary'
-n = 'secondary'
 y = 'secondary'
 i = 'secondary'

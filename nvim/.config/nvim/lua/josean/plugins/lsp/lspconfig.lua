@@ -39,6 +39,8 @@ local function format_with_(formatter, range)
     table.insert(command, '--print-width')
     table.insert(command, '80')
     table.insert(command, '--stdin-filepath')
+    table.insert(command, '--log-level')
+    table.insert(command, 'silent')
   end
 
   table.insert(command, vim.fn.expand('%:p'))
@@ -58,6 +60,11 @@ end
 
 local function format_with_prettier(range)
   format_with_("prettier", range)
+end
+
+local function format_with_prettier_and_write()
+  format_with_prettier()
+  vim.api.nvim_command("write")
 end
 
 local function format_rust()
@@ -118,10 +125,11 @@ local on_attach = function(client, bufnr)
   local isInNotesPath = vim.fn.expand("%:p:h"):find(obsidianConfig.notesPath) ~= nil
 
   if (client.name == "marksman" and isInNotesPath) then
+    vim.opt.wrap = true
     client.server_capabilities.documentFormattingProvider = true
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,
-      command = "FormatWithPrettierAndWrite",
+      callback = format_with_prettier_and_write,
     })
     -- format on command + s
     keymap.set("n", "<F6>s", format_with_prettier)
@@ -312,10 +320,6 @@ vim.api.nvim_create_user_command("FormatWithPrettier", function(opts)
   format_with_prettier(opts.range ~= 0)
 end, { range = true })
 
-vim.api.nvim_create_user_command("FormatWithPrettierAndWrite", function()
-  format_with_prettier()
-  vim.api.nvim_command("write")
-end, {})
 
 vim.cmd([[
   augroup strdr4605
