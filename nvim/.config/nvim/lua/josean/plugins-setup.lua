@@ -16,7 +16,7 @@ local plugins = {
   "nvim-lua/plenary.nvim", -- lua functions that many plugins
 
   {
-    "folke/tokyonight.nvim",
+    "thesimonho/kanagawa-paper.nvim",
     lazy = false,
     priority = 1000,
     opts = {},

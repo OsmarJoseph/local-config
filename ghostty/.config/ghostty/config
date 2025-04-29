@@ -1,15 +1,16 @@
 background-opacity = 0.92
 background-blur-radius = 70
 
-font-family = GoMono Nerd Font Mono
-font-thicken = true
-font-size = 28
+font-family = Monaspace Xenon
+font-size = 30
+font-feature = calt, ss01, ss02, ss03, ss04, ss05, ss06, ss07, ss08, ss09, ss10, liga
+adjust-underline-position = 16
 
 cursor-style = block
 shell-integration-features = no-cursor
 cursor-style-blink = false
 
-theme = "/Users/osmarjoseph/.config/tmux/plugins/tokyonight.nvim/extras/ghostty/tokyonight_night"
+theme = "/Users/osmarjoseph/.config/ghostty/kanagawa-paper-ink"
 
 macos-titlebar-style = hidden
 window-padding-x = 0,0

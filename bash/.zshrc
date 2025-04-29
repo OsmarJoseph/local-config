@@ -37,7 +37,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # fzf
 eval "$(fzf --zsh)"
 
-source $HOME/.config/tmux/plugins/tokyonight.nvim/extras/fzf/tokyonight_night.sh
+source $HOME/kanagawa.sh
 
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 --color=bg+:-1 \
