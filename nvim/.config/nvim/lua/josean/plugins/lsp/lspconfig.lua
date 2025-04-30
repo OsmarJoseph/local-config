@@ -105,6 +105,7 @@ local on_attach = function(client, bufnr)
     keymap.set("n", "<leader>rf", ":TSToolsRenameFile<CR>")   -- rename file and update imports
     keymap.set("n", "<leader>ru", ":TSToolsRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
     keymap.set("n", "<leader>ami", ":TSToolsAddMissingImports<CR>")
+    keymap.set("n", "<leader>ri", ":TSToolsRemoveUnusedImports<CR>")
   end
 
   if client.name == "typescript-tools" and filetype ~= "javascript" then
