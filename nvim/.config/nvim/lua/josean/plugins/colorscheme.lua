@@ -51,6 +51,7 @@ require("kanagawa-paper").setup({
       DiffText = { fg = "none", bold = true },
       TelescopeSelection = { fg = colors.palette.canvasWhite2, bold = true },
       TelescopeSelectionCaret = { fg = colors.palette.canvasWhite2, bold = true },
+      MsgArea = { fg = colors.palette.canvasGray4, bg = "none" },
     }
   end,
 
