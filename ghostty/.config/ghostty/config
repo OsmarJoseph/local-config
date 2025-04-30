@@ -2,7 +2,7 @@ background-opacity = 0.92
 background-blur-radius = 70
 
 font-family = Monaspace Xenon
-font-size = 30
+font-size = 32
 font-feature = calt, ss01, ss02, ss03, ss04, ss05, ss06, ss07, ss08, ss09, ss10, liga
 adjust-underline-position = 16
 
