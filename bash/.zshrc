@@ -37,7 +37,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # fzf
 eval "$(fzf --zsh)"
 
-source $HOME/kanagawa.sh
+source $HOME/.config/tmux/plugins/tokyonight.nvim/extras/fzf/tokyonight_night.sh
 
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 --color=bg+:-1 \
@@ -100,6 +100,7 @@ setopt hist_verify
 
 export FZF_COMPLETION_TRIGGER=''
 bindkey '^@' complete-word # ctrl+space to autocomplete
+bindkey '^I^I' autosuggest-accept
 bindkey '^T' fzf-completion
 bindkey '^D' fzf-cd-widget
 
