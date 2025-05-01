@@ -51,7 +51,15 @@ require("kanagawa-paper").setup({
       DiffText = { fg = "none", bold = true },
       TelescopeSelection = { fg = colors.palette.canvasWhite2, bold = true },
       TelescopeSelectionCaret = { fg = colors.palette.canvasWhite2, bold = true },
+      Visual = { bg = colors.palette.sumiInk6 },
       None = { fg = colors.palette.canvasGray4 },
+      SagaTitle = { bg = colors.palette.sumiInk4, fg = colors.palette.canvasWhite2 },
+      SagaCount = { bg = colors.palette.sumiInk4, fg = colors.palette.canvasWhite2 },
+      SagaActionTitle = { bg = colors.palette.sumiInk4, fg = colors.palette.canvasWhite2 },
+      SagaButton = { bg = colors.palette.sumiInk4, fg = colors.palette.sumiInk4 },
+      RenameNormal = { bg = colors.palette.sumiInk4, fg = colors.palette.canvasWhite2 },
+      ActionPreviewTitle = { bg = colors.palette.sumiInk4, fg = colors.palette.canvasWhite2 },
+      FloatBorder = { bg = colors.palette.sumiInk4, fg = colors.palette.canvasGray4 }
     }
   end,
 
