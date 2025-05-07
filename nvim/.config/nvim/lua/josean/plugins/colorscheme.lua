@@ -27,28 +27,28 @@ require("tokyonight").setup({
   ---@param highlights Highlights
   ---@param colors ColorScheme
   on_highlights = function(highlights, colors)
-    highlights.CursorLineNr = { bg = "none", fg = colors.fg, bold = true }
-    highlights.LineNr = { bg = "none", fg = colors.dark3, }
-    highlights.TreesitterContext = { bg = "none" }
+    highlights.CursorLineNr               = { bg = "none", fg = colors.fg, bold = true }
+    highlights.LineNr                     = { bg = "none", fg = colors.dark3, }
+    highlights.TreesitterContext          = { bg = "none" }
     highlights.TreesitterContextSeparator = { bg = "none", fg = colors.dark5 }
-    highlights.OctoEditable = { bg = colors.black }
+    highlights.OctoEditable               = { bg = colors.black }
     highlights.DiagnosticVirtualTextError = {
       bg = 'none', fg = colors.error,
     }
-    highlights.DiagnosticVirtualTextHint = {
+    highlights.DiagnosticVirtualTextHint  = {
       bg = 'none', fg = colors.hint,
     }
-    highlights.DiagnosticVirtualTextInfo = {
+    highlights.DiagnosticVirtualTextInfo  = {
       bg = 'none', fg = colors.info,
     }
-    highlights.DiagnosticVirtualTextWarn = {
+    highlights.DiagnosticVirtualTextWarn  = {
       bg = 'none', fg = colors.warning,
     }
-    highlights.SagaTitle = { bg = colors.black, fg = colors.info }
-    highlights.SagaCount = { fg = colors.info, bg = colors.black }
-    highlights.RenameNormal = { bg = colors.black, fg = colors.magenta }
-    highlights.ActionPreviewTitle = { bg = colors.black, fg = colors.info }
-    highlights.FloatBorder = { bg = colors.black, fg = colors.border_highlight }
+    highlights.SagaTitle                  = { bg = colors.black, fg = colors.info }
+    highlights.SagaCount                  = { fg = colors.info, bg = colors.black }
+    highlights.RenameNormal               = { bg = colors.black, fg = colors.magenta }
+    highlights.ActionPreviewTitle         = { bg = colors.black, fg = colors.info }
+    highlights.FloatBorder                = { bg = colors.black, fg = colors.border_highlight }
     --[[
     highlights.WinbarNC = { bg = "none", fg = colors.fg_dark }
     highlights.Winbar = { bg = "none", fg = colors.fg_dark }

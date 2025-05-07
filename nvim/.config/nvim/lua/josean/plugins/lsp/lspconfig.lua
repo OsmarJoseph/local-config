@@ -293,7 +293,7 @@ lspconfig["lua_ls"].setup({
   },
 })
 
-local mason_registry = require("mason-registry")
+--[[ local mason_registry = require("mason-registry")
 
 local codelldb = mason_registry.get_package("codelldb")
 local extension_path = codelldb:get_install_path() .. "/extension/"
@@ -309,7 +309,7 @@ rt.setup({
     capabilities = capabilities,
     on_attach = on_attach,
   },
-})
+}) ]]
 
 --[[ vim.api.nvim_create_user_command("FormatWithBiome", function(opts)
   format_with_biome(opts.range ~= 0)
