@@ -10,7 +10,7 @@ cursor-style = block
 shell-integration-features = no-cursor
 cursor-style-blink = false
 
-theme = "/Users/osmarjoseph/.config/ghostty/kanagawa-paper-ink"
+theme = "/Users/osmarjoseph/.config/tmux/plugins/tokyonight.nvim/extras/ghostty/tokyonight_night"
 
 macos-titlebar-style = hidden
 window-padding-x = 0,0

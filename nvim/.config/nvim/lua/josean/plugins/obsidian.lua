@@ -244,17 +244,17 @@ require("obsidian").setup(
       block_ids = { hl_group = "ObsidianBlockID" },
       hl_groups = {
         -- The options are passed directly to `vim.api.nvim_set_hl()`. See `:help nvim_set_hl`.
-        ObsidianTodo = { bold = true, fg = "#DCA561" },          -- canvasRed
-        ObsidianDone = { bold = true, fg = "#718E64" },          -- canvasGreen2
-        ObsidianRightArrow = { bold = true, fg = "#DCA561" },    -- canvasRed
-        ObsidianTilde = { bold = true, fg = "#B35560" },         -- autumnYellow
-        ObsidianImportant = { bold = true, fg = "#C84053" },     -- lotusRed
-        ObsidianBullet = { bold = true, fg = "#73865B" },        -- canvasGreen
-        ObsidianRefText = { underline = true, fg = "#7967A2" },  -- canvasViolet3
-        ObsidianExtLinkIcon = { fg = "#7967A2" },                -- canvasViolet3
-        ObsidianTag = { italic = true, fg = "#526994" },         -- canvasBlue4
-        ObsidianBlockID = { italic = true, fg = "#526994" },     -- canvasBlue4
-        ObsidianHighlightText = { bg = "#1F1F28" },              -- sumiInk3
+        ObsidianTodo = { bold = true, fg = "#f78c6c" },
+        ObsidianDone = { bold = true, fg = "#89ddff" },
+        ObsidianRightArrow = { bold = true, fg = "#f78c6c" },
+        ObsidianTilde = { bold = true, fg = "#ff5370" },
+        ObsidianImportant = { bold = true, fg = "#d73128" },
+        ObsidianBullet = { bold = true, fg = "#89ddff" },
+        ObsidianRefText = { underline = true, fg = "#c792ea" },
+        ObsidianExtLinkIcon = { fg = "#c792ea" },
+        ObsidianTag = { italic = true, fg = "#89ddff" },
+        ObsidianBlockID = { italic = true, fg = "#89ddff" },
+        ObsidianHighlightText = { bg = "#75662e" },
       },
     },
     -- Specify how to handle attachments.
