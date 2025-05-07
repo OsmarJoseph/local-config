@@ -290,3 +290,6 @@ keymap.set("c", "<Right>", "<Space><BS><Right>", { noremap = true })
 
 -- do tab completion on command + space
 keymap.set("c", "<C-Space>", "<C-z>", { noremap = true })
+
+-- treesitter
+keymap.set("n", "<leader>tc", ":TSContextToggle<CR>") -- toggle treesitter context
