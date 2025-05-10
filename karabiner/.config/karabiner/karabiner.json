@@ -387,46 +387,6 @@
             ]
           },
           {
-            "description": "Map Command + P to F6 + P",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "com.mitchellh.ghostty"
-                    ],
-                    "description": "",
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "p",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_gui"
-                    ],
-                    "optional": [
-                      "caps_lock"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "f6",
-                    "lazy": true,
-                    "repeat": true
-                  },
-                  {
-                    "key_code": "p",
-                    "lazy": true,
-                    "repeat": true
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
             "description": "Map Command + O to F6 + O",
             "manipulators": [
               {

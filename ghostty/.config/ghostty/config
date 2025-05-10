@@ -25,6 +25,7 @@ keybind = ctrl+equal=increase_font_size:1
 keybind = ctrl+-=decrease_font_size:1
 
 keybind = cmd+a=text:ggVG
+keybind = cmd+p=csi:17~p
 
 keybind = cmd+backspace=text:\x15
 keybind = option+backspace=text:\x17
