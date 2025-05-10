@@ -177,7 +177,7 @@ if.app-id = 'net.whatsapp.WhatsApp'
 run = 'move-node-to-workspace w'
 
 [[on-window-detected]]
-if.app-id = 'org.mozilla.firefox'
+if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace f'
 
 # this doesn't work with ghostty quick terminal
