@@ -2,10 +2,7 @@ local rt = require("rust-tools")
 local obsidianConfig = require("josean.plugins.obsidian")
 
 -- import lspconfig plugin safely
-local lspconfig_status, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status then
-  return
-end
+local lspconfig = require('lspconfig')
 
 -- import cmp-nvim-lsp plugin safely
 local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -71,7 +68,6 @@ local function format_rust()
   vim.cmd("lua vim.lsp.buf.format()")
 end
 
-
 -- enable keybinds only for when lsp server available
 local on_attach = function(client, bufnr)
   -- keybind options
@@ -112,13 +108,6 @@ local on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
   end
 
-  if client.name == "eslint" then
-    client.server_capabilities.documentFormattingProvider = true -- 0.8 and later
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      command = "EslintFixAll",
-    })
-  end
   if client.name == "tailwindcss" then
     require("tailwindcss-colors").buf_attach(bufnr)
   end
@@ -176,30 +165,37 @@ end
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
--- Change the Diagnostic symbols in the sign column (gutter)
--- (not in youtube nvim video)
-local signs = { Error = "", Warn = "", Hint = "", Info = "" }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.INFO] = "",
+      [vim.diagnostic.severity.HINT] = "",
+    },
+    numhl = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.HINT] = "",
+      [vim.diagnostic.severity.INFO] = "",
+    },
+  },
+})
 
--- configure html server
-lspconfig["html"].setup({
+-- Configure LSP servers using vim.lsp.config (Nvim 0.11+)
+vim.lsp.config('html', {
   capabilities = capabilities,
   on_attach = on_attach,
 })
 
--- configure deno server
-lspconfig["denols"].setup({
+vim.lsp.config('denols', {
   capabilities = capabilities,
   on_attach = on_attach,
   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
   filetypes = { "typescript" },
 })
 
--- configure deno server
-lspconfig["gopls"].setup({
+vim.lsp.config('gopls', {
   capabilities = capabilities,
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -213,14 +209,12 @@ lspconfig["gopls"].setup({
   }
 })
 
--- configure eslint server
-lspconfig["eslint"].setup({
+vim.lsp.config('eslint', {
   capabilities = capabilities,
   on_attach = on_attach,
 })
 
--- configure json server
-lspconfig["jsonls"].setup({
+vim.lsp.config('jsonls', {
   capabilities = capabilities,
   on_attach = on_attach,
 })
@@ -232,44 +226,45 @@ require("typescript-tools").setup({
   single_file_support = false
 })
 
--- configure css server
-lspconfig["cssls"].setup({
+vim.lsp.config('cssls', {
   capabilities = capabilities,
   on_attach = on_attach,
 })
 
--- configure markdown server
-lspconfig["marksman"].setup({
+vim.lsp.config('marksman', {
   capabilities = capabilities,
   on_attach = on_attach,
   filetypes = { "markdown" },
 })
 
-
--- configure tailwindcss server
-lspconfig["tailwindcss"].setup({
+vim.lsp.config('tailwindcss', {
   capabilities = capabilities,
   on_attach = on_attach,
   filetypes = { "typescriptreact", "javascriptreact" },
 })
 
--- configure graphql server
-lspconfig["graphql"].setup({
+vim.lsp.config('graphql', {
   capabilities = capabilities,
   on_attach = on_attach,
   filetypes = { "graphql", "typescriptreact", "javascriptreact", "javascript", "typescript" },
-  root_dir = lspconfig.util.root_pattern(".graphqlconfig"),
+  root_dir = function(bufnr, on_dir)
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    on_dir(lspconfig.util.root_pattern('.graphqlconfig')(fname))
+  end,
+  settings = {
+    graphql = {
+      ["graphql-config.load.legacy"] = true,
+    }
+  }
 })
 
--- configure emmet language server
-lspconfig["emmet_ls"].setup({
+vim.lsp.config('emmet_ls', {
   capabilities = capabilities,
   on_attach = on_attach,
   filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
 })
 
--- configure lua server (with special settings)
-lspconfig["lua_ls"].setup({
+vim.lsp.config('lua_ls', {
   capabilities = capabilities,
   on_attach = on_attach,
   settings = {
@@ -319,7 +314,6 @@ end, { range = true })
 vim.api.nvim_create_user_command("FormatWithPrettier", function(opts)
   format_with_prettier(opts.range ~= 0)
 end, { range = true })
-
 
 vim.cmd([[
   augroup strdr4605

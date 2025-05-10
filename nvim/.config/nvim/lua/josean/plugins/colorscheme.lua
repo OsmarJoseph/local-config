@@ -49,10 +49,8 @@ require("tokyonight").setup({
     highlights.RenameNormal               = { bg = colors.black, fg = colors.magenta }
     highlights.ActionPreviewTitle         = { bg = colors.black, fg = colors.info }
     highlights.FloatBorder                = { bg = colors.black, fg = colors.border_highlight }
-    --[[
-    highlights.WinbarNC = { bg = "none", fg = colors.fg_dark }
-    highlights.Winbar = { bg = "none", fg = colors.fg_dark }
-    highlights.StatusLine = { bg = "none", fg = colors.fg_dark }
-    ]]
+    --[[ highlights.WinbarNC                   = { bg = "none" }
+    highlights.Winbar                     = { bg = "none" } ]]
+    highlights.StatusLine                 = { bg = "none" }
   end,
 })
