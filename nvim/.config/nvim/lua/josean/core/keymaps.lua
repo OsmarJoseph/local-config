@@ -291,5 +291,7 @@ keymap.set("c", "<Right>", "<Space><BS><Right>", { noremap = true })
 -- do tab completion on command + space
 keymap.set("c", "<C-Space>", "<C-z>", { noremap = true })
 
--- treesitter
+-- user commands
 keymap.set("n", "<leader>tc", ":TSContextToggle<CR>") -- toggle treesitter context
+keymap.set("n", "<leader>cp", ":CopilotChat<CR>") -- open copilot chat
+keymap.set("n", "<leader>fm", ":FormatWithPrettier<CR>") -- open copilot chat

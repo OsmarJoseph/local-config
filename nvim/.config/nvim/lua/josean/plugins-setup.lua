@@ -137,8 +137,6 @@ local plugins = {
 
   "tpope/vim-abolish",                     -- search & replace
 
-  { "jackMort/ChatGPT.nvim",               dependencies = { "MunifTanjim/nui.nvim" } },
-
   -- debugger
   { "rcarriga/nvim-dap-ui",                dependencies = { "mfussenegger/nvim-dap" } },
   "theHamsta/nvim-dap-virtual-text",
@@ -192,10 +190,6 @@ local plugins = {
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
     },
     build = "make tiktoken",       -- Only on MacOS or Linux
-    opts = {
-      model = "gpt-4o",
-    },
-    -- See Commands section for default commands if you want to lazy load on them
   },
 }
 
