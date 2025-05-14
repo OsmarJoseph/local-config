@@ -169,7 +169,6 @@ local plugins = {
       require('export').setup()
     end,
   },
-  { 'wakatime/vim-wakatime', lazy = false },
   {
     "kwkarlwang/bufjump.nvim",
     lazy = true,
