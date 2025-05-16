@@ -188,6 +188,11 @@ vim.lsp.config('html', {
   on_attach = on_attach,
 })
 
+local function should_attach_to_buffer()
+  local bufname = vim.api.nvim_buf_get_name(0)
+  return not (bufname:match("^fugitive://") or bufname:match("/%.git/"))
+end
+
 vim.lsp.config('denols', {
   capabilities = capabilities,
   on_attach = on_attach,
@@ -212,6 +217,30 @@ vim.lsp.config('gopls', {
 vim.lsp.config('eslint', {
   capabilities = capabilities,
   on_attach = on_attach,
+  root_dir = function(bufnr, on_dir)
+    if not should_attach_to_buffer() then
+      return nil -- Prevent attachment
+    end
+
+    local root_file_patterns = {
+      '.eslintrc',
+      '.eslintrc.js',
+      '.eslintrc.cjs',
+      '.eslintrc.yaml',
+      '.eslintrc.yml',
+      '.eslintrc.json',
+      'eslint.config.js',
+      'eslint.config.mjs',
+      'eslint.config.cjs',
+      'eslint.config.ts',
+      'eslint.config.mts',
+      'eslint.config.cts',
+    }
+
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    root_file_patterns = lspconfig.util.insert_package_json(root_file_patterns, 'eslintConfig', fname)
+    on_dir(vim.fs.dirname(vim.fs.find(root_file_patterns, { path = fname, upward = true })[1]))
+  end,
 })
 
 vim.lsp.config('jsonls', {
@@ -222,7 +251,13 @@ vim.lsp.config('jsonls', {
 require("typescript-tools").setup({
   capabilities = capabilities,
   on_attach = on_attach,
-  root_dir = lspconfig.util.root_pattern("package.json"),
+  root_dir = function(fname)
+    if not should_attach_to_buffer() then
+      return nil -- Prevent attachment
+    end
+    -- Default root_dir logic
+    return lspconfig.util.root_pattern('tsconfig.json', 'package.json')(fname)
+  end,
   single_file_support = false
 })
 
@@ -241,13 +276,40 @@ vim.lsp.config('tailwindcss', {
   capabilities = capabilities,
   on_attach = on_attach,
   filetypes = { "typescriptreact", "javascriptreact" },
+  single_file_support = false,
+  workspace_required = true,
+  root_dir = function(bufnr, on_dir)
+    if not should_attach_to_buffer() then
+      return nil -- Prevent attachment
+    end
+
+    local root_files = {
+      'tailwind.config.js',
+      'tailwind.config.cjs',
+      'tailwind.config.mjs',
+      'tailwind.config.ts',
+      'postcss.config.js',
+      'postcss.config.cjs',
+      'postcss.config.mjs',
+      'postcss.config.ts',
+    }
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    root_files = lspconfig.util.insert_package_json(root_files, 'tailwindcss', fname)
+    root_files = lspconfig.util.root_markers_with_field(root_files, { 'mix.lock' }, 'tailwind', fname)
+    on_dir(vim.fs.dirname(vim.fs.find(root_files, { path = fname, upward = true })[1]))
+  end,
 })
 
 vim.lsp.config('graphql', {
   capabilities = capabilities,
   on_attach = on_attach,
   filetypes = { "graphql", "typescriptreact", "javascriptreact", "javascript", "typescript" },
+  single_file_support = false,
   root_dir = function(bufnr, on_dir)
+    if not should_attach_to_buffer() then
+      return nil -- Prevent attachment
+    end
+
     local fname = vim.api.nvim_buf_get_name(bufnr)
     on_dir(lspconfig.util.root_pattern('.graphqlconfig')(fname))
   end,
