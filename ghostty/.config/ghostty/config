@@ -31,11 +31,3 @@ keybind = cmd+backspace=text:\x15
 keybind = option+backspace=text:\x17
 
 keybind = cmd+k=text:clear\n
-
-keybind = ctrl+1=text:∞s0  
-keybind = ctrl+2=text:∞s1  
-keybind = ctrl+3=text:∞s2  
-keybind = ctrl+4=text:∞s3  
-keybind = ctrl+5=text:∞s4  
-keybind = ctrl+6=text:∞s5  
-keybind = ctrl+7=text:∞s6
