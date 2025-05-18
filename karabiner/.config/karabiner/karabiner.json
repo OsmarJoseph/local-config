@@ -2,6 +2,9 @@
   "profiles": [
     {
       "complex_modifications": {
+        "parameters": {
+          "basic.to_if_alone_timeout_milliseconds": 500
+        },
         "rules": [
           {
             "title": "Change right_shift + left_shift to caps_lock",

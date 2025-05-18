@@ -25,7 +25,7 @@ local plugins = {
     "folke/flash.nvim",
     event = "VeryLazy",
     ---@type Flash.Config
-    opts = { },
+    opts = {},
     -- stylua: ignore
     keys = {
       { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
@@ -183,6 +183,7 @@ local plugins = {
       require('export').setup()
     end,
   },
+  { 'echasnovski/mini.pairs', version = false },
   {
     "kwkarlwang/bufjump.nvim",
     lazy = true,
