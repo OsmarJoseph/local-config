@@ -73,7 +73,6 @@ keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window max
 -- nvim-tree
 local nvim_tree = require("nvim-tree.api")
 
-keymap.set("n", "<F6><S-e>", ":NvimTreeToggle<CR>") -- toggle file explorer
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
 keymap.set("n", "<F6>b", ":NvimTreeToggle<CR>")     -- toggle file explorer
 keymap.set("n", "<F6><S-m>", nvim_tree.marks.navigate.select)
