@@ -276,8 +276,8 @@ local function wrap_with_console_log()
 end
 
 -- insert console.log
-keymap.set("n", "<F6>l", "oconsole.log(<Esc>")
-keymap.set("i", "<F6>l", "<Esc>oconsole.log(<Esc>")
+keymap.set("n", "<F6>l", "oconsole.log()<Esc>i<Esc>")
+keymap.set("i", "<F6>l", "<Esc>oconsole.log()<Esc>i")
 keymap.set("v", "<F6>l", wrap_with_console_log)
 
 -- macros

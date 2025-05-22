@@ -26,12 +26,19 @@ local plugins = {
     event = "VeryLazy",
     ---@type Flash.Config
     opts = {
+      jump = {
+        autojump = true,
+      },
       modes = {
         search = {
           enabled = true,
         },
         char = {
-          jump_labels = true
+          jump_labels = true,
+          multi_line = false,
+          jump = {
+            autojump = true,
+          },
         }
       },
     },

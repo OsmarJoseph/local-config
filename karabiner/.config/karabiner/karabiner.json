@@ -2,9 +2,6 @@
   "profiles": [
     {
       "complex_modifications": {
-        "parameters": {
-          "basic.to_if_alone_timeout_milliseconds": 500
-        },
         "rules": [
           {
             "title": "Change right_shift + left_shift to caps_lock",
@@ -97,6 +94,41 @@
                 "to": [
                   {
                     "key_code": "o",
+                    "modifiers": [
+                      "left_control"
+                    ]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "control + C to control + N on Zen",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "bundle_identifiers": [
+                      "app.zen-browser.zen"
+                    ],
+                    "type": "frontmost_application_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "c",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_control"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "n",
                     "modifiers": [
                       "left_control"
                     ]
@@ -1660,19 +1692,41 @@
                 "from": {
                   "key_code": "semicolon",
                   "modifiers": {
+                    "mandatory": [
+                      "left_shift"
+                    ],
                     "optional": [
-                      "any"
+                      "caps_lock"
                     ]
                   }
                 },
                 "to": [
                   {
-                    "key_code": "right_control"
+                    "key_code": "semicolon",
+                    "modifiers": [
+                      "left_shift"
+                    ]
                   }
                 ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "semicolon",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
                 "to_if_alone": [
                   {
                     "key_code": "semicolon"
+                  }
+                ],
+                "to": [
+                  {
+                    "key_code": "right_control"
                   }
                 ],
                 "type": "basic"
