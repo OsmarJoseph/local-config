@@ -31,3 +31,8 @@ keybind = cmd+backspace=text:\x15
 keybind = option+backspace=text:\x17
 
 keybind = cmd+k=text:clear\n
+
+keybind = cmd+shift+left=text:•
+keybind = cmd+shift+right=text:ª
+keybind = option+shift+left=text:¡
+keybind = option+shift+right=text:™

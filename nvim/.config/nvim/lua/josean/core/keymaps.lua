@@ -236,12 +236,12 @@ keymap.set("n", "ª", "v$")
 keymap.set("i", "ª", "<Esc>v$")
 keymap.set("v", "ª", "j")
 -- select words with option + shift
-keymap.set("n", "<A-1>", "vb")
-keymap.set("i", "<A-1>", "<Esc>vb")
-keymap.set("v", "<A-1>", "b")
-keymap.set("n", "<A-2>", "ve")
-keymap.set("i", "<A-2>", "<Esc>ve")
-keymap.set("v", "<A-2>", "e")
+keymap.set("n", "¡", "vb")
+keymap.set("i", "¡", "<Esc>vb")
+keymap.set("v", "¡", "b")
+keymap.set("n", "™", "ve")
+keymap.set("i", "™", "<Esc>ve")
+keymap.set("v", "™", "e")
 
 local function wrap_with_console_log()
   -- Get the current visual selection
