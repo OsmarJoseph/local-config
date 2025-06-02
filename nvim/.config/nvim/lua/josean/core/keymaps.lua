@@ -79,10 +79,8 @@ keymap.set("n", "<F6><S-m>", nvim_tree.marks.navigate.select)
 
 -- telescope
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
-keymap.set("n", "<F6><S-b>", "<cmd>Telescope buffers<cr>")    -- list open buffers
-keymap.set("i", "<F6><S-b>", "<cmd>Telescope buffers<cr>")    -- list open buffers
-keymap.set("c", "<F6><S-b>", "<cmd>Telescope buffers<cr>")    -- list open buffers
-keymap.set("v", "<F6><S-b>", "<cmd>Telescope buffers<cr>")    -- list open buffers
+keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>")    -- list open buffers
+keymap.set("v", "<leader>b", "<cmd>Telescope buffers<cr>")    -- list open buffers
 
 local function getVisualSelection()
   vim.cmd('noau normal! "vy"')

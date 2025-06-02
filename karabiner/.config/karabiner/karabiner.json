@@ -1299,49 +1299,6 @@
             ]
           },
           {
-            "description": "map command + shift + b to f6 + shift + b",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "com.mitchellh.ghostty"
-                    ],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "b",
-                  "modifiers": {
-                    "mandatory": [
-                      "right_gui",
-                      "right_shift"
-                    ],
-                    "optional": [
-                      "caps_lock"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "f6",
-                    "lazy": true,
-                    "repeat": true
-                  },
-                  {
-                    "key_code": "b",
-                    "lazy": true,
-                    "modifiers": [
-                      "left_shift"
-                    ],
-                    "repeat": true
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
             "description": "map command + shift + w to to f6 + shift + w",
             "manipulators": [
               {
