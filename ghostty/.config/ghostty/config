@@ -26,6 +26,24 @@ keybind = ctrl+-=decrease_font_size:1
 
 keybind = cmd+a=text:ggVG
 keybind = cmd+p=csi:17~p
+keybind = cmd+o=csi:17~o
+keybind = cmd+i=csi:17~i
+keybind = cmd+b=csi:17~b
+keybind = cmd+f=csi:17~f
+keybind = cmd+s=csi:17~s
+keybind = cmd+-=csi:17~-
+keybind = cmd+\=csi:17~\
+keybind = cmd+.=csi:17~.
+keybind = cmd+/=csi:17~/
+keybind = cmd+[=csi:17~[
+keybind = cmd+]=csi:17~]
+keybind = cmd+w=csi:17~w
+
+keybind = cmd+1=csi:17~1
+keybind = cmd+2=csi:17~2
+keybind = cmd+3=csi:17~3
+keybind = cmd+4=csi:17~4
+keybind = cmd+5=csi:17~5
 
 keybind = cmd+backspace=text:\x15
 keybind = option+backspace=text:\x17
