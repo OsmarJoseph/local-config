@@ -289,7 +289,7 @@ keymap.set("c", "<Right>", "<Space><BS><Right>", { noremap = true })
 keymap.set("c", "<C-Space>", "<C-z>", { noremap = true })
 
 -- user commands
-keymap.set("n", "<leader>tc", ":TSContextToggle<CR>") -- toggle treesitter context
+keymap.set("n", "<leader>tc", ":TSContext toggle<CR>") -- toggle treesitter context
 keymap.set("n", "<leader>cp", ":CopilotChat<CR>") -- open copilot chat
 keymap.set("n", "<leader>fm", ":FormatWithPrettier<CR>") -- open copilot chat
 keymap.set("n", "<leader>st", ":Sort<CR>") -- open copilot chat
