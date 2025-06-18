@@ -199,7 +199,6 @@ local plugins = {
       require('export').setup()
     end,
   },
-  { 'echasnovski/mini.pairs', version = false },
   {
     "kwkarlwang/bufjump.nvim",
     lazy = true,
