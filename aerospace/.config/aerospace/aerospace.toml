@@ -134,8 +134,10 @@ ctrl-cmd-n = 'workspace n'
 ctrl-cmd-i = 'workspace i'
 ctrl-cmd-c = 'workspace c'
 ctrl-cmd-a = 'workspace a'
+ctrl-cmd-p = 'workspace p'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+alt-shift-p = ['move-node-to-workspace p', 'focus-monitor main']
 alt-shift-f = ['move-node-to-workspace f', 'focus-monitor main']
 alt-shift-x = ['move-node-to-workspace x', 'focus-monitor main']
 alt-shift-s = ['move-node-to-workspace s', 'focus-monitor main']
@@ -228,6 +230,10 @@ run = 'move-node-to-workspace c'
 if.app-id = 'com.google.Chrome'
 run = 'move-node-to-workspace c'
 
+[[on-window-detected]]
+if.app-id = 'com.postmanlabs.mac'
+run = 'move-node-to-workspace p'
+
 # floating windows
 [[on-window-detected]]
 if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
@@ -247,6 +253,7 @@ x = 'main'
 s = 'main'                            
 w = 'main'
 n = 'main'
+p = 'main'
 a = 'secondary'
 c = 'secondary'
 d = 'secondary'
