@@ -1,5 +1,8 @@
 # this file must be linked to the path `~/` so ripgrep ignore the pattern
 
+.git
+node_modules
+.obsidian
 *.svg
 *.png
 *.jpeg
