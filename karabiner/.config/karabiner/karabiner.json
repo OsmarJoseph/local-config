@@ -868,36 +868,6 @@
                 "type": "basic"
               }
             ]
-          },
-          {
-            "description": "Change Command + Tab to Raycast windows",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "tab",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_command"
-                    ],
-                    "optional": [
-                      "caps_lock"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "e",
-                    "modifiers": [
-                      "command",
-                      "shift",
-                      "control",
-                      "option"
-                    ]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
           }
         ]
       },
