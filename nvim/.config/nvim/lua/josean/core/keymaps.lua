@@ -12,6 +12,10 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 keymap.set("n", "<leader><CR>", ":source ~/.config/nvim/init.lua<CR>")
 
+-- obsidian
+keymap.set("n", "<leader>otd", ":ObsidianToday<CR>") -- open today's note
+keymap.set("n", "<leader>otm", ":ObsidianTomorrow<CR>") -- open tomorrow's note
+
 -- keep cursor centered when scrolling
 keymap.set("n", "<C-u>", "<C-u>zz")
 keymap.set("n", "<C-d>", "<C-d>zz")
