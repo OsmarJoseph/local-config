@@ -845,32 +845,6 @@
       "complex_modifications": {
         "rules": [
           {
-            "description": "Change escape to left_control if pressed with other keys",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "escape",
-                  "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "left_control"
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "escape"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
             "description": "control + M to control + O on Zen",
             "manipulators": [
               {
