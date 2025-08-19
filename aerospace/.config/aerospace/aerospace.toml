@@ -135,6 +135,7 @@ ctrl-cmd-i = 'workspace i'
 ctrl-cmd-c = 'workspace c'
 ctrl-cmd-a = 'workspace a'
 ctrl-cmd-p = 'workspace p'
+ctrl-cmd-o = 'workspace o'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-p = ['move-node-to-workspace p', 'focus-monitor main']
@@ -143,6 +144,7 @@ alt-shift-x = ['move-node-to-workspace x', 'focus-monitor main']
 alt-shift-s = ['move-node-to-workspace s', 'focus-monitor main']
 alt-shift-w = ['move-node-to-workspace w', 'focus-monitor main']
 alt-shift-n = ['move-node-to-workspace n', 'focus-monitor main']
+alt-shift-o = ['move-node-to-workspace o', 'focus-monitor secondary']
 # using alt-shift-d for visbug/inspector and figma
 cmd-alt-shift-d = ['move-node-to-workspace d', 'focus-monitor secondary']
 alt-shift-e = ['move-node-to-workspace e', 'focus-monitor secondary']
@@ -203,6 +205,10 @@ if.app-id = 'com.apple.Safari.WebApp.18092D56-ABC5-43BB-B79E-CC01CDF72F57'
 run = 'move-node-to-workspace y'
 
 [[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = 'move-node-to-workspace o'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.mail'
 run = 'move-node-to-workspace e'
 
@@ -254,6 +260,7 @@ s = 'main'
 w = 'main'
 n = 'main'
 p = 'main'
+o = 'secondary'
 a = 'secondary'
 c = 'secondary'
 d = 'secondary'
