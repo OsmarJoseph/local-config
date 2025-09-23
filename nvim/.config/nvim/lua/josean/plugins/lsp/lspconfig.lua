@@ -355,18 +355,18 @@ vim.lsp.config('lua_ls', {
 local codelldb = mason_registry.get_package("codelldb")
 local extension_path = codelldb:get_install_path() .. "/extension/"
 local codelldb_path = extension_path .. "adapter/codelldb"
-local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
+local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib" ]]
 
 rt.setup({
-  dap = {
+  --[[ dap = {
     adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)
-  },
+  }, ]]
   server = {
     cmd = { "rustup", "run", "stable", "rust-analyzer" },
     capabilities = capabilities,
     on_attach = on_attach,
   },
-}) ]]
+})
 
 --[[ vim.api.nvim_create_user_command("FormatWithBiome", function(opts)
   format_with_biome(opts.range ~= 0)
