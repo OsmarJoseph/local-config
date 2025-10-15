@@ -1,5 +1,6 @@
 -- keymapleader key to spacekeymap
 vim.g.mapleader = " "
+local obsidianConfig = require("josean.plugins.obsidian")
 
 local keymap = vim.keymap -- for conciseness
 
@@ -13,7 +14,7 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 keymap.set("n", "<leader><CR>", ":source ~/.config/nvim/init.lua<CR>")
 
 -- obsidian
-keymap.set("n", "<leader>otd", ":ObsidianToday<CR>") -- open today's note
+keymap.set("n", "<leader>otd", ":ObsidianToday<CR>")    -- open today's note
 keymap.set("n", "<leader>otm", ":ObsidianTomorrow<CR>") -- open tomorrow's note
 
 -- keep cursor centered when scrolling
@@ -165,14 +166,24 @@ end
 keymap.set("n", "<leader>p", function() harpoon:list(git_branch()):add() end)
 keymap.set("n", "<C-p>", function() harpoon.ui:toggle_quick_menu(harpoon:list(git_branch())) end)
 
+local isInNotesPath = vim.fn.expand("%:p:h"):find(obsidianConfig.notesPath) ~= nil
+
 keymap.set("n", "<F6>1", function() harpoon:list(git_branch()):select(1) end)
-keymap.set("n", "<F6>2", function() harpoon:list(git_branch()):select(2) end)
+
+if (isInNotesPath) then
+  keymap.set("n", "<F6>2", ":ObsidianToday<CR>")
+  keymap.set("i", "<F6>2", ":ObsidianToday<CR>")
+else
+  keymap.set("n", "<F6>2", function() harpoon:list(git_branch()):select(2) end)
+  keymap.set("i", "<F6>2", function() harpoon:list(git_branch()):select(2) end)
+end
+
+
 keymap.set("n", "<F6>3", function() harpoon:list(git_branch()):select(3) end)
 keymap.set("n", "<F6>4", function() harpoon:list(git_branch()):select(4) end)
 keymap.set("n", "<F6>5", function() harpoon:list(git_branch()):select(5) end)
 
 keymap.set("i", "<F6>1", function() harpoon:list(git_branch()):select(1) end)
-keymap.set("i", "<F6>2", function() harpoon:list(git_branch()):select(2) end)
 keymap.set("i", "<F6>3", function() harpoon:list(git_branch()):select(3) end)
 keymap.set("i", "<F6>4", function() harpoon:list(git_branch()):select(4) end)
 keymap.set("i", "<F6>5", function() harpoon:list(git_branch()):select(5) end)
@@ -294,8 +305,8 @@ keymap.set("c", "<Right>", "<Space><BS><Right>", { noremap = true })
 keymap.set("c", "<C-Space>", "<C-z>", { noremap = true })
 
 -- user commands
-keymap.set("n", "<leader>tc", ":TSContext toggle<CR>") -- toggle treesitter context
-keymap.set("n", "<leader>cp", ":CopilotChat<CR>") -- open copilot chat
+keymap.set("n", "<leader>tc", ":TSContext toggle<CR>")   -- toggle treesitter context
+keymap.set("n", "<leader>cp", ":CopilotChat<CR>")        -- open copilot chat
 keymap.set("n", "<leader>fm", ":FormatWithPrettier<CR>") -- open copilot chat
-keymap.set("n", "<leader>st", ":Sort<CR>") -- open copilot chat
-keymap.set("n", "<leader>xp", ":Export<CR>") -- open copilot chat
+keymap.set("n", "<leader>st", ":Sort<CR>")               -- open copilot chat
+keymap.set("n", "<leader>xp", ":Export<CR>")             -- open copilot chat
