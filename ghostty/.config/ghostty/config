@@ -10,10 +10,11 @@ cursor-style = block
 shell-integration-features = no-cursor
 cursor-style-blink = false
 
-theme = "/Users/osmarjoseph/.config/tmux/plugins/tokyonight.nvim/extras/ghostty/tokyonight_night"
+theme = "Kanagawa Wave"
+background = "#1A1A1A"
 
 macos-titlebar-style = hidden
-window-padding-x = 0,0
+window-padding-x = 0
 window-padding-y = 0
 window-theme = dark
 window-padding-color = extend

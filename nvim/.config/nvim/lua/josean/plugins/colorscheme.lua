@@ -1,9 +1,52 @@
+local styles = require("tokyonight.colors").styles
+
+---@type Palette
+local darkernight_colors = {
+  bg = "#1E1E1E",
+  bg_dark = "#1E1E1E",
+  bg_dark1 = "#1E1E1E",
+  bg_highlight = "#2a2a37",
+  blue = "#7e9cd8",
+  blue0 = "#223249",
+  blue1 = "#4C8AB2",
+  blue2 = "#89b4fa",
+  blue5 = "#7fb4ca",
+  blue6 = "#a3d4d5",
+  blue7 = "#223249",
+  comment = "#727169",
+  cyan = "#7fb4ca",
+  dark3 = "#54546d",
+  dark5 = "#6a6a7d", -- Slightly cooler tone
+  fg = "#d4d4d8", -- Reduced yellowness in the foreground
+  fg_dark = "#b8b8c0", -- Reduced yellowness in the darker foreground
+  fg_gutter = "#363646",
+  green = "#98bb6c",
+  green1 = "#a3d4d5",
+  green2 = "#76946a",
+  magenta = "#957fb8",
+  magenta2 = "#d27e99",
+  orange = "#f28b50", -- Slightly less yellow-orange
+  purple = "#a48ec7",
+  red = "#e46876",
+  red1 = "#c34043",
+  teal = "#7aa89f",
+  terminal_black = "#54546d",
+  yellow = "#d4a561", -- Reduced yellowness
+  git = {
+    add = "#76946a",
+    change = "#e89a50", -- Slightly cooler tone for change
+    delete = "#c34043",
+  },
+}
+
+styles.night = vim.tbl_extend("force", styles.night --[[@as Palette]], darkernight_colors)
+
 require("tokyonight").setup({
   -- your configuration comes here
   -- or leave it empty to use the default settings
   style = "night",        -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
   light_style = "day",    -- The theme is used when the background is set to light
-  transparent = true,     -- Enable this to disable setting the background color
+  transparent = true,    -- Enable this to disable setting the background color
   terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
   styles = {
     -- Style to be applied to different syntax groups
@@ -27,7 +70,7 @@ require("tokyonight").setup({
   ---@param highlights Highlights
   ---@param colors ColorScheme
   on_highlights = function(highlights, colors)
-    highlights.CursorLineNr               = { bg = "none", fg = colors.fg, bold = true }
+   highlights.CursorLineNr               = { bg = "none", fg = colors.fg, bold = true }
     highlights.LineNr                     = { bg = "none", fg = colors.dark3, }
     highlights.TreesitterContext          = { bg = "none" }
     highlights.TreesitterContextSeparator = { bg = "none", fg = colors.dark5 }
@@ -51,6 +94,6 @@ require("tokyonight").setup({
     highlights.FloatBorder                = { bg = colors.black, fg = colors.border_highlight }
     --[[ highlights.WinbarNC                   = { bg = "none" }
     highlights.Winbar                     = { bg = "none" } ]]
-    highlights.StatusLine                 = { bg = "none" }
+    highlights.StatusLine = { bg = "none" }
   end,
 })
