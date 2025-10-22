@@ -122,34 +122,19 @@ alt-shift-equal = 'resize smart +50'
 alt-shift-m = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-ctrl-cmd-f = 'workspace f'
-ctrl-cmd-x = 'workspace x'
-ctrl-cmd-s = 'workspace s'
-ctrl-cmd-w = 'workspace w'
 ctrl-cmd-b = 'workspace d'
-ctrl-cmd-e = 'workspace e'
-ctrl-cmd-r = 'workspace r'
-ctrl-cmd-y = 'workspace y'
-ctrl-cmd-n = 'workspace n'
-ctrl-cmd-i = 'workspace i'
-ctrl-cmd-c = 'workspace c'
 ctrl-cmd-a = 'workspace a'
-ctrl-cmd-p = 'workspace p'
-ctrl-cmd-o = 'workspace o'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-p = ['move-node-to-workspace p', 'focus-monitor main']
 alt-shift-f = ['move-node-to-workspace f', 'focus-monitor main']
 alt-shift-x = ['move-node-to-workspace x', 'focus-monitor main']
 alt-shift-s = ['move-node-to-workspace s', 'focus-monitor main']
 alt-shift-w = ['move-node-to-workspace w', 'focus-monitor main']
-alt-shift-n = ['move-node-to-workspace n', 'focus-monitor main']
 alt-shift-o = ['move-node-to-workspace o', 'focus-monitor secondary']
 # using alt-shift-d for visbug/inspector and figma
 cmd-alt-shift-d = ['move-node-to-workspace d', 'focus-monitor secondary']
 alt-shift-e = ['move-node-to-workspace e', 'focus-monitor secondary']
 alt-shift-r = ['move-node-to-workspace r', 'focus-monitor secondary']
-alt-shift-y = ['move-node-to-workspace y', 'focus-monitor secondary']
 alt-shift-i = ['move-node-to-workspace i', 'focus-monitor secondary']
 alt-shift-c = ['move-node-to-workspace c', 'focus-monitor secondary']
 alt-shift-a = ['move-node-to-workspace a', 'focus-monitor secondary']
@@ -200,9 +185,6 @@ run = 'move-node-to-workspace s'
 if.app-id = 'com.linear'
 run = 'move-node-to-workspace r'
 
-[[on-window-detected]]
-if.app-id = 'com.apple.Safari.WebApp.18092D56-ABC5-43BB-B79E-CC01CDF72F57'
-run = 'move-node-to-workspace y'
 
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
@@ -225,20 +207,12 @@ if.app-id = 'com.electron.dockerdesktop'
 run = 'move-node-to-workspace d'
 
 [[on-window-detected]]
-if.app-id = 'notion.id'
-run = 'move-node-to-workspace n'
-
-[[on-window-detected]]
 if.app-id = 'com.apple.iCal'
 run = 'move-node-to-workspace c'
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 run = 'move-node-to-workspace c'
-
-[[on-window-detected]]
-if.app-id = 'com.postmanlabs.mac'
-run = 'move-node-to-workspace p'
 
 # floating windows
 [[on-window-detected]]
@@ -258,13 +232,10 @@ f = 'main'
 x = 'main'
 s = 'main'                            
 w = 'main'
-n = 'main'
-p = 'main'
 o = 'secondary'
 a = 'secondary'
 c = 'secondary'
 d = 'secondary'
 e = 'secondary'
 r = 'secondary'
-y = 'secondary'
 i = 'secondary'
