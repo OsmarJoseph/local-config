@@ -63,75 +63,96 @@ local function format_rust()
   vim.cmd("lua vim.lsp.buf.format()")
 end
 
--- enable keybinds only for when lsp server available
-local on_attach = function(client, bufnr)
-  -- keybind options
-  local opts = { noremap = true, silent = true, buffer = bufnr }
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    local bufnr = ev.buf
 
-  local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+    -- keybind options
+    local opts = { noremap = true, silent = true, buffer = bufnr }
 
-  -- set keybinds
-  keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", opts) -- show definition, references
+    -- set keybinds
+    keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", opts) -- show definition, references
 
-  if (client.name ~= "marksman") then
-    keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)               -- got to declaration
-  end
-  keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts)                 -- see definition and make edits in window
-  keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)        -- go to implementation
-  keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)            -- go to implementation
-  keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)                -- go to implementation
-  keymap.set("n", "<F6>.", "<cmd>Lspsaga code_action<CR>", opts)                  -- see available code actions
-  keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)                  -- smart rename
-  keymap.set("n", "<leader>Di", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)   -- show  diagnostics for line
-  keymap.set("n", "<leader>di", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
-  keymap.set("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)            -- jump to previous diagnostic in buffer
-  keymap.set("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)            -- jump to next diagnostic in buffer
-  keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<CR>", opts)                       -- show documentation for what is under cursor
-  keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts)                  -- see outline on right hand side
-  opts.desc = "Restart LSP"
-  keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)                          -- mapping to restart lsp if necessary
+    if (client.name ~= "marksman") then
+      keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts) -- got to declaration
+      keymap.set("n", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>")
+      keymap.set("i", "<F6>s", "<Esc><cmd>lua vim.lsp.buf.format()<CR>i")
+      keymap.set("v", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>i")
+    end
 
-  -- typescript specific keymaps (e.g. rename file and update imports)
-  if client.name == "typescript-tools" then
+    keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts)                 -- see definition and make edits in window
+    keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)        -- go to implementation
+    keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)            -- go to implementation
+    keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)                -- go to implementation
+    keymap.set("n", "<F6>.", "<cmd>Lspsaga code_action<CR>", opts)                  -- see available code actions
+    keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)                  -- smart rename
+    keymap.set("n", "<leader>Di", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)   -- show  diagnostics for line
+    keymap.set("n", "<leader>di", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
+    keymap.set("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)            -- jump to previous diagnostic in buffer
+    keymap.set("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)            -- jump to next diagnostic in buffer
+    keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<CR>", opts)                       -- show documentation for what is under cursor
+    keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts)                  -- see outline on right hand side
+    opts.desc = "Restart LSP"
+    keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)                          -- mapping to restart lsp if necessary
+
+
+    if (client.name == "rust_analyzer") then
+      vim.keymap.set("n", "<leader>run", ":RustRunnables<CR>")
+      keymap.set("n", "<F6>s", format_rust)
+    end
+  end,
+})
+
+local function should_attach_to_buffer()
+  local bufname = vim.api.nvim_buf_get_name(0)
+  return not (bufname:match("^fugitive://") or bufname:match("/%.git/"))
+end
+
+require("typescript-tools").setup({
+  on_attach = function(client, bufnr)
+    local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+    -- typescript specific keymaps (e.g. rename file and update imports)
     keymap.set("n", "<leader>rf", ":TSToolsRenameFile<CR>")   -- rename file and update imports
     keymap.set("n", "<leader>ru", ":TSToolsRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
     keymap.set("n", "<leader>ami", ":TSToolsAddMissingImports<CR>")
     keymap.set("n", "<leader>ri", ":TSToolsRemoveUnusedImports<CR>")
-  end
 
-  if client.name == "typescript-tools" and filetype ~= "javascript" then
-    client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
-  end
+    if filetype ~= "javascript" then
+      client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+    end
+  end,
+  root_dir = function(fname)
+    if not should_attach_to_buffer() then
+      return nil -- Prevent attachment
+    end
+    -- Default root_dir logic
+    return lspconfig_util.root_pattern('tsconfig.json', 'package.json')(fname)
+  end,
+  single_file_support = false
+})
 
-  if client.name == "tailwindcss" then
-    require("tailwindcss-colors").buf_attach(bufnr)
-  end
-  local isInNotesPath = vim.fn.expand("%:p:h"):find(obsidianConfig.notesPath) ~= nil
+vim.lsp.config('denols', {
+  root_dir = function(bufnr, on_dir)
+    if not should_attach_to_buffer() then
+      return nil -- Prevent attachment
+    end
 
-  if (client.name == "marksman" and isInNotesPath) then
-    vim.opt.wrap = true
-    client.server_capabilities.documentFormattingProvider = true
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      callback = format_with_prettier_and_write,
-    })
-    -- format on command + s
-    keymap.set("n", "<F6>s", format_with_prettier)
-    keymap.set("i", "<F6>s", "<Esc><cmd>FormatWithPrettier<CR>i")
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    local matches = lspconfig_util.root_pattern('deno.json', 'deno.jsonc', 'deps.ts')(fname)
+    if matches then
+      on_dir(matches)
+      return
+    end
+  end,
+  single_file_support = false,
+})
 
-    vim.api.nvim_create_user_command("ZK", obsidianConfig.create_zettelkasten_note, {})
-  else
-    keymap.set("n", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>")
-    keymap.set("i", "<F6>s", "<Esc><cmd>lua vim.lsp.buf.format()<CR>i")
-    keymap.set("v", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>i")
-  end
-
-  if (client.name == "rust_analyzer") then
-    vim.keymap.set("n", "<leader>run", ":RustRunnables<CR>")
-    keymap.set("n", "<F6>s", format_rust)
-  end
-
-  if (client.name == "gopls") then
+vim.lsp.config('gopls', {
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", {
       pattern = "*.go",
       callback = function()
@@ -154,50 +175,7 @@ local on_attach = function(client, bufnr)
         vim.lsp.buf.format({ async = false })
       end
     })
-  end
-end
-
-local function should_attach_to_buffer()
-  local bufname = vim.api.nvim_buf_get_name(0)
-  return not (bufname:match("^fugitive://") or bufname:match("/%.git/"))
-end
-
-vim.lsp.config('html', {
-  on_attach = on_attach,
-})
-
-require("typescript-tools").setup({
-  on_attach = on_attach,
-  root_dir = function(fname)
-    if not should_attach_to_buffer() then
-      return nil -- Prevent attachment
-    end
-    -- Default root_dir logic
-    return lspconfig_util.root_pattern('tsconfig.json', 'package.json')(fname)
   end,
-  single_file_support = false
-})
-
-vim.lsp.config('denols', {
-  on_attach = on_attach,
-  root_dir = function(bufnr, on_dir)
-    if not should_attach_to_buffer() then
-      return nil -- Prevent attachment
-    end
-
-    local fname = vim.api.nvim_buf_get_name(bufnr)
-    local matches = lspconfig_util.root_pattern('deno.json', 'deno.jsonc', 'deps.ts')(fname)
-    if matches then
-      on_dir(matches)
-      return
-    end
-  end,
-  single_file_support = false,
-})
-
-vim.lsp.config('gopls', {
-  cmd = { "gopls" },
-  filetypes = { "go", "gomod", "gowork", "gotmpl" },
   root_dir = lspconfig_util.root_pattern("go.mod", "go.work"),
   settings = {
     completeUnimported = true,
@@ -208,42 +186,40 @@ vim.lsp.config('gopls', {
   }
 })
 
-vim.lsp.config('eslint', {
-  on_attach = on_attach,
-})
-
-vim.lsp.config('jsonls', {
-  on_attach = on_attach,
-})
-
-vim.lsp.config('cssls', {
-  on_attach = on_attach,
-})
-
 vim.lsp.config('marksman', {
-  on_attach = on_attach,
   filetypes = { "markdown" },
+  on_attach = function(client, bufnr)
+    local isInNotesPath = vim.fn.expand("%:p:h"):find(obsidianConfig.notesPath) ~= nil
+
+    client.server_capabilities.documentFormattingProvider = true
+
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      callback = format_with_prettier_and_write,
+    })
+    -- format on command + s
+    keymap.set("n", "<F6>s", format_with_prettier)
+    keymap.set("i", "<F6>s", "<Esc><cmd>FormatWithPrettier<CR>i")
+
+    if isInNotesPath then
+      vim.opt.wrap = true
+      vim.api.nvim_create_user_command("ZK", obsidianConfig.create_zettelkasten_note, {})
+    end
+  end,
 })
 
 vim.lsp.config('tailwindcss', {
-  on_attach = on_attach,
+  on_attach = function(client, bufnr)
+    require("tailwindcss-colors").buf_attach(bufnr)
+  end,
   filetypes = { "typescriptreact", "javascriptreact" },
   single_file_support = false,
   workspace_required = true,
 })
 
 vim.lsp.config('graphql', {
-  on_attach = on_attach,
   filetypes = { "graphql", "typescriptreact", "javascriptreact", "javascript", "typescript" },
   single_file_support = false,
-  root_dir = function(bufnr, on_dir)
-    if not should_attach_to_buffer() then
-      return nil -- Prevent attachment
-    end
-
-    local fname = vim.api.nvim_buf_get_name(bufnr)
-    on_dir(lspconfig_util.root_pattern('.graphqlconfig')(fname))
-  end,
   settings = {
     graphql = {
       ["graphql-config.load.legacy"] = true,
@@ -252,32 +228,7 @@ vim.lsp.config('graphql', {
 })
 
 vim.lsp.config('emmet_ls', {
-  on_attach = on_attach,
   filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
-})
-
-
-vim.lsp.config('lua_ls', {
-  on_attach = on_attach,
-  settings = {
-    -- custom settings for lua
-    Lua = {
-      -- make the language server recognize "vim" global
-      diagnostics = {
-        globals = { "vim" },
-      },
-      completion = {
-        callSnippet = "Replace",
-      },
-      workspace = {
-        -- make language server aware of runtime files
-        library = {
-          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-          [vim.fn.stdpath("config") .. "/lua"] = true,
-        },
-      },
-    },
-  },
 })
 
 --[[ local mason_registry = require("mason-registry")
