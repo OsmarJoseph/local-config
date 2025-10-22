@@ -93,9 +93,12 @@ local plugins = {
     "hrsh7th/nvim-cmp", -- completion plugin
     event = "InsertEnter",
     dependencies = {
-      "hrsh7th/cmp-buffer",           -- source for text in buffer
-      "hrsh7th/cmp-path",             -- source for file system paths
-      "hrsh7th/cmp-nvim-lsp",         -- for autocompletion
+      "hrsh7th/cmp-buffer",     -- source for text in buffer
+      "hrsh7th/cmp-path",       -- source for file system paths
+      {
+        "hrsh7th/cmp-nvim-lsp", -- for autocompletion
+        event = { "BufReadPre", "BufNewFile" },
+      },
       "L3MON4D3/LuaSnip",             -- snippet engine
       "saadparwaiz1/cmp_luasnip",     -- for autocompletion
       "rafamadriz/friendly-snippets", -- useful snippets
@@ -129,12 +132,10 @@ local plugins = {
       library = {
         -- See the configuration section for more details
         -- Load luvit types when the `vim.uv` word is found
-        { path = "luvit-meta/library", words = { "vim%.uv" } },
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       },
     },
-    { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
   },
-
   { "nvim-treesitter/nvim-treesitter",          build = ":TSUpdate" },
   "nvim-treesitter/nvim-treesitter-context",
   { "lukas-reineke/indent-blankline.nvim", main = "ibl",                              opts = {} },

@@ -1,14 +1,9 @@
 local rt = require("rust-tools")
 local obsidianConfig = require("josean.plugins.obsidian")
 
--- import lspconfig plugin safely
-local lspconfig = require('lspconfig')
 
--- import cmp-nvim-lsp plugin safely
-local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not cmp_nvim_lsp_status then
-  return
-end
+-- import lspconfig plugin safely
+local lspconfig_util = require('lspconfig.util')
 
 local keymap = vim.keymap -- for conciseness
 
@@ -162,49 +157,48 @@ local on_attach = function(client, bufnr)
   end
 end
 
--- used to enable autocompletion (assign to every lsp server config)
-local capabilities = cmp_nvim_lsp.default_capabilities()
-
-vim.diagnostic.config({
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = "",
-      [vim.diagnostic.severity.WARN] = "",
-      [vim.diagnostic.severity.INFO] = "",
-      [vim.diagnostic.severity.HINT] = "",
-    },
-    numhl = {
-      [vim.diagnostic.severity.ERROR] = "",
-      [vim.diagnostic.severity.WARN] = "",
-      [vim.diagnostic.severity.HINT] = "",
-      [vim.diagnostic.severity.INFO] = "",
-    },
-  },
-})
-
--- Configure LSP servers using vim.lsp.config (Nvim 0.11+)
-vim.lsp.config('html', {
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
-
 local function should_attach_to_buffer()
   local bufname = vim.api.nvim_buf_get_name(0)
   return not (bufname:match("^fugitive://") or bufname:match("/%.git/"))
 end
 
-vim.lsp.config('denols', {
-  capabilities = capabilities,
+vim.lsp.config('html', {
   on_attach = on_attach,
-  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-  filetypes = { "typescript" },
+})
+
+require("typescript-tools").setup({
+  on_attach = on_attach,
+  root_dir = function(fname)
+    if not should_attach_to_buffer() then
+      return nil -- Prevent attachment
+    end
+    -- Default root_dir logic
+    return lspconfig_util.root_pattern('tsconfig.json', 'package.json')(fname)
+  end,
+  single_file_support = false
+})
+
+vim.lsp.config('denols', {
+  on_attach = on_attach,
+  root_dir = function(bufnr, on_dir)
+    if not should_attach_to_buffer() then
+      return nil -- Prevent attachment
+    end
+
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    local matches = lspconfig_util.root_pattern('deno.json', 'deno.jsonc', 'deps.ts')(fname)
+    if matches then
+      on_dir(matches)
+      return
+    end
+  end,
+  single_file_support = false,
 })
 
 vim.lsp.config('gopls', {
-  capabilities = capabilities,
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
-  root_dir = lspconfig.util.root_pattern("go.mod", "go.work"),
+  root_dir = lspconfig_util.root_pattern("go.mod", "go.work"),
   settings = {
     completeUnimported = true,
     usePlaceholders = true,
@@ -215,93 +209,30 @@ vim.lsp.config('gopls', {
 })
 
 vim.lsp.config('eslint', {
-  capabilities = capabilities,
   on_attach = on_attach,
-  root_dir = function(bufnr, on_dir)
-    if not should_attach_to_buffer() then
-      return nil -- Prevent attachment
-    end
-
-    local root_file_patterns = {
-      '.eslintrc',
-      '.eslintrc.js',
-      '.eslintrc.cjs',
-      '.eslintrc.yaml',
-      '.eslintrc.yml',
-      '.eslintrc.json',
-      'eslint.config.js',
-      'eslint.config.mjs',
-      'eslint.config.cjs',
-      'eslint.config.ts',
-      'eslint.config.mts',
-      'eslint.config.cts',
-    }
-
-    local fname = vim.api.nvim_buf_get_name(bufnr)
-    root_file_patterns = lspconfig.util.insert_package_json(root_file_patterns, 'eslintConfig', fname)
-    on_dir(vim.fs.dirname(vim.fs.find(root_file_patterns, { path = fname, upward = true })[1]))
-  end,
 })
 
 vim.lsp.config('jsonls', {
-  capabilities = capabilities,
   on_attach = on_attach,
-})
-
-require("typescript-tools").setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-  root_dir = function(fname)
-    if not should_attach_to_buffer() then
-      return nil -- Prevent attachment
-    end
-    -- Default root_dir logic
-    return lspconfig.util.root_pattern('tsconfig.json', 'package.json')(fname)
-  end,
-  single_file_support = false
 })
 
 vim.lsp.config('cssls', {
-  capabilities = capabilities,
   on_attach = on_attach,
 })
 
 vim.lsp.config('marksman', {
-  capabilities = capabilities,
   on_attach = on_attach,
   filetypes = { "markdown" },
 })
 
 vim.lsp.config('tailwindcss', {
-  capabilities = capabilities,
   on_attach = on_attach,
   filetypes = { "typescriptreact", "javascriptreact" },
   single_file_support = false,
   workspace_required = true,
-  root_dir = function(bufnr, on_dir)
-    if not should_attach_to_buffer() then
-      return nil -- Prevent attachment
-    end
-
-    local root_files = {
-      'tailwind.config.js',
-      'tailwind.config.cjs',
-      'tailwind.config.mjs',
-      'tailwind.config.ts',
-      'postcss.config.js',
-      'postcss.config.cjs',
-      'postcss.config.mjs',
-      'postcss.config.ts',
-    }
-    local fname = vim.api.nvim_buf_get_name(bufnr)
-    root_files = lspconfig.util.insert_package_json(root_files, 'tailwindcss', fname)
-    root_files = lspconfig.util.root_markers_with_field(root_files, { 'mix.lock' }, 'tailwind', fname)
-    on_dir(vim.fs.dirname(vim.fs.find(root_files, { path = fname, upward = true })[1]))
-  end,
 })
 
 vim.lsp.config('graphql', {
-  capabilities = capabilities,
   on_attach = on_attach,
   filetypes = { "graphql", "typescriptreact", "javascriptreact", "javascript", "typescript" },
   single_file_support = false,
@@ -311,7 +242,7 @@ vim.lsp.config('graphql', {
     end
 
     local fname = vim.api.nvim_buf_get_name(bufnr)
-    on_dir(lspconfig.util.root_pattern('.graphqlconfig')(fname))
+    on_dir(lspconfig_util.root_pattern('.graphqlconfig')(fname))
   end,
   settings = {
     graphql = {
@@ -321,13 +252,12 @@ vim.lsp.config('graphql', {
 })
 
 vim.lsp.config('emmet_ls', {
-  capabilities = capabilities,
   on_attach = on_attach,
   filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
 })
 
+
 vim.lsp.config('lua_ls', {
-  capabilities = capabilities,
   on_attach = on_attach,
   settings = {
     -- custom settings for lua
@@ -357,16 +287,16 @@ local extension_path = codelldb:get_install_path() .. "/extension/"
 local codelldb_path = extension_path .. "adapter/codelldb"
 local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib" ]]
 
-rt.setup({
-  --[[ dap = {
+--[[ rt.setup({
+  dap = {
     adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)
-  }, ]]
+  },
   server = {
     cmd = { "rustup", "run", "stable", "rust-analyzer" },
     capabilities = capabilities,
     on_attach = on_attach,
   },
-})
+}) ]]
 
 --[[ vim.api.nvim_create_user_command("FormatWithBiome", function(opts)
   format_with_biome(opts.range ~= 0)
@@ -417,3 +347,20 @@ end
 vim.api.nvim_create_user_command("Sort", function()
   import_sort_run()
 end, {})
+
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.INFO] = "",
+      [vim.diagnostic.severity.HINT] = "",
+    },
+    numhl = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.HINT] = "",
+      [vim.diagnostic.severity.INFO] = "",
+    },
+  },
+})

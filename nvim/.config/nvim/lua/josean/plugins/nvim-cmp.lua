@@ -1,3 +1,15 @@
+local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not cmp_nvim_lsp_status then
+  return
+end
+
+-- used to enable autocompletion (assign to every lsp server config)
+local capabilities = cmp_nvim_lsp.default_capabilities()
+
+vim.lsp.config("*", {
+  capabilities = capabilities,
+})
+
 -- import nvim-cmp plugin safely
 local cmp_status, cmp = pcall(require, "cmp")
 if not cmp_status then
