@@ -13,10 +13,6 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 keymap.set("n", "<leader><CR>", ":source ~/.config/nvim/init.lua<CR>")
 
--- obsidian
-keymap.set("n", "<leader>otd", ":ObsidianToday<CR>")    -- open today's note
-keymap.set("n", "<leader>otm", ":ObsidianTomorrow<CR>") -- open tomorrow's note
-
 -- keep cursor centered when scrolling
 keymap.set("n", "<C-u>", "<C-u>zz")
 keymap.set("n", "<C-d>", "<C-d>zz")
@@ -137,7 +133,6 @@ keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>")   -- list all gi
 keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
 keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>")  -- list git branches (use <cr> to checkout) ["gb" for git branch]
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>")    -- list current changes per file with diff preview ["gs" for git status]
-keymap.set("n", "<leader>gt", "<cmd>Git<cr>")                     -- open vim fugitive
 keymap.set("n", "<F6>g", "<cmd>Git<cr>")                          -- open vim fugitive
 keymap.set("n", "dv", "<cmd>Gvdiffsplit<cr>")                     -- open vim fugitive diff
 
@@ -168,23 +163,24 @@ keymap.set("n", "<C-p>", function() harpoon.ui:toggle_quick_menu(harpoon:list(gi
 
 local isInNotesPath = vim.fn.expand("%:p:h"):find(obsidianConfig.notesPath) ~= nil
 
-keymap.set("n", "<F6>1", function() harpoon:list(git_branch()):select(1) end)
-
 if (isInNotesPath) then
   keymap.set("n", "<F6>2", ":ObsidianToday<CR>")
   keymap.set("i", "<F6>2", ":ObsidianToday<CR>")
+  keymap.set("n", "<F6>3", ":ObsidianTomorrow<CR>")
+  keymap.set("i", "<F6>3", ":ObsidianTomorrow<CR>")
 else
   keymap.set("n", "<F6>2", function() harpoon:list(git_branch()):select(2) end)
   keymap.set("i", "<F6>2", function() harpoon:list(git_branch()):select(2) end)
+  keymap.set("n", "<F6>3", function() harpoon:list(git_branch()):select(3) end)
+  keymap.set("i", "<F6>3", function() harpoon:list(git_branch()):select(3) end)
 end
 
 
-keymap.set("n", "<F6>3", function() harpoon:list(git_branch()):select(3) end)
+keymap.set("n", "<F6>1", function() harpoon:list(git_branch()):select(1) end)
 keymap.set("n", "<F6>4", function() harpoon:list(git_branch()):select(4) end)
 keymap.set("n", "<F6>5", function() harpoon:list(git_branch()):select(5) end)
 
 keymap.set("i", "<F6>1", function() harpoon:list(git_branch()):select(1) end)
-keymap.set("i", "<F6>3", function() harpoon:list(git_branch()):select(3) end)
 keymap.set("i", "<F6>4", function() harpoon:list(git_branch()):select(4) end)
 keymap.set("i", "<F6>5", function() harpoon:list(git_branch()):select(5) end)
 
