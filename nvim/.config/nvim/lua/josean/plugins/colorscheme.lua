@@ -16,8 +16,8 @@ local darkernight_colors = {
   comment = "#727169",
   cyan = "#7fb4ca",
   dark3 = "#54546d",
-  dark5 = "#6a6a7d", -- Slightly cooler tone
-  fg = "#d4d4d8", -- Reduced yellowness in the foreground
+  dark5 = "#6a6a7d",   -- Slightly cooler tone
+  fg = "#d4d4d8",      -- Reduced yellowness in the foreground
   fg_dark = "#b8b8c0", -- Reduced yellowness in the darker foreground
   fg_gutter = "#363646",
   green = "#98bb6c",
@@ -46,7 +46,7 @@ require("tokyonight").setup({
   -- or leave it empty to use the default settings
   style = "night",        -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
   light_style = "day",    -- The theme is used when the background is set to light
-  transparent = true,    -- Enable this to disable setting the background color
+  transparent = true,     -- Enable this to disable setting the background color
   terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
   styles = {
     -- Style to be applied to different syntax groups
@@ -70,7 +70,7 @@ require("tokyonight").setup({
   ---@param highlights Highlights
   ---@param colors ColorScheme
   on_highlights = function(highlights, colors)
-   highlights.CursorLineNr               = { bg = "none", fg = colors.fg, bold = true }
+    highlights.CursorLineNr               = { bg = "none", fg = colors.fg, bold = true }
     highlights.LineNr                     = { bg = "none", fg = colors.dark3, }
     highlights.TreesitterContext          = { bg = "none" }
     highlights.TreesitterContextSeparator = { bg = "none", fg = colors.dark5 }
@@ -87,11 +87,6 @@ require("tokyonight").setup({
     highlights.DiagnosticVirtualTextWarn  = {
       bg = 'none', fg = colors.warning,
     }
-    highlights.SagaTitle                  = { bg = colors.black, fg = colors.info }
-    highlights.SagaCount                  = { fg = colors.info, bg = colors.black }
-    highlights.RenameNormal               = { bg = colors.black, fg = colors.magenta }
-    highlights.ActionPreviewTitle         = { bg = colors.black, fg = colors.info }
-    highlights.FloatBorder                = { bg = colors.black, fg = colors.border_highlight }
     --[[ highlights.WinbarNC                   = { bg = "none" }
     highlights.Winbar                     = { bg = "none" } ]]
     highlights.StatusLine = { bg = "none" }

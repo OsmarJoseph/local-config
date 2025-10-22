@@ -72,30 +72,56 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- keybind options
     local opts = { noremap = true, silent = true, buffer = bufnr }
 
-    -- set keybinds
-    keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", opts) -- show definition, references
-
     if (client.name ~= "marksman") then
-      keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts) -- got to declaration
-      keymap.set("n", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>")
+      keymap.set("n", "gd", vim.lsp.buf.definition, opts) -- got to declaration
+      keymap.set("n", "<F6>s", vim.lsp.buf.format)
       keymap.set("i", "<F6>s", "<Esc><cmd>lua vim.lsp.buf.format()<CR>i")
       keymap.set("v", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>i")
     end
 
-    keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts)                 -- see definition and make edits in window
-    keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)        -- go to implementation
-    keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)            -- go to implementation
-    keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)                -- go to implementation
-    keymap.set("n", "<F6>.", "<cmd>Lspsaga code_action<CR>", opts)                  -- see available code actions
-    keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)                  -- smart rename
-    keymap.set("n", "<leader>Di", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)   -- show  diagnostics for line
-    keymap.set("n", "<leader>di", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
-    keymap.set("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)            -- jump to previous diagnostic in buffer
-    keymap.set("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)            -- jump to next diagnostic in buffer
-    keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<CR>", opts)                       -- show documentation for what is under cursor
-    keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts)                  -- see outline on right hand side
+    keymap.set("n", "gD", vim.lsp.buf.declaration, opts)                    -- see definition and make edits in window
+    keymap.set("n", "gi", vim.lsp.buf.implementation, opts)                 -- go to implementation
+    keymap.set("n", "gr", vim.lsp.buf.references, opts)                     -- go to implementation
+    keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)        -- go to implementation
+    keymap.set("n", "<F6>.", vim.lsp.buf.code_action, opts)                 -- see available code actions
+    keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)                 -- smart rename
+    keymap.set("n", "<leader>Di", "<cmd>Telescope diagnostics bufnr=0<CR>") -- show diagnostics for file
+    keymap.set("n", "<leader>di", vim.diagnostic.open_float, opts)          -- show diagnostics for cursor
+    keymap.set("n", "[e", function()
+      vim.diagnostic.jump({ count = -1, float = true, severity = vim.diagnostic.severity.ERROR })
+    end, opts) -- jump to previous error in buffer
+    --
+    keymap.set("n", "]e", function()
+      vim.diagnostic.jump({ count = 1, float = true, severity = vim.diagnostic.severity.ERROR })
+    end, opts) -- jump to next error in buffer
+
+    keymap.set("n", "[d", function()
+      vim.diagnostic.jump({
+        count = -1,
+        float = true,
+        severity = {
+          vim.diagnostic.severity.WARN,
+          vim.diagnostic.severity.INFO,
+          vim.diagnostic.severity.HINT,
+        }
+      })
+    end, opts) -- jump to previous diagnostic in buffer
+    --
+    keymap.set("n", "]d", function()
+      vim.diagnostic.jump({
+        count = 1,
+        float = true,
+        severity = {
+          vim.diagnostic.severity.WARN,
+          vim.diagnostic.severity.INFO,
+          vim.diagnostic.severity.HINT,
+        }
+      })
+    end, opts)                                                     -- jump to next error in buffer
+
+    keymap.set("n", "gh", vim.lsp.buf.hover, opts)           -- show documentation for what is under cursor
     opts.desc = "Restart LSP"
-    keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)                          -- mapping to restart lsp if necessary
+    keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)         -- mapping to restart lsp if necessary
 
 
     if (client.name == "rust_analyzer") then

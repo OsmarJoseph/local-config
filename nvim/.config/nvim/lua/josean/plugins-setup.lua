@@ -113,13 +113,6 @@ local plugins = {
   -- configuring lsp servers
   "neovim/nvim-lspconfig", -- easily configure language servers
   {
-    "glepnir/lspsaga.nvim",
-    dependencies = {
-      { "nvim-tree/nvim-web-devicons" },
-      { "nvim-treesitter/nvim-treesitter" },
-    },
-  }, -- enhanced lsp uis
-  {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
