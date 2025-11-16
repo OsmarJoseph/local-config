@@ -1,4 +1,3 @@
-local rt = require("rust-tools")
 local obsidianConfig = require("josean.plugins.obsidian")
 
 
@@ -117,15 +116,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
           vim.diagnostic.severity.HINT,
         }
       })
-    end, opts)                                                     -- jump to next error in buffer
+    end, opts)                                             -- jump to next error in buffer
 
-    keymap.set("n", "gh", vim.lsp.buf.hover, opts)           -- show documentation for what is under cursor
+    keymap.set("n", "gh", vim.lsp.buf.hover, opts)         -- show documentation for what is under cursor
     opts.desc = "Restart LSP"
-    keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)         -- mapping to restart lsp if necessary
+    keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 
 
-    if (client.name == "rust_analyzer") then
-      vim.keymap.set("n", "<leader>run", ":RustRunnables<CR>")
+    if (client.name == "rust-analyzer") then
       keymap.set("n", "<F6>s", format_rust)
     end
   end,
@@ -256,24 +254,6 @@ vim.lsp.config('graphql', {
 vim.lsp.config('emmet_ls', {
   filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
 })
-
---[[ local mason_registry = require("mason-registry")
-
-local codelldb = mason_registry.get_package("codelldb")
-local extension_path = codelldb:get_install_path() .. "/extension/"
-local codelldb_path = extension_path .. "adapter/codelldb"
-local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib" ]]
-
---[[ rt.setup({
-  dap = {
-    adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)
-  },
-  server = {
-    cmd = { "rustup", "run", "stable", "rust-analyzer" },
-    capabilities = capabilities,
-    on_attach = on_attach,
-  },
-}) ]]
 
 --[[ vim.api.nvim_create_user_command("FormatWithBiome", function(opts)
   format_with_biome(opts.range ~= 0)

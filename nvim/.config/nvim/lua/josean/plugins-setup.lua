@@ -166,7 +166,7 @@ local plugins = {
   "theHamsta/nvim-dap-virtual-text",
   "mxsdev/nvim-dap-vscode-js",
   { "nvim-neotest/nvim-nio" },
-  "simrat39/rust-tools.nvim",
+  "mrcjkb/rustaceanvim",
 
   {
     "microsoft/vscode-js-debug",

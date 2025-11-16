@@ -122,8 +122,9 @@ alt-shift-equal = 'resize smart +50'
 alt-shift-m = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+ctrl-cmd-f = 'workspace f'
+ctrl-cmd-c = 'workspace c'
 ctrl-cmd-b = 'workspace d'
-ctrl-cmd-a = 'workspace a'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-f = ['move-node-to-workspace f', 'focus-monitor main']
@@ -208,7 +209,7 @@ run = 'move-node-to-workspace d'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
-run = 'move-node-to-workspace c'
+run = 'move-node-to-workspace a'
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
