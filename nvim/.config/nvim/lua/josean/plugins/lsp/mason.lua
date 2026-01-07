@@ -17,7 +17,6 @@ mason_lspconfig.setup({
   -- list of servers for mason to install
   ensure_installed = {
     "denols",
-    "biome",
     "eslint",
     "graphql",
     "jsonls",

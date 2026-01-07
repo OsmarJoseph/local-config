@@ -136,13 +136,13 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>")    -- list curren
 keymap.set("n", "<F6>g", "<cmd>Git<cr>")                          -- open vim fugitive
 keymap.set("n", "dv", "<cmd>Gvdiffsplit<cr>")                     -- open vim fugitive diff
 
--- format on command + s
-keymap.set("n", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>")
-keymap.set("i", "<F6>s", "<Esc><cmd>lua vim.lsp.buf.format()<CR>i")
-keymap.set("v", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>i")
-
 -- search on command + f
 keymap.set("n", "<F6>f", "/")
+
+keymap.set("n", "<leader>rf", ":TSToolsRenameFile<CR>")       -- rename file and update imports
+keymap.set("n", "<leader>ru", ":TSToolsRemoveUnused<CR>")     -- remove unused variables (not in youtube nvim video)
+keymap.set("n", "<leader>ami", ":TSToolsAddMissingImports<CR>")
+keymap.set("n", "<leader>ri", ":TSToolsRemoveUnusedImports<CR>")
 
 -- harpoon
 

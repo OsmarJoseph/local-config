@@ -71,7 +71,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- keybind options
     local opts = { noremap = true, silent = true, buffer = bufnr }
 
-    if (client.name ~= "marksman") then
+    if (client.name == "rust-analyzer") then
+      keymap.set("n", "<F6>s", format_rust)
+
+    elseif (client.name ~= "marksman" and client.name ~= "GitHub Copilot") then
       keymap.set("n", "gd", vim.lsp.buf.definition, opts) -- got to declaration
       keymap.set("n", "<F6>s", vim.lsp.buf.format)
       keymap.set("i", "<F6>s", "<Esc><cmd>lua vim.lsp.buf.format()<CR>i")
@@ -121,11 +124,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap.set("n", "gh", vim.lsp.buf.hover, opts)         -- show documentation for what is under cursor
     opts.desc = "Restart LSP"
     keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
-
-
-    if (client.name == "rust-analyzer") then
-      keymap.set("n", "<F6>s", format_rust)
-    end
   end,
 })
 
@@ -134,28 +132,6 @@ local function should_attach_to_buffer()
   return not (bufname:match("^fugitive://") or bufname:match("/%.git/"))
 end
 
-require("typescript-tools").setup({
-  on_attach = function(client, bufnr)
-    local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
-    -- typescript specific keymaps (e.g. rename file and update imports)
-    keymap.set("n", "<leader>rf", ":TSToolsRenameFile<CR>")   -- rename file and update imports
-    keymap.set("n", "<leader>ru", ":TSToolsRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
-    keymap.set("n", "<leader>ami", ":TSToolsAddMissingImports<CR>")
-    keymap.set("n", "<leader>ri", ":TSToolsRemoveUnusedImports<CR>")
-
-    if filetype ~= "javascript" then
-      client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
-    end
-  end,
-  root_dir = function(fname)
-    if not should_attach_to_buffer() then
-      return nil -- Prevent attachment
-    end
-    -- Default root_dir logic
-    return lspconfig_util.root_pattern('tsconfig.json', 'package.json')(fname)
-  end,
-  single_file_support = false
-})
 
 vim.lsp.config('denols', {
   root_dir = function(bufnr, on_dir)
