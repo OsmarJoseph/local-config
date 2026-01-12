@@ -184,8 +184,11 @@ run = 'move-node-to-workspace s'
 
 [[on-window-detected]]
 if.app-id = 'com.linear'
-run = 'move-node-to-workspace r'
+run = 'move-node-to-workspace l'
 
+[[on-window-detected]]
+if.app-id = 'inc.wonder.roam'
+run = 'move-node-to-workspace r'
 
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
@@ -215,6 +218,11 @@ run = 'move-node-to-workspace a'
 if.app-id = 'com.google.Chrome'
 run = 'move-node-to-workspace c'
 
+[[on-window-detected]]
+if.app-id = 'com.apple.Safari.WebApp.88DE6704-6CFF-4F25-9EFC-88A3EAAD7949'
+run = 'move-node-to-workspace y'
+
+
 # floating windows
 [[on-window-detected]]
 if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
@@ -239,4 +247,6 @@ c = 'secondary'
 d = 'secondary'
 e = 'secondary'
 r = 'secondary'
+l = 'secondary'
 i = 'secondary'
+y = 'secondary'
