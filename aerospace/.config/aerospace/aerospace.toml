@@ -122,18 +122,15 @@ alt-shift-equal = 'resize smart +50'
 alt-shift-m = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-ctrl-cmd-f = 'workspace f'
 ctrl-cmd-c = 'workspace c'
-ctrl-cmd-b = 'workspace d'
+ctrl-cmd-u = 'workspace d'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-f = ['move-node-to-workspace f', 'focus-monitor main']
+alt-shift-z = ['move-node-to-workspace z', 'focus-monitor main']
 alt-shift-x = ['move-node-to-workspace x', 'focus-monitor main']
 alt-shift-s = ['move-node-to-workspace s', 'focus-monitor main']
 alt-shift-w = ['move-node-to-workspace w', 'focus-monitor main']
-alt-shift-o = ['move-node-to-workspace o', 'focus-monitor secondary']
-# using alt-shift-d for visbug/inspector and figma
-cmd-alt-shift-d = ['move-node-to-workspace d', 'focus-monitor secondary']
+alt-shift-f = ['move-node-to-workspace f', 'focus-monitor secondary']
 alt-shift-e = ['move-node-to-workspace e', 'focus-monitor secondary']
 alt-shift-r = ['move-node-to-workspace r', 'focus-monitor secondary']
 alt-shift-i = ['move-node-to-workspace i', 'focus-monitor secondary']
@@ -170,17 +167,15 @@ run = 'move-node-to-workspace w'
 
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
-run = 'move-node-to-workspace f'
+run = 'move-node-to-workspace z'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari.WebApp.9003DDEF-5962-431C-BA64-373201BEEDA3'
 run = 'move-node-to-workspace p'
 
-# this doesn't work with ghostty quick terminal
-
-## [[on-window-detected]]
-## if.app-id = 'com.mitchellh.ghostty'
-## run = 'move-node-to-workspace x'
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = 'move-node-to-workspace x'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
@@ -196,7 +191,7 @@ run = 'move-node-to-workspace r'
 
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
-run = 'move-node-to-workspace o'
+run = 'move-node-to-workspace b'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
@@ -204,7 +199,7 @@ run = 'move-node-to-workspace e'
 
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
-run = 'move-node-to-workspace i'
+run = 'move-node-to-workspace f'
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
@@ -220,12 +215,11 @@ run = 'move-node-to-workspace a'
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
-run = 'move-node-to-workspace c'
+run = 'move-node-to-workspace g'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari.WebApp.88DE6704-6CFF-4F25-9EFC-88A3EAAD7949'
-run = 'move-node-to-workspace y'
-
+run = 'move-node-to-workspace t'
 
 # floating windows
 [[on-window-detected]]
@@ -241,17 +235,19 @@ if.app-id = 'com.riotgames.RiotGames.RiotClient'
 run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
-f = 'main'                            
+z = 'main'                            
 x = 'main'
 s = 'main'                            
 w = 'main'
 p = 'main'
-o = 'secondary'
+g = 'main'
+r = 'main'
+b = 'secondary'
+u = 'secondary'
 a = 'secondary'
 c = 'secondary'
 d = 'secondary'
 e = 'secondary'
-r = 'secondary'
 l = 'secondary'
-i = 'secondary'
-y = 'secondary'
+f = 'secondary'
+t = 'secondary'

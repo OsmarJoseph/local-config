@@ -104,7 +104,7 @@
             ]
           },
           {
-            "description": "command + control + D to command + control + b",
+            "description": "command + control + D to command + control + u",
             "manipulators": [
               {
                 "from": {
@@ -121,7 +121,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "b",
+                    "key_code": "u",
                     "modifiers": [
                       "left_gui",
                       "left_control"
@@ -915,7 +915,7 @@
             ]
           },
           {
-            "description": "command + control + D to command + control + b",
+            "description": "command + control + D to command + control + u",
             "manipulators": [
               {
                 "from": {
@@ -932,7 +932,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "b",
+                    "key_code": "u",
                     "modifiers": [
                       "left_gui",
                       "left_control"

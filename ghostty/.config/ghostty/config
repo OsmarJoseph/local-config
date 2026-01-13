@@ -20,8 +20,6 @@ window-theme = dark
 window-padding-color = extend
 window-colorspace = display-p3
  
-keybind = global:cmd+0=toggle_quick_terminal
-
 keybind = ctrl+equal=increase_font_size:1
 keybind = ctrl+-=decrease_font_size:1
 
