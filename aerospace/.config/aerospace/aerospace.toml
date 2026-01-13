@@ -172,6 +172,10 @@ run = 'move-node-to-workspace w'
 if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace f'
 
+[[on-window-detected]]
+if.app-id = 'com.apple.Safari.WebApp.9003DDEF-5962-431C-BA64-373201BEEDA3'
+run = 'move-node-to-workspace p'
+
 # this doesn't work with ghostty quick terminal
 
 ## [[on-window-detected]]
@@ -241,6 +245,7 @@ f = 'main'
 x = 'main'
 s = 'main'                            
 w = 'main'
+p = 'main'
 o = 'secondary'
 a = 'secondary'
 c = 'secondary'
