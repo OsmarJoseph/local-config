@@ -123,6 +123,7 @@ alt-shift-m = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 ctrl-cmd-c = 'workspace c'
+ctrl-cmd-z = 'workspace z'
 ctrl-cmd-u = 'workspace d'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
@@ -240,7 +241,7 @@ x = 'main'
 s = 'main'                            
 w = 'main'
 p = 'main'
-g = 'main'
+g = 'secondary'
 r = 'main'
 b = 'secondary'
 u = 'secondary'
