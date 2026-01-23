@@ -166,8 +166,8 @@ local isInNotesPath = vim.fn.expand("%:p:h"):find(obsidianConfig.notesPath) ~= n
 if (isInNotesPath) then
   keymap.set("n", "<F6>2", ":ObsidianToday<CR>")
   keymap.set("i", "<F6>2", ":ObsidianToday<CR>")
-  keymap.set("n", "<F6>3", ":ObsidianTomorrow<CR>")
-  keymap.set("i", "<F6>3", ":ObsidianTomorrow<CR>")
+  keymap.set("n", "<F6>3", ":ObsidianToday +1<CR>")
+  keymap.set("i", "<F6>3", ":ObsidianToday +1<CR>")
 else
   keymap.set("n", "<F6>2", function() harpoon:list(git_branch()):select(2) end)
   keymap.set("i", "<F6>2", function() harpoon:list(git_branch()):select(2) end)
