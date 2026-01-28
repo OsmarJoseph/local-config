@@ -139,8 +139,8 @@ keymap.set("n", "dv", "<cmd>Gvdiffsplit<cr>")                     -- open vim fu
 -- search on command + f
 keymap.set("n", "<F6>f", "/")
 
-keymap.set("n", "<leader>rf", ":TSToolsRenameFile<CR>")       -- rename file and update imports
-keymap.set("n", "<leader>ru", ":TSToolsRemoveUnused<CR>")     -- remove unused variables (not in youtube nvim video)
+keymap.set("n", "<leader>rf", ":TSToolsRenameFile<CR>")   -- rename file and update imports
+keymap.set("n", "<leader>ru", ":TSToolsRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
 keymap.set("n", "<leader>ami", ":TSToolsAddMissingImports<CR>")
 keymap.set("n", "<leader>ri", ":TSToolsRemoveUnusedImports<CR>")
 
@@ -301,8 +301,14 @@ keymap.set("c", "<Right>", "<Space><BS><Right>", { noremap = true })
 keymap.set("c", "<C-Space>", "<C-z>", { noremap = true })
 
 -- user commands
-keymap.set("n", "<leader>tc", ":TSContext toggle<CR>")   -- toggle treesitter context
-keymap.set("n", "<leader>cp", ":CopilotChat<CR>")        -- open copilot chat
-keymap.set("n", "<leader>fm", ":FormatWithPrettier<CR>") -- open copilot chat
-keymap.set("n", "<leader>st", ":Sort<CR>")               -- open copilot chat
-keymap.set("n", "<leader>xp", ":Export<CR>")             -- open copilot chat
+keymap.set("n", "<leader>tc", ":TSContext toggle<CR>") -- toggle treesitter context
+keymap.set("n", "<leader>cp", ":CopilotChat<CR>")      -- open copilot chat
+keymap.set("n", "<leader>fm", ":FormatWithPrettier<CR>")
+keymap.set("n", "<leader>st", ":Sort<CR>")
+keymap.set("n", "<leader>xp", ":Export<CR>")
+
+-- copilot
+vim.keymap.set('i', '“', '<Plug>(copilot-next)')
+vim.keymap.set('i', '‘', '<Plug>(copilot-previous)')
+vim.keymap.set('i', '<A-CR>', '<Plug>(copilot-suggest)')
+

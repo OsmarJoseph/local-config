@@ -71,9 +71,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- keybind options
     local opts = { noremap = true, silent = true, buffer = bufnr }
 
+    if (client.name == "GitHub Copilot") then
+      vim.cmd("Copilot disable")
+      return
+    end
+
     if (client.name == "rust-analyzer") then
       keymap.set("n", "<F6>s", format_rust)
-
     elseif (client.name ~= "marksman" and client.name ~= "GitHub Copilot") then
       keymap.set("n", "gd", vim.lsp.buf.definition, opts) -- got to declaration
       keymap.set("n", "<F6>s", vim.lsp.buf.format)
