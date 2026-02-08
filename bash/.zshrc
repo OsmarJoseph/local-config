@@ -164,9 +164,6 @@ export BAT_THEME="base16-256"
 eval $(thefuck --alias)
 eval $(thefuck --alias fk)
 
-
-eval "$(gh copilot alias -- zsh)"
-
 set -o ignoreeof 
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/osmarjoseph/.docker/completions $fpath)

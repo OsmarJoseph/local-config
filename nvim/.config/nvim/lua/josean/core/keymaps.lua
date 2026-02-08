@@ -208,24 +208,9 @@ keymap.set("n", "<M-b>", "b")
 keymap.set("i", "<M-b>", "<S-Left>")
 keymap.set("c", "<M-b>", "<C-f>")
 
-local function is_copilot_panel_open()
-  local namespaces = vim.api.nvim_get_namespaces()
-
-  local extmarks = vim.api.nvim_buf_get_extmarks(0, namespaces['github-copilot'], 0, -1, {})
-  return #extmarks > 0
-end
-
-local function on_alt_right()
-  if is_copilot_panel_open() then
-    vim.api.nvim_input("<Plug>(copilot-accept-word)")
-  else
-    vim.api.nvim_input("<S-Right>")
-  end
-end
-
 -- alt + right on tmux
 keymap.set("n", "<M-f>", "e")
-keymap.set("i", "<M-f>", on_alt_right)
+keymap.set("i", "<M-f>", "<S-Right>")
 keymap.set("c", "<M-f>", "<S-Right>")
 
 -- keymapto move to start/end of line with command
@@ -302,13 +287,7 @@ keymap.set("c", "<C-Space>", "<C-z>", { noremap = true })
 
 -- user commands
 keymap.set("n", "<leader>tc", ":TSContext toggle<CR>") -- toggle treesitter context
-keymap.set("n", "<leader>cp", ":CopilotChat<CR>")      -- open copilot chat
 keymap.set("n", "<leader>fm", ":FormatWithPrettier<CR>")
 keymap.set("n", "<leader>st", ":Sort<CR>")
 keymap.set("n", "<leader>xp", ":Export<CR>")
-
--- copilot
-vim.keymap.set('i', '“', '<Plug>(copilot-next)')
-vim.keymap.set('i', '‘', '<Plug>(copilot-previous)')
-vim.keymap.set('i', '<A-CR>', '<Plug>(copilot-suggest)')
 
