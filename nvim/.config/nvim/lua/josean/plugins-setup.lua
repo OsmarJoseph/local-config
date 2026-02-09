@@ -22,6 +22,59 @@ local plugins = {
     opts = {},
   },
   {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      image        = { enabled = true },
+      bigfile      = { enabled = true },
+      indent       = {
+        enabled = true,
+        char = "▏",
+        scope = {
+          underline = true,
+        },
+      },
+      input        = {
+        enabled = true,
+      },
+      styles       = {
+        input = {
+          position = "float",
+          relative = "cursor",
+          row = -3,
+          col = 0,
+        }
+      },
+      picker       = { enabled = true },
+      notifier     = { enabled = true },
+      quickfile    = { enabled = true },
+      scope        = { enabled = true },
+      scroll       = { enabled = true },
+      statuscolumn = { enabled = true },
+    },
+  },
+  {
+    "sudo-tee/opencode.nvim",
+    config = function()
+      require("opencode").setup({})
+    end,
+    dependencies = {
+      {
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          anti_conceal = { enabled = false },
+          file_types = { 'markdown', 'opencode_output' },
+        },
+        ft = { 'markdown', 'Avante', 'copilot-chat', 'opencode_output' },
+      },
+    },
+  },
+  {
     "folke/flash.nvim",
     event = "VeryLazy",
     ---@type Flash.Config
@@ -139,7 +192,6 @@ local plugins = {
   },
   { "nvim-treesitter/nvim-treesitter",          build = ":TSUpdate" },
   "nvim-treesitter/nvim-treesitter-context",
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl",                              opts = {} },
   -- auto closing
   "windwp/nvim-ts-autotag", -- autoclose tags
 
@@ -167,7 +219,7 @@ local plugins = {
   "tpope/vim-abolish",                     -- search & replace
 
   -- debugger
-  { "rcarriga/nvim-dap-ui",                dependencies = { "mfussenegger/nvim-dap" } },
+  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
   "theHamsta/nvim-dap-virtual-text",
   "mxsdev/nvim-dap-vscode-js",
   { "nvim-neotest/nvim-nio" },

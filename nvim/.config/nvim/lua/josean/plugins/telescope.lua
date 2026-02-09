@@ -20,11 +20,18 @@ telescope.setup({
     },
   },
   defaults = {
+    layout_config = {
+      horizontal = {
+        preview_cutoff = 0,
+        preview_width = 0.4,
+      },
+    },
     mappings = {
       i = {
         ['<C-u>'] = false,
         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
         ["<C-l>"] = actions.send_to_loclist + actions.open_loclist,
+        ["<leader>tp"] = require("telescope.actions.layout").toggle_preview, -- toggle preview
       }
     },
     hidden = true,

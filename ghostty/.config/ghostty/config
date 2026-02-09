@@ -1,22 +1,23 @@
 background-opacity = 0.92
 background-blur-radius = 70
 
-font-family = Monaspace Xenon
-font-size = 30
+font-family = Monaspace Neon NF
+font-size = 22
 font-feature = calt, ss01, ss02, ss03, ss04, ss05, ss06, ss07, ss08, ss09, ss10, liga
-adjust-underline-position = 16
+adjust-underline-position = 10
 
 cursor-style = block
 shell-integration-features = no-cursor
 cursor-style-blink = false
 
-theme = "Kanagawa Wave"
+theme = "tokyonight_night"
 background = "#1A1A1A"
 
 macos-titlebar-style = hidden
 window-padding-x = 0
 window-padding-y = 0
 window-theme = dark
+window-padding-balance = true
 window-padding-color = extend
 window-colorspace = display-p3
  
