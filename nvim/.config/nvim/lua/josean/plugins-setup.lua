@@ -22,14 +22,17 @@ local plugins = {
     opts = {},
   },
   {
+    'stevearc/oil.nvim',
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    lazy = true,
+  },
+  {
     "folke/snacks.nvim",
     priority = 1000,
-    lazy = false,
+    lazy     = false,
     ---@type snacks.Config
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
+    opts     = {
       image        = { enabled = true },
       bigfile      = { enabled = true },
       indent       = {
@@ -50,8 +53,8 @@ local plugins = {
           col = 0,
         }
       },
-      picker       = { enabled = true },
-      notifier     = { enabled = true },
+      bufdelete    = { enabled = true },
+      rename       = { enabled = true },
       quickfile    = { enabled = true },
       scope        = { enabled = true },
       scroll       = { enabled = true },
@@ -95,7 +98,6 @@ local plugins = {
         }
       },
     },
-    -- stylua: ignore
     keys = {
       { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
       { "ST",    mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },

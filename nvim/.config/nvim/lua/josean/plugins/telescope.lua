@@ -20,10 +20,14 @@ telescope.setup({
     },
   },
   defaults = {
+    layout_strategy = "vertical",
     layout_config = {
-      horizontal = {
+      vertical = {
+        prompt_position = "bottom",
+        preview_height = 0.4,
         preview_cutoff = 0,
-        preview_width = 0.4,
+        width = { padding = 8 },
+        height = { padding = 1 },
       },
     },
     mappings = {

@@ -79,10 +79,6 @@ keymap.set("n", "<F6>e", ":NvimTreeToggle<CR>")     -- toggle file explorer
 keymap.set("n", "<F6>b", ":NvimTreeToggle<CR>")     -- toggle file explorer
 keymap.set("n", "<F6><S-m>", nvim_tree.marks.navigate.select)
 
--- telescope
-keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
-keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>")    -- list open buffers
-keymap.set("v", "<leader>b", "<cmd>Telescope buffers<cr>")    -- list open buffers
 
 local function getVisualSelection()
   vim.cmd('noau normal! "vy"')
@@ -102,12 +98,6 @@ local live_grep_args = require("telescope").extensions.live_grep_args.live_grep_
 
 local opts = { noremap = true, silent = true }
 
-keymap.set("n", "<space>fc", ":Telescope current_buffer_fuzzy_find<cr>", opts)
-keymap.set("v", "<space>fc", function()
-  local text = getVisualSelection()
-  tb.current_buffer_fuzzy_find({ default_text = text })
-end, opts)
-
 keymap.set("n", "<F6><S-f>", live_grep_args)
 keymap.set("i", "<F6><S-f>", live_grep_args)
 keymap.set("c", "<F6><S-f>", live_grep_args)
@@ -116,6 +106,15 @@ keymap.set("v", "<F6><S-f>", function()
   local text = getVisualSelection()
   live_grep_args({ default_text = text })
 end, opts)
+
+-- buffers
+keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
+keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>")    -- list open buffers
+keymap.set("v", "<leader>b", "<cmd>Telescope buffers<cr>")    -- list open buffers
+keymap.set("n", "<leader>fb", function() tb.live_grep({ grep_open_files = true }) end, { desc = "Grep Open Buffers" })
+
+-- command history
+keymap.set("n", "<leader>:", tb.command_history, { desc = "Command History" })
 
 -- Telescope resume
 keymap.set("n", "<leader>re", "<cmd>Telescope resume<cr>")
@@ -129,17 +128,18 @@ keymap.set("v", "<F6>p", function()
 end, opts) -- find files within current working directory, respects .gitignore
 
 -- telescope git commands (not on youtube nvim video)
-keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>")   -- list all git commits (use <cr> to checkout) ["gc" for git commits]
-keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
-keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>")  -- list git branches (use <cr> to checkout) ["gb" for git branch]
-keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>")    -- list current changes per file with diff preview ["gs" for git status]
-keymap.set("n", "<F6>g", "<cmd>Git<cr>")                          -- open vim fugitive
-keymap.set("n", "dv", "<cmd>Gvdiffsplit<cr>")                     -- open vim fugitive diff
+
+keymap.set("n", "<leader>gf", ":Gclog -n 10 %<CR>", { desc = "Git Log File" })
+
+keymap.set("n", "<leader>gc", ":Gclog -n 10<CR>")  -- list all git commits 
+keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
+keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>")   -- list current changes per file with diff preview ["gs" for git status]
+keymap.set("n", "<F6>g", "<cmd>Git<cr>")                         -- open vim fugitive
+keymap.set("n", "dv", "<cmd>Gvdiffsplit<cr>")                    -- open vim fugitive diff
 
 -- search on command + f
 keymap.set("n", "<F6>f", "/")
 
-keymap.set("n", "<leader>rf", ":TSToolsRenameFile<CR>")   -- rename file and update imports
 keymap.set("n", "<leader>ru", ":TSToolsRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
 keymap.set("n", "<leader>ami", ":TSToolsAddMissingImports<CR>")
 keymap.set("n", "<leader>ri", ":TSToolsRemoveUnusedImports<CR>")
@@ -291,3 +291,29 @@ keymap.set("n", "<leader>fm", ":FormatWithPrettier<CR>")
 keymap.set("n", "<leader>st", ":Sort<CR>")
 keymap.set("n", "<leader>xp", ":Export<CR>")
 
+keymap.set("n", "<leader>db", function() Snacks.bufdelete() end, { desc = "Delete Buffer" })
+keymap.set("n", "<leader>rf", function() Snacks.rename.rename_file() end, { desc = "Rename File" })
+keymap.set("n", "<leader>oil", ":Oil<CR>")
+
+local prev = { new_name = "", old_name = "" } -- Prevents duplicate events
+vim.api.nvim_create_autocmd("User", {
+  pattern = "NvimTreeSetup",
+  callback = function()
+    local events = require("nvim-tree.api").events
+    events.subscribe(events.Event.NodeRenamed, function(data)
+      if prev.new_name ~= data.new_name or prev.old_name ~= data.old_name then
+        data = data
+        Snacks.rename.on_rename_file(data.old_name, data.new_name)
+      end
+    end)
+  end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "OilActionsPost",
+  callback = function(event)
+    if event.data.actions[1].type == "move" then
+      Snacks.rename.on_rename_file(event.data.actions[1].src_url, event.data.actions[1].dest_url)
+    end
+  end,
+})
