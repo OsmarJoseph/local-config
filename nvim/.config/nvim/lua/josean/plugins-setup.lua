@@ -206,7 +206,6 @@ local plugins = {
     },
   },
 
-  "norcalli/nvim-colorizer.lua",           -- normal color highlight
   "themaxmarchuk/tailwindcss-colors.nvim", -- tailwind color highlight
 
   "tpope/vim-abolish",                     -- search & replace
