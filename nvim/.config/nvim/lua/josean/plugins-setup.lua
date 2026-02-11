@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
 
   "nvim-lua/plenary.nvim", -- lua functions that many plugins
-
+  { 'nvim-mini/mini.nvim',                      version = false },
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -98,21 +98,12 @@ local plugins = {
         }
       },
     },
-    keys = {
-      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-      { "ST",    mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
-    },
   },
 
   "szw/vim-maximizer", -- maximizes and restores current window
 
   -- essential plugins
-  "tpope/vim-surround",               -- add, delete, change surroundings (it's awesome)
   "tpope/vim-speeddating",            -- fix increment on dates
-  "inkarkat/vim-ReplaceWithRegister", -- replace with register contents using motion (gr + motion)
 
   -- commenting with gc
   "numToStr/Comment.nvim",
@@ -192,7 +183,7 @@ local plugins = {
       },
     },
   },
-  { "nvim-treesitter/nvim-treesitter",          build = ":TSUpdate" },
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   "nvim-treesitter/nvim-treesitter-context",
   -- auto closing
   "windwp/nvim-ts-autotag", -- autoclose tags
@@ -221,7 +212,7 @@ local plugins = {
   "tpope/vim-abolish",                     -- search & replace
 
   -- debugger
-  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+  { "rcarriga/nvim-dap-ui",            dependencies = { "mfussenegger/nvim-dap" } },
   "theHamsta/nvim-dap-virtual-text",
   "mxsdev/nvim-dap-vscode-js",
   { "nvim-neotest/nvim-nio" },

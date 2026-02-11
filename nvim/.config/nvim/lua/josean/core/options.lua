@@ -81,10 +81,4 @@ vim.cmd([[
   augroup END
 ]])
 
--- Enable wildmenu
-opt.wildmenu = true
-
--- Customize wildmode to complete until the next capital letter
-opt.wildmode = 'longest:full,longest:full'
-
 opt.autochdir = false

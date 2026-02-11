@@ -38,9 +38,12 @@ keymap.set("n", "<leader>d", '"_d')
 keymap.set("v", "<leader>D", '"_D')
 keymap.set("n", "<leader>D", '"_D')
 
--- change ReplaceWithRegister command
-keymap.set("n", "rp", "<Plug>ReplaceWithRegisterOperator")
+keymap.del("n", "gri")
 keymap.del("n", "grr")
+keymap.del("n", "grt")
+keymap.del("n", "gra")
+keymap.del("x", "gra")
+keymap.del("n", "grn")
 
 -- delete single character without copying into register
 keymap.set("n", "x", '"_x')
@@ -192,16 +195,6 @@ keymap.set("n", "<F6>/", "<Plug>(comment_toggle_linewise_current)")
 keymap.set("i", "<F6>/", "<ESC><Plug>(comment_toggle_linewise_current)i")
 keymap.set("v", "<F6>/", "<Plug>(comment_toggle_blockwise_visual)")
 
--- map arrows to move on nvim command mode
-keymap.set("c", "<Down>", "<C-n>")
-keymap.set("c", "<Up>", "<C-p>")
-keymap.set("c", "<Enter>", 'pumvisible() ? "<C-y>" : "<CR>"', { expr = true, noremap = true })
-
--- keymap to move lines
-keymap.set("n", "<A-Down>", ":lua vim.api.nvim_command('move +1')<CR>==")
-keymap.set("n", "<A-Up>", ":lua vim.api.nvim_command('move -2')<CR>==")
-keymap.set("v", "<A-Up>", ":m '<-2<CR>gv=gv")
-keymap.set("v", "<A-Down>", ":m '>+1<CR>gv=gv")
 
 -- keymap to move words
 keymap.set("n", "<M-b>", "b")
