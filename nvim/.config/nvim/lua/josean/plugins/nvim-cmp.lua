@@ -52,6 +52,7 @@ cmp.setup({
     ["<C-Space>j"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
     ["<CR>"] = cmp.mapping.confirm({ select = false }),
+    ["<A-CR>"] = require('minuet').make_cmp_map()
   }),
   -- sources for autocompletion
   sources = cmp.config.sources({
@@ -59,16 +60,30 @@ cmp.setup({
     { name = "luasnip" },  -- snippets
     { name = "buffer" },   -- text within current buffer
     { name = "path" },     -- file system paths
+    { name = "minuet" },   -- AI completions
     {
       name = "lazydev",
       group_index = 0, -- set group index to 0 to skip loading LuaLS completions
     }
   }),
+
+  -- Performance settings for AI completions
+  performance = {
+    -- Increase timeout for slower AI completions
+    fetching_timeout = 2000,
+  },
   -- configure lspkind for vs-code like icons
   formatting = {
     format = lspkind.cmp_format({
       maxwidth = 50,
       ellipsis_char = "...",
+      before = function(entry, vim_item)
+        -- Add custom icon for minuet AI completions
+        if entry.source.name == "minuet" then
+          vim_item.icon = "🤖"
+        end
+        return vim_item
+      end,
     }),
   },
   sorting = {
@@ -86,5 +101,4 @@ cmp.setup({
       cmp.config.compare.order,
     },
   },
-
 })

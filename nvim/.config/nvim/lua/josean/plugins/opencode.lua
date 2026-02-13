@@ -19,6 +19,7 @@ require('opencode').setup({
       ['<leader>os'] = { 'select_session' },                  -- Select and load a opencode session
       ['<leader>oR'] = { 'rename_session' },                  -- Rename current session
       ['<leader>op'] = { 'configure_provider' },              -- Quick provider and model switch from predefined list
+      ['<leader>oy'] = { 'add_visual_selection', mode = { 'v' } },
       ['<leader>oV'] = { 'configure_variant' },               -- Switch model variant for the current model
       ['<leader>oz'] = { 'toggle_zoom' },                     -- Zoom in/out on the Opencode windows
       ['<leader>ov'] = { 'paste_image' },                     -- Paste image from clipboard into current session

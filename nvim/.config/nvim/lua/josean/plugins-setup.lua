@@ -63,19 +63,11 @@ local plugins = {
   },
   {
     "sudo-tee/opencode.nvim",
-    config = function()
-      require("opencode").setup({})
-    end,
-    dependencies = {
-      {
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          anti_conceal = { enabled = false },
-          file_types = { 'markdown', 'opencode_output' },
-        },
-        ft = { 'markdown', 'Avante', 'copilot-chat', 'opencode_output' },
-      },
-    },
+  },
+  {
+    "milanglacier/minuet-ai.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    event = "InsertEnter", -- Load when entering insert mode
   },
   {
     "folke/flash.nvim",
@@ -103,7 +95,7 @@ local plugins = {
   "szw/vim-maximizer", -- maximizes and restores current window
 
   -- essential plugins
-  "tpope/vim-speeddating",            -- fix increment on dates
+  "tpope/vim-speeddating", -- fix increment on dates
 
   -- commenting with gc
   "numToStr/Comment.nvim",

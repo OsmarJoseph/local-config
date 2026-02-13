@@ -61,7 +61,7 @@ require("mini.cmdline").setup({
 
     -- Delay (in ms) after which to trigger completion
     -- Neovim>=0.12 is recommended for positive values
-    delay = 500,
+    delay = 1000,
 
     -- Custom rule of when to trigger completion
     predicate = nil,
