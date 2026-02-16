@@ -57,11 +57,11 @@ hipatterns.setup({
 
 require("mini.cmdline").setup({
   autocomplete = {
-    enable = true,
+    enable = false,
 
     -- Delay (in ms) after which to trigger completion
     -- Neovim>=0.12 is recommended for positive values
-    delay = 1000,
+    delay = 1500,
 
     -- Custom rule of when to trigger completion
     predicate = nil,
