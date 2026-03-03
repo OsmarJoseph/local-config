@@ -166,16 +166,16 @@ These are the Neovim settings that reflect the owner's coding preferences
 
 ## Key Tools in the Environment
 
-| Tool              | Purpose                              |
-|-------------------|--------------------------------------|
-| GNU Stow          | Symlink management for dotfiles      |
-| Neovim (lazy.nvim)| Editor with ~40 plugins              |
-| tmux (TPM)        | Terminal multiplexer                  |
-| Ghostty           | Primary terminal emulator            |
-| AeroSpace         | Tiling window manager (macOS)        |
-| fzf + fd + rg     | Fuzzy finding and search             |
-| StyLua            | Lua formatter                        |
-| Prettier          | TS/JS/Markdown formatter             |
-| Mason (Neovim)    | LSP/linter/formatter installer       |
-| typescript-tools  | TS language server (Neovim plugin)   |
-| Karabiner-Elements| Keyboard remapping                   |
+| Tool               | Purpose                            |
+| ------------------ | ---------------------------------- |
+| GNU Stow           | Symlink management for dotfiles    |
+| Neovim (lazy.nvim) | Editor with ~40 plugins            |
+| tmux (TPM)         | Terminal multiplexer               |
+| Ghostty            | Primary terminal emulator          |
+| AeroSpace          | Tiling window manager (macOS)      |
+| fzf + fd + rg      | Fuzzy finding and search           |
+| StyLua             | Lua formatter                      |
+| Prettier           | TS/JS/Markdown formatter           |
+| Mason (Neovim)     | LSP/linter/formatter installer     |
+| typescript-tools   | TS language server (Neovim plugin) |
+| Karabiner-Elements | Keyboard remapping                 |

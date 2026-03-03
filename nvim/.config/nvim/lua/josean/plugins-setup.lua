@@ -62,9 +62,6 @@ local plugins = {
     },
   },
   {
-    "sudo-tee/opencode.nvim",
-  },
-  {
     "milanglacier/minuet-ai.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     event = "InsertEnter", -- Load when entering insert mode
@@ -246,6 +243,12 @@ local plugins = {
       })
     end,
   },
+  {
+    "greggh/claude-code.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- Required for git operations
+    },
+  }
 }
 
 local opts = {}

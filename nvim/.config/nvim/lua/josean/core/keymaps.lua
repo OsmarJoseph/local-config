@@ -134,7 +134,7 @@ end, opts) -- find files within current working directory, respects .gitignore
 
 keymap.set("n", "<leader>gf", ":Gclog -n 10 %<CR>", { desc = "Git Log File" })
 
-keymap.set("n", "<leader>gc", ":Gclog -n 10<CR>")  -- list all git commits 
+keymap.set("n", "<leader>gc", ":Gclog -n 10<CR>")                -- list all git commits
 keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>")   -- list current changes per file with diff preview ["gs" for git status]
 keymap.set("n", "<F6>g", "<cmd>Git<cr>")                         -- open vim fugitive
@@ -167,25 +167,20 @@ keymap.set("n", "<C-p>", function() harpoon.ui:toggle_quick_menu(harpoon:list(gi
 local isInNotesPath = vim.fn.expand("%:p:h"):find(obsidianConfig.notesPath) ~= nil
 
 if (isInNotesPath) then
+  keymap.set("n", "<F6>1", function() harpoon:list(git_branch()):select(1) end)
   keymap.set("n", "<F6>2", ":ObsidianToday<CR>")
-  keymap.set("i", "<F6>2", ":ObsidianToday<CR>")
   keymap.set("n", "<F6>3", ":ObsidianToday +1<CR>")
-  keymap.set("i", "<F6>3", ":ObsidianToday +1<CR>")
+  keymap.set("n", "<F6>4", function() harpoon:list(git_branch()):select(2) end)
+  keymap.set("n", "<F6>5", function() harpoon:list(git_branch()):select(3) end)
 else
+  keymap.set("n", "<F6>1", function() harpoon:list(git_branch()):select(1) end)
   keymap.set("n", "<F6>2", function() harpoon:list(git_branch()):select(2) end)
-  keymap.set("i", "<F6>2", function() harpoon:list(git_branch()):select(2) end)
   keymap.set("n", "<F6>3", function() harpoon:list(git_branch()):select(3) end)
-  keymap.set("i", "<F6>3", function() harpoon:list(git_branch()):select(3) end)
+  keymap.set("n", "<F6>4", function() harpoon:list(git_branch()):select(4) end)
+  keymap.set("n", "<F6>5", function() harpoon:list(git_branch()):select(5) end)
 end
 
 
-keymap.set("n", "<F6>1", function() harpoon:list(git_branch()):select(1) end)
-keymap.set("n", "<F6>4", function() harpoon:list(git_branch()):select(4) end)
-keymap.set("n", "<F6>5", function() harpoon:list(git_branch()):select(5) end)
-
-keymap.set("i", "<F6>1", function() harpoon:list(git_branch()):select(1) end)
-keymap.set("i", "<F6>4", function() harpoon:list(git_branch()):select(4) end)
-keymap.set("i", "<F6>5", function() harpoon:list(git_branch()):select(5) end)
 
 -- undotree
 keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>")
