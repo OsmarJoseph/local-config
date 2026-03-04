@@ -283,6 +283,32 @@ keymap.set("n", "<leader>db", function() Snacks.bufdelete() end, { desc = "Delet
 keymap.set("n", "<leader>rf", function() Snacks.rename.rename_file() end, { desc = "Rename File" })
 keymap.set("n", "<leader>oil", ":Oil<CR>")
 
+-- copy file reference for pasting into Cursor
+keymap.set("n", "<leader>cp", function()
+  local path = vim.fn.expand("%:.")
+  vim.fn.setreg("+", path)
+  vim.notify("Copied: " .. path)
+end, { desc = "Copy file path" })
+
+keymap.set("v", "<leader>cp", function()
+  local path = vim.fn.expand("%:.")
+  local ext = vim.fn.expand("%:e")
+  local start_line = vim.fn.line("v")
+  local end_line = vim.fn.line(".")
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
+  local lines = vim.fn.getline(start_line, end_line)
+  local line_ref = start_line == end_line and (":" .. start_line) or (":" .. start_line .. "-" .. end_line)
+  local content = "`" .. path .. line_ref .. "`\n"
+      .. "```" .. ext .. "\n"
+      .. table.concat(lines, "\n")
+      .. "\n```"
+  vim.fn.setreg("+", content)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+  vim.notify("Copied " .. (end_line - start_line + 1) .. " line(s) from " .. path)
+end, { desc = "Copy lines with file path" })
+
 local prev = { new_name = "", old_name = "" } -- Prevents duplicate events
 vim.api.nvim_create_autocmd("User", {
   pattern = "NvimTreeSetup",

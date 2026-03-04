@@ -233,6 +233,17 @@ vim.lsp.config('graphql', {
   }
 })
 
+vim.lsp.config('lua_ls', {
+  settings = {
+    Lua = {
+      runtime = { version = "LuaJIT" },
+      workspace = {
+        library = { vim.env.VIMRUNTIME },
+      },
+    },
+  },
+})
+
 vim.lsp.config('emmet_ls', {
   filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
 })
