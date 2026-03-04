@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+open -a Ghostty
+
+current=$(/opt/homebrew/bin/tmux display-message -p '#S')
+if [ "$current" = "notes" ]; then
+  /opt/homebrew/bin/tmux switch-client -l
+else
+  /opt/homebrew/bin/tmux switch-client -t notes 2>/dev/null || /opt/homebrew/bin/tmux new-session -ds notes -c ~/notes && /opt/homebrew/bin/tmux switch-client -t notes
+fi
