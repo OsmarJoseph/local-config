@@ -1,6 +1,5 @@
 -- keymapleader key to spacekeymap
 vim.g.mapleader = " "
-local obsidianConfig = require("josean.plugins.obsidian")
 
 local keymap = vim.keymap -- for conciseness
 
@@ -164,21 +163,11 @@ end
 keymap.set("n", "<leader>p", function() harpoon:list(git_branch()):add() end)
 keymap.set("n", "<C-p>", function() harpoon.ui:toggle_quick_menu(harpoon:list(git_branch())) end)
 
-local isInNotesPath = vim.fn.expand("%:p:h"):find(obsidianConfig.notesPath) ~= nil
-
-if (isInNotesPath) then
-  keymap.set("n", "<F6>1", function() harpoon:list(git_branch()):select(1) end)
-  keymap.set("n", "<F6>2", ":ObsidianToday<CR>")
-  keymap.set("n", "<F6>3", ":ObsidianToday +1<CR>")
-  keymap.set("n", "<F6>4", function() harpoon:list(git_branch()):select(2) end)
-  keymap.set("n", "<F6>5", function() harpoon:list(git_branch()):select(3) end)
-else
-  keymap.set("n", "<F6>1", function() harpoon:list(git_branch()):select(1) end)
-  keymap.set("n", "<F6>2", function() harpoon:list(git_branch()):select(2) end)
-  keymap.set("n", "<F6>3", function() harpoon:list(git_branch()):select(3) end)
-  keymap.set("n", "<F6>4", function() harpoon:list(git_branch()):select(4) end)
-  keymap.set("n", "<F6>5", function() harpoon:list(git_branch()):select(5) end)
-end
+keymap.set("n", "<F6>1", function() harpoon:list(git_branch()):select(1) end)
+keymap.set("n", "<F6>2", function() harpoon:list(git_branch()):select(2) end)
+keymap.set("n", "<F6>3", function() harpoon:list(git_branch()):select(3) end)
+keymap.set("n", "<F6>4", function() harpoon:list(git_branch()):select(4) end)
+keymap.set("n", "<F6>5", function() harpoon:list(git_branch()):select(5) end)
 
 
 
