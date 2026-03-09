@@ -1,8 +1,6 @@
 alias n='nvim'
 alias vim='nvim'
 alias G='git'
-alias orm='rm'
-alias rm='~/scripts/rm'
 
 alias fw='fw_function() {
 
