@@ -1,10 +1,13 @@
 {
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "permissions": {
     "allow": [
       "mcp__figma__get_design_context"
     ],
     "defaultMode": "default"
   },
-  "skipDangerousModePermissionPrompt": false,
+  "skipDangerousModePermissionPrompt": true,
   "effortLevel": "max"
 }
