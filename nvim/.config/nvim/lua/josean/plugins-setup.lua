@@ -100,11 +100,10 @@ local plugins = {
   -- file explorer
   "nvim-tree/nvim-tree.lua",
 
-  -- primagen
+  -- file bookmarks
   {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" }
+    "otavioschwanck/arrow.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
   -- vs-code like icons

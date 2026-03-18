@@ -146,28 +146,14 @@ keymap.set("n", "<leader>ru", ":TSToolsRemoveUnused<CR>") -- remove unused varia
 keymap.set("n", "<leader>ami", ":TSToolsAddMissingImports<CR>")
 keymap.set("n", "<leader>ri", ":TSToolsRemoveUnusedImports<CR>")
 
--- harpoon
+-- arrow
+local persist = require("arrow.persist")
 
-local harpoon = require("harpoon")
-
-local function git_branch()
-  local pipe = io.popen("git branch --show-current")
-  if pipe then
-    local c = pipe:read("*l"):match("^%s*(.-)%s*$")
-    pipe:close()
-    return c
-  end
-  return "default list"
-end
-
-keymap.set("n", "<leader>p", function() harpoon:list(git_branch()):add() end)
-keymap.set("n", "<C-p>", function() harpoon.ui:toggle_quick_menu(harpoon:list(git_branch())) end)
-
-keymap.set("n", "<F6>1", function() harpoon:list(git_branch()):select(1) end)
-keymap.set("n", "<F6>2", function() harpoon:list(git_branch()):select(2) end)
-keymap.set("n", "<F6>3", function() harpoon:list(git_branch()):select(3) end)
-keymap.set("n", "<F6>4", function() harpoon:list(git_branch()):select(4) end)
-keymap.set("n", "<F6>5", function() harpoon:list(git_branch()):select(5) end)
+keymap.set("n", "<F6>1", function() persist.go_to(1) end)
+keymap.set("n", "<F6>2", function() persist.go_to(2) end)
+keymap.set("n", "<F6>3", function() persist.go_to(3) end)
+keymap.set("n", "<F6>4", function() persist.go_to(4) end)
+keymap.set("n", "<F6>5", function() persist.go_to(5) end)
 
 
 
