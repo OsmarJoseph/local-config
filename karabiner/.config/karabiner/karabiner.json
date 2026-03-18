@@ -857,6 +857,30 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "description": "right_control + t to toggle tmux last session",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "mandatory": [
+                      "right_control"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "$HOME/scripts/tmux-toggle-session"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
           }
         ]
       },
@@ -1541,6 +1565,30 @@
                 "to": [
                   {
                     "shell_command": "$HOME/scripts/tmux-toggle-notes"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "right_control + t to toggle tmux last session",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "mandatory": [
+                      "right_control"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "$HOME/scripts/tmux-toggle-session"
                   }
                 ],
                 "type": "basic"
