@@ -111,13 +111,6 @@ export ZSH_AUTOSUGGEST_STRATEGY=(
     completion
 )
 
-run_sessionnizer() {
-  sessionizer
-}
-
-zle -N run_sessionnizer
-
-bindkey '^Z' run_sessionnizer
 # Custom widget to delete everything behind the cursor
 delete_to_start_of_line() {
   zle kill-region

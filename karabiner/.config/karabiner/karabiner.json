@@ -835,30 +835,6 @@
             ]
           },
           {
-            "description": "right_control + n to toggle tmux notes session",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "n",
-                  "modifiers": {
-                    "mandatory": [
-                      "right_control"
-                    ],
-                    "optional": [
-                      "caps_lock"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "shell_command": "$HOME/scripts/tmux-toggle-notes"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
             "description": "right_control + t to toggle tmux last session",
             "manipulators": [
               {
@@ -1541,30 +1517,6 @@
                         "bundle_identifier": "com.apple.Safari.WebApp.9003DDEF-5962-431C-BA64-373201BEEDA3"
                       }
                     }
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "right_control + n to toggle tmux notes session",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "n",
-                  "modifiers": {
-                    "mandatory": [
-                      "right_control"
-                    ],
-                    "optional": [
-                      "caps_lock"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "shell_command": "$HOME/scripts/tmux-toggle-notes"
                   }
                 ],
                 "type": "basic"
