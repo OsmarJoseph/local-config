@@ -69,35 +69,6 @@
             ]
           },
           {
-            "description": "command + control + D to command + control + u",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "d",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_command",
-                      "left_control"
-                    ],
-                    "optional": [
-                      "caps_lock"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "u",
-                    "modifiers": [
-                      "left_gui",
-                      "left_control"
-                    ]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
             "description": "left-command + semicolon to command + delete_or_backspace",
             "manipulators": [
               {
@@ -833,35 +804,6 @@
     {
       "complex_modifications": {
         "rules": [
-          {
-            "description": "command + control + D to command + control + u",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "d",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_command",
-                      "left_control"
-                    ],
-                    "optional": [
-                      "caps_lock"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "u",
-                    "modifiers": [
-                      "left_gui",
-                      "left_control"
-                    ]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
           {
             "description": "Map Command + Shift + F to F6 + Shift + F",
             "manipulators": [

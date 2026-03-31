@@ -123,8 +123,9 @@ alt-shift-m = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 ctrl-cmd-c = 'workspace c'
-ctrl-cmd-z = 'workspace z'
-ctrl-cmd-u = 'workspace d'
+alt-f = 'workspace z'
+alt-g = 'workspace x'
+ctrl-cmd-a = 'workspace a'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-z = ['move-node-to-workspace z', 'focus-monitor main']
