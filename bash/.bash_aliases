@@ -1,6 +1,7 @@
 alias n='nvim'
 alias vim='nvim'
 alias G='git'
+alias claude='env -u TMUX claude --effort max --dangerously-skip-permissions'
 
 alias fw='fw_function() {
 

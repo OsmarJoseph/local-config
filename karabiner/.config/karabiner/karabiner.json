@@ -1441,6 +1441,31 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "description": "command + control + n to toggle tmux notes session",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "n",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_gui",
+                      "left_control"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "$HOME/scripts/tmux-toggle-notes"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
           }
         ]
       },

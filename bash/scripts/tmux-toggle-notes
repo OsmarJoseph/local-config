@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+/opt/homebrew/bin/tmux switch-client -t notes 2>/dev/null 
+open -a Ghostty
