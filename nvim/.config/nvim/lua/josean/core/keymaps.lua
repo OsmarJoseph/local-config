@@ -109,6 +109,10 @@ keymap.set("v", "<F6><S-f>", function()
   live_grep_args({ default_text = text })
 end, opts)
 
+-- obsdian
+
+keymap.set("n", "<leader>otd", "<cmd>ObsidianToday<cr>") -- list available help tags
+
 -- buffers
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
 keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>")    -- list open buffers
