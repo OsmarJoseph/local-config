@@ -66,6 +66,7 @@ require("obsidian").setup(
       substitutions = {
         month = os.date("%B %Y"),
         year = os.date("%Y"),
+        date = os.date("%Y-%m-%d"),
       }
     },
 
