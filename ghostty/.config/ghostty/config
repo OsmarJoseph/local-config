@@ -36,8 +36,8 @@ keybind = cmd+-=csi:17~-
 keybind = cmd+\=csi:17~\
 keybind = cmd+.=csi:17~.
 keybind = cmd+/=csi:17~/
-keybind = cmd+BracketLeft=csi:17~[
-keybind = cmd+BracketRight=csi:17~]
+keybind = cmd+[=csi:17~[
+keybind = cmd+]=csi:17~]
 keybind = cmd+w=csi:17~w
 
 keybind = cmd+Digit1=csi:17~1
