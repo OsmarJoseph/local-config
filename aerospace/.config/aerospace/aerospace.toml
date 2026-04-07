@@ -128,14 +128,12 @@ ctrl-cmd-g = 'workspace x'
 ctrl-cmd-a = 'workspace a'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-z = ['move-node-to-workspace z', 'focus-monitor main']
-alt-shift-x = ['move-node-to-workspace x', 'focus-monitor main']
+alt-shift-f = ['move-node-to-workspace z', 'focus-monitor main']
+alt-shift-g = ['move-node-to-workspace x', 'focus-monitor main']
 alt-shift-s = ['move-node-to-workspace s', 'focus-monitor main']
 alt-shift-w = ['move-node-to-workspace w', 'focus-monitor main']
-alt-shift-f = ['move-node-to-workspace f', 'focus-monitor secondary']
 alt-shift-e = ['move-node-to-workspace e', 'focus-monitor secondary']
 alt-shift-r = ['move-node-to-workspace r', 'focus-monitor secondary']
-alt-shift-i = ['move-node-to-workspace i', 'focus-monitor secondary']
 alt-shift-c = ['move-node-to-workspace c', 'focus-monitor secondary']
 alt-shift-a = ['move-node-to-workspace a', 'focus-monitor secondary']
 
