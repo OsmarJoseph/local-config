@@ -1,21 +1,12 @@
 #!/usr/bin/env bash
 # tmux-rename.sh — Set tmux window name to Claude session name with status icon.
-# Usage: tmux-rename.sh [--resolve] <state>  → rename to "<session_name> [<icon>]"
-#        tmux-rename.sh                      → clear session cache, re-enable automatic-rename
+# Usage: tmux-rename.sh <state>  → rename to "<session_name> [<icon>]"
+#        tmux-rename.sh          → clean up and re-enable automatic-rename
 
 set -euo pipefail
 [[ -z "${TMUX_PANE:-}" ]] && exit 0
 
 PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "$0")/.." && pwd)}"
-
-# ---------------------------------------------------------------------------
-# Parse --resolve flag (triggers session name re-read from disk)
-# ---------------------------------------------------------------------------
-RESOLVE=false
-if [[ "${1:-}" == "--resolve" ]]; then
-  RESOLVE=true
-  shift
-fi
 
 # ---------------------------------------------------------------------------
 # Session name resolution
@@ -32,22 +23,10 @@ extract_session_name() {
   fi
 }
 
-if $RESOLVE; then
-  SESSION_NAME=$(extract_session_name)
-  if [[ -n "$SESSION_NAME" ]]; then
-    tmux set-option -p -t "$TMUX_PANE" @claude_session "$SESSION_NAME"
-  else
-    tmux set-option -p -t "$TMUX_PANE" -u @claude_session 2>/dev/null || true
-  fi
-fi
+SESSION_NAME=$(extract_session_name)
 
-# ---------------------------------------------------------------------------
-# Determine base window name
-# ---------------------------------------------------------------------------
-CACHED=$(tmux display-message -p -t "$TMUX_PANE" '#{@claude_session}' 2>/dev/null)
-
-if [[ -n "$CACHED" ]]; then
-  BASE_NAME="$CACHED"
+if [[ -n "$SESSION_NAME" ]]; then
+  BASE_NAME="$SESSION_NAME"
 else
   # No session name — preserve the existing window name (strip icon suffix)
   CURRENT=$(tmux display-message -p -t "$TMUX_PANE" '#W')
@@ -79,8 +58,7 @@ if [[ $# -ge 1 ]]; then
 
   tmux rename-window -t "$TMUX_PANE" "${BASE_NAME} [${ICON}]"
 else
-  # SessionEnd — clear cache, restore automatic naming
-  tmux set-option -p -t "$TMUX_PANE" -u @claude_session 2>/dev/null || true
+  # SessionEnd — restore automatic naming
   tmux rename-window -t "$TMUX_PANE" "$BASE_NAME"
   tmux set-window-option -t "$TMUX_PANE" automatic-rename on
 fi
