@@ -793,6 +793,30 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "description": "right_control + c to show claude windows",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "c",
+                  "modifiers": {
+                    "mandatory": [
+                      "right_control"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "$HOME/scripts/tmux-claude-windows"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
           }
         ]
       },
@@ -1415,6 +1439,30 @@
                 "to": [
                   {
                     "shell_command": "$HOME/scripts/tmux-toggle-session"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "right_control + c to show claude windows",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "c",
+                  "modifiers": {
+                    "mandatory": [
+                      "right_control"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "$HOME/scripts/tmux-claude-windows"
                   }
                 ],
                 "type": "basic"

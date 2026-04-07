@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+/opt/homebrew/bin/tmux display-popup -E -w 80% -h 50% 'selected=$(tmux list-windows -a -F "#{session_name}:#{window_index}|#{?session_attached,* ,  }#{session_name}: #{window_name}" | grep "\[󰒲\]\|\[󰑮\]\|\[󰂞\]" | sort -t"|" -k2 | fzf --reverse --no-info -d "|" --with-nth=2) && tmux switch-client -t "$(echo "$selected" | cut -d"|" -f1)"'
