@@ -22,12 +22,6 @@ local plugins = {
     opts = {},
   },
   {
-    'stevearc/oil.nvim',
-    -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
-    lazy = true,
-  },
-  {
     "folke/snacks.nvim",
     priority = 1000,
     lazy     = false,

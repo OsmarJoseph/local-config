@@ -260,7 +260,6 @@ keymap.set("n", "<leader>xp", ":Export<CR>")
 
 keymap.set("n", "<leader>db", function() Snacks.bufdelete() end, { desc = "Delete Buffer" })
 keymap.set("n", "<leader>rf", function() Snacks.rename.rename_file() end, { desc = "Rename File" })
-keymap.set("n", "<leader>oil", ":Oil<CR>")
 
 -- copy file reference for pasting into Claude
 local function copy_lines_ref(start_line, end_line)
@@ -302,14 +301,5 @@ vim.api.nvim_create_autocmd("User", {
         Snacks.rename.on_rename_file(data.old_name, data.new_name)
       end
     end)
-  end,
-})
-
-vim.api.nvim_create_autocmd("User", {
-  pattern = "OilActionsPost",
-  callback = function(event)
-    if event.data.actions[1].type == "move" then
-      Snacks.rename.on_rename_file(event.data.actions[1].src_url, event.data.actions[1].dest_url)
-    end
   end,
 })
