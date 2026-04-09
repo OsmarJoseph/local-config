@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
-focused_app=$(osascript -e 'tell application "System Events" to get name of first application process whose frontmost is true')
+export PATH="/opt/homebrew/bin:$PATH"
 
-if [ "$focused_app" = "ghostty" ]; then
-  /opt/homebrew/bin/tmux switch-client -l
-else
-  open -a Ghostty
-fi
+sesh last
+open -a Ghostty

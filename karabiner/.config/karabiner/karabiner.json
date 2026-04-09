@@ -817,6 +817,30 @@
                 "type": "basic"
               }
             ]
+          },
+          {
+            "description": "right_control + s to open sesh connect",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "s",
+                  "modifiers": {
+                    "mandatory": [
+                      "right_control"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "$HOME/scripts/tmux-sesh-connect"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
           }
         ]
       },
@@ -1463,6 +1487,30 @@
                 "to": [
                   {
                     "shell_command": "$HOME/scripts/tmux-claude-windows"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "right_control + s to open sesh connect",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "s",
+                  "modifiers": {
+                    "mandatory": [
+                      "right_control"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "$HOME/scripts/tmux-sesh-connect"
                   }
                 ],
                 "type": "basic"

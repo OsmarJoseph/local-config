@@ -37,24 +37,18 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # fzf
+source "$HOME/scripts/fzf-config"
+
 eval "$(fzf --zsh)"
 
-source $HOME/.config/tmux/plugins/tokyonight.nvim/extras/fzf/tokyonight_night.sh
-
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
---color=bg+:-1 \
---color=bg:-1 \
---color=gutter:-1"
-
-
-show_file_or_dir_preview="if [ -d {} ]; then ls -a {} | tail -n +3 | head -200; else bat -n --color=always --line-range :500 {}; fi"
+show_file_or_dir_preview="if [ -d {} ]; then eza --icons=always --color=always -a {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git --exclude node_modules --exclude Library"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 
-export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
-export FZF_ALT_C_OPTS="--preview 'ls -a {} | tail -n +3'"
+export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview' --border-label ' Files and Directories '"
+export FZF_ALT_C_OPTS="--preview 'eza --icons=always --color=always -a {}' --border-label ' Directories '"
 #
 # Advanced customization of fzf options via _fzf_comprun function
 # - The first argument to the function is the name of the command.
@@ -64,7 +58,7 @@ _fzf_comprun() {
   shift
 
   case "$command" in
-    cd)           fzf --preview 'ls -a {} | tail -n +3' "$@" ;;
+    cd)           fzf --preview 'eza --icons=always --color=always -a {}' "$@" ;;
     export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
     ssh)          fzf --preview 'dig {}'                   "$@" ;;
     *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
@@ -103,7 +97,7 @@ setopt hist_verify
 export FZF_COMPLETION_TRIGGER=''
 bindkey '^@' complete-word # ctrl+space to autocomplete
 bindkey '^I^I' autosuggest-accept
-bindkey '^T' fzf-completion
+bindkey '^F' fzf-file-widget
 bindkey '^D' fzf-cd-widget
 
 export ZSH_AUTOSUGGEST_STRATEGY=(
@@ -151,11 +145,6 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Bat
 export BAT_THEME="base16-256"
-
-# --- TheFuck ---
-
-eval $(thefuck --alias)
-eval $(thefuck --alias fk)
 
 set -o ignoreeof 
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.

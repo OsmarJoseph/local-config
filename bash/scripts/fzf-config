@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+export PATH="/opt/homebrew/bin:$PATH"
+
+source "$HOME/.config/tmux/plugins/tokyonight.nvim/extras/fzf/tokyonight_night.sh"
+
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+--no-sort \
+--border rounded \
+--color=border:#c0caf5 \
+--preview-window 'border-rounded' \
+--color=preview-border:#27a1b9 \
+--bind 'tab:down,btab:up' \
+--preview-window 'bottom:40%' \
+--height 100% \
+--color=bg+:-1 \
+--color=bg:-1 \
+--no-scrollbar \
+--pointer='' 
+"

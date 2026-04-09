@@ -20,10 +20,12 @@ telescope.setup({
     },
   },
   defaults = {
+    sorting_strategy = "ascending",
     layout_strategy = "vertical",
     layout_config = {
       vertical = {
-        prompt_position = "bottom",
+        prompt_position = "top",
+        mirror = true,
         preview_height = 0.4,
         preview_cutoff = 0,
         width = { padding = 8 },
