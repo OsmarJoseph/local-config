@@ -236,12 +236,6 @@ local plugins = {
       })
     end,
   },
-  {
-    "greggh/claude-code.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- Required for git operations
-    },
-  }
 }
 
 local opts = {}
