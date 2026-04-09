@@ -24,11 +24,14 @@ extract_session_name() {
 }
 
 SESSION_NAME=$(extract_session_name)
+TITLE_FILE="/tmp/cc-titled-${PPID}"
 
 if [[ -n "$SESSION_NAME" ]]; then
   BASE_NAME="$SESSION_NAME"
+elif [[ -f "$TITLE_FILE" ]]; then
+  BASE_NAME=$(cat "$TITLE_FILE")
 else
-  # No session name — preserve the existing window name (strip icon suffix)
+  # No session name, no auto-title — preserve the existing window name (strip icon suffix)
   CURRENT=$(tmux display-message -p -t "$TMUX_PANE" '#W')
   BASE_NAME="${CURRENT% \[*\]}"
 fi

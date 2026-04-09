@@ -1,4 +1,6 @@
 <base>
+[eql]>[hyph]
+[hyph]>[eql]
 [caps]>[xaxs]
 [left]>[caxx]
 [rght]>[grav]
