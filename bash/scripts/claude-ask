@@ -1,0 +1,5 @@
+#!/bin/bash
+
+env -u TMUX claude --model sonnet --effort medium --dangerously-skip-permissions "$(cat "$1")"
+
+rm -f "$1"

@@ -261,21 +261,26 @@ keymap.set("n", "<leader>xp", ":Export<CR>")
 keymap.set("n", "<leader>db", function() Snacks.bufdelete() end, { desc = "Delete Buffer" })
 keymap.set("n", "<leader>rf", function() Snacks.rename.rename_file() end, { desc = "Rename File" })
 
--- copy file reference for pasting into Claude
-local function copy_lines_ref(start_line, end_line)
+-- format lines with file path reference for Claude
+local function format_lines_ref(start_line, end_line)
   local path = vim.fn.expand("%:.")
   local ext = vim.fn.expand("%:e")
   local lines = vim.fn.getline(start_line, end_line)
   local line_ref = start_line == end_line and (":" .. start_line) or (":" .. start_line .. "-" .. end_line)
-  local content = "`" .. path .. line_ref .. "`\n"
-      .. "```" .. ext .. "\n"
-      .. table.concat(lines, "\n")
-      .. "\n```"
-  vim.fn.setreg("+", content)
-  vim.notify("Copied " .. (end_line - start_line + 1) .. " line(s) from " .. path)
+  return "`" .. path .. line_ref .. "`\n"
+    .. "```" .. ext .. "\n"
+    .. table.concat(lines, "\n")
+    .. "\n```"
 end
 
-keymap.set("n", "cp", function()
+-- copy file reference for pasting into Claude
+local function copy_lines_ref(start_line, end_line)
+  local content = format_lines_ref(start_line, end_line)
+  vim.fn.setreg("+", content)
+  vim.notify("Copied " .. (end_line - start_line + 1) .. " line(s) from " .. vim.fn.expand("%:."))
+end
+
+keymap.set("n", "<leader>cp", function()
   local lnum = vim.fn.line(".")
   copy_lines_ref(lnum, lnum)
 end, { desc = "Copy current line with file path" })
@@ -289,6 +294,55 @@ keymap.set("v", "<leader>cp", function()
   copy_lines_ref(start_line, end_line)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
 end, { desc = "Copy lines with file path" })
+
+-- send content to Claude Code in a tmux split alongside Neovim
+local function send_to_claude_split(start_line, end_line, question)
+  if not vim.env.TMUX then
+    vim.notify("Not inside a tmux session", vim.log.levels.ERROR)
+    return
+  end
+
+  local code_ref = format_lines_ref(start_line, end_line)
+  local content = question .. "\n\n" .. code_ref
+
+  local tmpfile = vim.fn.tempname()
+  local f = io.open(tmpfile, "w")
+  if not f then
+    vim.notify("Failed to create temp file", vim.log.levels.ERROR)
+    return
+  end
+  f:write(content)
+  f:close()
+
+  vim.fn.system(string.format(
+    "tmux split-window -h -l '45%%' %s",
+    vim.fn.shellescape("claude-ask " .. tmpfile)
+  ))
+end
+
+local function prompt_and_send(start_line, end_line)
+  vim.ui.input({ prompt = "Ask Claude: " }, function(question)
+    if not question or question == "" then return end
+    send_to_claude_split(start_line, end_line, question)
+  end)
+end
+
+keymap.set("n", "c?", function()
+  local lnum = vim.fn.line(".")
+  prompt_and_send(lnum, lnum)
+end, { desc = "Send current line to Claude in tmux split" })
+
+keymap.set("v", "<leader>c?", function()
+  local start_line = vim.fn.line("v")
+  local end_line = vim.fn.line(".")
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+  vim.schedule(function()
+    prompt_and_send(start_line, end_line)
+  end)
+end, { desc = "Send selection to Claude in tmux split" })
 
 local prev = { new_name = "", old_name = "" } -- Prevents duplicate events
 vim.api.nvim_create_autocmd("User", {

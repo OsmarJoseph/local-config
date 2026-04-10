@@ -6,6 +6,10 @@
 set -euo pipefail
 [[ -z "${TMUX_PANE:-}" ]] && exit 0
 
+# Skip renaming if the window belongs to nvim
+WINDOW_NAME=$(tmux display-message -p -t "$TMUX_PANE" '#W')
+[[ "$WINDOW_NAME" == *"nvim"* ]] && exit 0
+
 # Resolve plugin root
 PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "$0")/.." && pwd)}"
 
