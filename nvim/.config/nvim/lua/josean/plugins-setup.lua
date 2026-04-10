@@ -178,16 +178,6 @@ local plugins = {
   -- undotree
   "mbbill/undotree",
 
-  -- pr review
-  {
-    "pwntester/octo.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-      "nvim-tree/nvim-web-devicons",
-    },
-  },
-
   "themaxmarchuk/tailwindcss-colors.nvim", -- tailwind color highlight
 
   "tpope/vim-abolish",                     -- search & replace

@@ -77,7 +77,7 @@ opt.conceallevel = 2
 
 vim.cmd([[
   augroup spellcheck
-  autocmd FileType typescript,typescriptreact,markdown,octo setlocal spell
+  autocmd FileType typescript,typescriptreact,markdown setlocal spell
   augroup END
 ]])
 

@@ -32,7 +32,6 @@ require("tokyonight").setup({
     highlights.CursorLineNr               = { bg = "none", fg = colors.fg, bold = true }
     highlights.TreesitterContext          = { bg = "none" }
     highlights.TreesitterContextSeparator = { bg = "none", fg = colors.dark5 }
-    highlights.OctoEditable               = { bg = colors.black }
     highlights.StatusLine                 = { bg = "none" }
   end,
   cache = true, -- When set to true, the theme will be cached for better performance
