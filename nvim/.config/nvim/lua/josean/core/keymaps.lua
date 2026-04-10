@@ -291,8 +291,14 @@ keymap.set("v", "<leader>cp", function()
   if start_line > end_line then
     start_line, end_line = end_line, start_line
   end
-  copy_lines_ref(start_line, end_line)
+  local content = format_lines_ref(start_line, end_line)
+  vim.fn.setreg("+", content)
+  local line_count = end_line - start_line + 1
+  local filename = vim.fn.expand("%:.")
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+  vim.schedule(function()
+    vim.notify("Copied " .. line_count .. " line(s) from " .. filename)
+  end)
 end, { desc = "Copy lines with file path" })
 
 -- send content to Claude Code in a tmux split alongside Neovim
