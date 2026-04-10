@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+open -a Ghostty
+
 /opt/homebrew/bin/tmux display-popup -E -B -w 100% -h 100% \
   'source "$HOME/scripts/fzf-config" && selected=$(tmux list-windows -a \
     -F "#{session_name}:#{window_index}|#{?session_attached,0,1}|#{?session_attached,* ,  }#{session_name}: #{window_name}" \
@@ -14,4 +16,3 @@
       --preview "tmux capture-pane -ep -t {1}"
   ) && tmux switch-client -t "$(echo "$selected" | cut -d"|" -f1)"'
 
-open -a Ghostty

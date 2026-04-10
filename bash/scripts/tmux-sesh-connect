@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+open -a Ghostty
+
 /opt/homebrew/bin/tmux display-popup -E -B -w 100% -h 100% \
   'source "$HOME/scripts/fzf-config" && sesh connect "$(sesh list --icons | fzf \
     --border-label " Sesh " \
@@ -8,4 +10,3 @@
     --preview "sesh preview {}"
   )"'
 
-open -a Ghostty

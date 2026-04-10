@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
+open -a Ghostty
+
 export PATH="/opt/homebrew/bin:$PATH"
 
 sesh last
-open -a Ghostty
