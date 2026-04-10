@@ -40,8 +40,8 @@ key-mapping.preset = 'qwerty'
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 # Fallback value (if you omit the key): on-focused-monitor-changed = []
-on-focused-monitor-changed = ['move-mouse monitor-force-center']
-on-focus-changed = ['move-mouse window-force-center']
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+on-focus-changed = ['move-mouse window-lazy-center']
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -122,19 +122,18 @@ alt-shift-equal = 'resize smart +50'
 alt-shift-m = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-ctrl-cmd-c = 'workspace c'
 ctrl-cmd-f = 'workspace z'
-ctrl-cmd-g = 'workspace x'
+ctrl-cmd-x = 'workspace x'
 ctrl-cmd-a = 'workspace a'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-f = ['move-node-to-workspace z', 'focus-monitor main']
-alt-shift-g = ['move-node-to-workspace x', 'focus-monitor main']
+alt-shift-g = ['move-node-to-workspace g', 'focus-monitor main']
 alt-shift-s = ['move-node-to-workspace s', 'focus-monitor main']
 alt-shift-w = ['move-node-to-workspace w', 'focus-monitor main']
 alt-shift-e = ['move-node-to-workspace e', 'focus-monitor secondary']
 alt-shift-r = ['move-node-to-workspace r', 'focus-monitor secondary']
-alt-shift-c = ['move-node-to-workspace c', 'focus-monitor secondary']
+alt-shift-x = ['move-node-to-workspace x', 'focus-monitor secondary']
 alt-shift-a = ['move-node-to-workspace a', 'focus-monitor secondary']
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
@@ -175,7 +174,7 @@ run = 'move-node-to-workspace p'
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = 'move-node-to-workspace x'
+run = 'move-node-to-workspace g'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
@@ -191,7 +190,7 @@ run = 'move-node-to-workspace r'
 
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
-run = 'move-node-to-workspace b'
+run = 'move-node-to-workspace o'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
@@ -199,7 +198,7 @@ run = 'move-node-to-workspace e'
 
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
-run = 'move-node-to-workspace f'
+run = 'move-node-to-workspace i'
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
@@ -211,15 +210,15 @@ run = 'move-node-to-workspace d'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
-run = 'move-node-to-workspace c'
+run = 'move-node-to-workspace x'
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
-run = 'move-node-to-workspace g'
+run = 'move-node-to-workspace c'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari.WebApp.88DE6704-6CFF-4F25-9EFC-88A3EAAD7949'
-run = 'move-node-to-workspace t'
+run = 'move-node-to-workspace y'
 
 # floating windows
 [[on-window-detected]]
@@ -236,18 +235,18 @@ run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
 z = 'main'                            
-x = 'main'
 s = 'main'                            
 w = 'main'
 p = 'main'
-g = 'secondary'
+g = 'main'
 r = 'main'
-b = 'secondary'
-u = 'secondary'
+x = 'secondary'
+i = 'secondary'
+o = 'secondary'
 a = 'secondary'
 c = 'secondary'
 d = 'secondary'
 e = 'secondary'
 l = 'secondary'
 f = 'secondary'
-t = 'secondary'
+y = 'secondary'
