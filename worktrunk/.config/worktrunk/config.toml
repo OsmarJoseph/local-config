@@ -1,3 +1,7 @@
+[commit.generation]
+command = "CLAUDECODE= MAX_THINKING_TOKENS=0 claude -p --no-session-persistence --model=haiku --tools='' --disable-slash-commands --setting-sources='' --system-prompt=''"
+
+[projects]
 # # User Configuration
 #
 # Create with `wt config create`. Values shown are defaults unless noted otherwise.
@@ -85,6 +89,8 @@
 #
 # task-timeout-ms = 0   # Kill individual git commands after N ms; 0 disables
 # timeout-ms = 0        # Wall-clock budget for the entire collect phase; 0 disables
+[list]
+url = "http://localhost:{{ branch | hash_port }}"
 #
 # ### Commit
 #
@@ -259,3 +265,44 @@
 #     { install = "npm ci" },
 #     { build = "npm run build", server = "npm run dev" }
 # ]
+
+[projects."github.com/ParkerFinancial/parker-frontend"]
+switch.cd = false
+step.copy-ignored.exclude = [".next/", ".turbo/", ".DS_Store"]
+post-start.copy = "wt step copy-ignored && touch {{ worktree_path }}/.wt-copy-done"
+
+pre-start = '''
+set -e
+W={{ worktree_path }}
+BRANCH='{{ branch }}'
+CLEAN=${BRANCH#osmarjoseph/par-*-}
+CLEAN=${CLEAN//\//-}
+S={{ repo }}_${CLEAN}
+PORT={{ branch | hash_port }}
+SENTINEL="$W/.wt-copy-done"
+
+case "${DEV_ENV:-local}" in
+    local) DEV_CMD="yarn dev -p $PORT" ;;
+    stg)   DEV_CMD="doppler run --project k8s-parker-frontend --config stg_local -- yarn dev -p $PORT" ;;
+    prod)  DEV_CMD="doppler run --project k8s-parker-frontend --config prd_local -- yarn dev -p $PORT" ;;
+    *)     echo "Unknown DEV_ENV: ${DEV_ENV} (expected local|stg|prod)" >&2; exit 1 ;;
+esac
+
+tmux new-session -d -s "$S" -c "$W" -n nvim
+tmux send-keys -t "$S:nvim" 'nvim .'
+
+tmux new-window -t "$S" -n server -c "$W/frontend"
+tmux send-keys -t "$S:server" "echo 'waiting for copy-ignored...'; until [ -f $SENTINEL ]; do sleep 1; done; rm -f $SENTINEL; $DEV_CMD" Enter
+
+CLAUDE_WIN=$(tmux new-window -t "$S" -c "$W" -P -F '#{window_id}')
+tmux send-keys -t "$CLAUDE_WIN" 'claude' Enter
+
+tmux select-window -t "$CLAUDE_WIN"
+tmux switch-client -t "$S" 2>/dev/null || true
+'''
+pre-remove = '''
+BRANCH='{{ branch }}'
+CLEAN=${BRANCH#osmarjoseph/par-*-}
+CLEAN=${CLEAN//\//-}
+tmux kill-session -t "{{ repo }}_${CLEAN}" 2>/dev/null || true
+'''

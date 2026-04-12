@@ -2,6 +2,7 @@ alias n='nvim'
 alias vim='nvim'
 alias G='git'
 alias claude='env -u TMUX claude --effort max --dangerously-skip-permissions --remote-control'
+alias wsc='wt switch --create --base=@'
 
 alias fw='fw_function() {
 

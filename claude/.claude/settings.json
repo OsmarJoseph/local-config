@@ -10,7 +10,8 @@
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
-    "tmux-status@tmux-status-dev": true
+    "tmux-status@tmux-status-dev": true,
+    "worktrunk@worktrunk": true
   },
   "extraKnownMarketplaces": {
     "claude-code-plugins": {
@@ -23,6 +24,12 @@
       "source": {
         "source": "directory",
         "path": "/Users/osmarjoseph/.claude/plugins/claude-tmux-status"
+      }
+    },
+    "worktrunk": {
+      "source": {
+        "source": "github",
+        "repo": "max-sixty/worktrunk"
       }
     }
   },

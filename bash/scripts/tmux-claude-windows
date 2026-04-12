@@ -2,16 +2,23 @@
 
 open -a Ghostty
 
+current_session=$(/opt/homebrew/bin/tmux display-message -p '#{client_session}' 2>/dev/null)
+if [[ "$current_session" == *_* ]]; then
+  match_col="#{?#{m:${current_session%%_*}_*,#{session_name}},0,1}"
+else
+  match_col="1"
+fi
+
 /opt/homebrew/bin/tmux display-popup -E -B -w 100% -h 100% \
   'source "$HOME/scripts/fzf-config" && selected=$(tmux list-windows -a \
-    -F "#{session_name}:#{window_index}|#{?session_attached,0,1}|#{?session_attached,* ,  }#{session_name}: #{window_name}" \
+    -F "#{session_name}:#{window_index}|#{?session_attached,0,1}|'"$match_col"'|#{?session_attached,* ,  }#{session_name}: #{window_name}" \
     | grep "\[󰒲\]\|\[󰑮\]\|\[󰂞\]" \
-    | sort -t"|" -k2,2 -k3 \
+    | sort -t"|" -k2,2 -k3,3 -k4 \
     | fzf \
       --border-label " 󰛄 Claude " \
       --no-info \
       -d "|" \
-      --with-nth=3 \
+      --with-nth=4 \
       --preview-window "bottom:40%" \
       --preview "tmux capture-pane -ep -t {1}"
   ) && tmux switch-client -t "$(echo "$selected" | cut -d"|" -f1)"'
