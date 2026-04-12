@@ -113,7 +113,6 @@ local plugins = {
   "nvim-telescope/telescope-live-grep-args.nvim",
   {
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
   }, -- fuzzy finder
 
   -- autocompletion
@@ -165,7 +164,12 @@ local plugins = {
       },
     },
   },
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    lazy = false,
+    build = ":TSUpdate",
+  },
   "nvim-treesitter/nvim-treesitter-context",
   -- auto closing
   "windwp/nvim-ts-autotag", -- autoclose tags
@@ -183,7 +187,7 @@ local plugins = {
   "tpope/vim-abolish",                     -- search & replace
 
   -- debugger
-  { "rcarriga/nvim-dap-ui",            dependencies = { "mfussenegger/nvim-dap" } },
+  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
   "theHamsta/nvim-dap-virtual-text",
   "mxsdev/nvim-dap-vscode-js",
   { "nvim-neotest/nvim-nio" },

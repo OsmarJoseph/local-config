@@ -1,52 +1,60 @@
 -- import nvim-treesitter plugin safely
-local status, treesitter = pcall(require, "nvim-treesitter.configs")
+local status, ts = pcall(require, "nvim-treesitter")
 if not status then
   return
 end
 
--- configure treesitter
-treesitter.setup({
-  -- enable syntax highlighting
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = { "markdown" },
-  },
-  -- enable indentation
-  indent = { enable = true },
-  -- ensure these language parsers are installed
-  ensure_installed = {
-    "json",
-    "http",
-    "javascript",
-    "typescript",
-    "tsx",
-    "yaml",
-    "html",
-    "css",
-    "markdown",
-    "markdown_inline",
-    "graphql",
-    "bash",
-    "lua",
-    "vim",
-    "dockerfile",
-    "gitignore",
-  },
-  -- auto install above language parsers
-  auto_install = true,
+-- install parsers (async, no-op for already installed)
+ts.install({
+  "json",
+  "http",
+  "javascript",
+  "typescript",
+  "tsx",
+  "yaml",
+  "html",
+  "css",
+  "markdown",
+  "markdown_inline",
+  "graphql",
+  "bash",
+  "lua",
+  "vim",
+  "dockerfile",
+  "gitignore",
 })
 
-require 'treesitter-context'.setup {
-  enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
-  max_lines = 0,            -- How many lines the window should span. Values <= 0 mean no limit.
-  min_window_height = 0,    -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+-- enable treesitter highlighting and indentation for all filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    local lang = vim.treesitter.language.get_lang(args.match)
+    if not lang then
+      return
+    end
+    if not vim.treesitter.language.add(lang) then
+      return
+    end
+    vim.treesitter.start(args.buf)
+    if vim.treesitter.query.get(lang, "indents") then
+      vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+    -- re-enable regex highlighting for markdown alongside treesitter
+    if args.match == "markdown" then
+      vim.bo[args.buf].syntax = "on"
+    end
+  end,
+})
+
+-- treesitter-context
+require("treesitter-context").setup({
+  enable = true,
+  max_lines = 0,
+  min_window_height = 0,
   line_numbers = true,
-  multiline_threshold = 20, -- Maximum number of lines to collapse for a single context line
-  trim_scope = 'outer',     -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-  mode = 'cursor',          -- Line used to calculate context. Choices: 'cursor', 'topline'
-  -- Separator between context and content. Should be a single character string, like '-'.
-  -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
-  separator = '-',
-  zindex = 20,     -- The Z-index of the context window
-  on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
-}
+  multiline_threshold = 20,
+  trim_scope = "outer",
+  mode = "cursor",
+  separator = "-",
+  zindex = 20,
+  on_attach = nil,
+})
