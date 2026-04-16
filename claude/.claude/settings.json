@@ -11,7 +11,8 @@
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
     "tmux-status@tmux-status-dev": true,
-    "worktrunk@worktrunk": true
+    "worktrunk@worktrunk": true,
+    "caveman@caveman": true
   },
   "extraKnownMarketplaces": {
     "claude-code-plugins": {
@@ -31,7 +32,17 @@
         "source": "github",
         "repo": "max-sixty/worktrunk"
       }
+    },
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
     }
   },
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "statusLine": {
+    "type": "command",
+    "command": "bash \"/Users/osmarjoseph/.claude/plugins/cache/caveman/caveman/63e797cd753b/hooks/caveman-statusline.sh\""
+  }
 }
