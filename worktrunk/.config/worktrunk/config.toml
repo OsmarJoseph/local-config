@@ -281,19 +281,11 @@ S={{ repo }}_${CLEAN}
 PORT={{ branch | hash_port }}
 SENTINEL="$W/.wt-copy-done"
 
-DEV_ENV=$(printf 'local\nstg\nprod\n' | fzf --height=40% --prompt='dev env> ' --header='Select dev environment')
-case "$DEV_ENV" in
-    local) DEV_CMD="yarn dev -p $PORT" ;;
-    stg)   DEV_CMD="doppler run --project k8s-parker-frontend --config stg_local -- yarn dev -p $PORT" ;;
-    prod)  DEV_CMD="doppler run --project k8s-parker-frontend --config prd_local -- yarn dev -p $PORT" ;;
-    *)     echo "No dev env selected" >&2; exit 1 ;;
-esac
-
 tmux new-session -d -s "$S" -c "$W" -n nvim
 tmux send-keys -t "$S:nvim" 'nvim .'
 
 tmux new-window -t "$S" -n server -c "$W/frontend"
-tmux send-keys -t "$S:server" "echo 'waiting for copy-ignored...'; until [ -f $SENTINEL ]; do sleep 1; done; rm -f $SENTINEL; $DEV_CMD" Enter
+tmux send-keys -t "$S:server" "echo 'waiting for copy-ignored...'; until [ -f $SENTINEL ]; do sleep 1; done; rm -f $SENTINEL; DEV_ENV=\$(printf 'local\nstg\nprod\n' | fzf --height=40% --prompt='dev env> ' --header='Select dev environment'); echo \"dev env: \$DEV_ENV\"; case \"\$DEV_ENV\" in local) yarn dev -p $PORT ;; stg) doppler run --project k8s-parker-frontend --config stg_local -- yarn dev -p $PORT ;; prod) doppler run --project k8s-parker-frontend --config prd_local -- yarn dev -p $PORT ;; *) echo 'no dev env selected' >&2 ;; esac" Enter
 
 CLAUDE_WIN=$(tmux new-window -t "$S" -c "$W" -P -F '#{window_id}')
 tmux send-keys -t "$CLAUDE_WIN" 'claude' Enter
