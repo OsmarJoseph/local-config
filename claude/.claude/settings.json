@@ -6,7 +6,11 @@
     "allow": [
       "mcp__figma__get_design_context"
     ],
-    "defaultMode": "default"
+    "defaultMode": "auto"
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash \"/Users/osmarjoseph/.claude/plugins/cache/caveman/caveman/63e797cd753b/hooks/caveman-statusline.sh\""
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
@@ -41,8 +45,5 @@
     }
   },
   "skipDangerousModePermissionPrompt": true,
-  "statusLine": {
-    "type": "command",
-    "command": "bash \"/Users/osmarjoseph/.claude/plugins/cache/caveman/caveman/63e797cd753b/hooks/caveman-statusline.sh\""
-  }
+  "skipAutoPermissionPrompt": true
 }
