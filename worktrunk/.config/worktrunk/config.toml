@@ -281,11 +281,12 @@ S={{ repo }}_${CLEAN}
 PORT={{ branch | hash_port }}
 SENTINEL="$W/.wt-copy-done"
 
-case "${DEV_ENV:-local}" in
+DEV_ENV=$(printf 'local\nstg\nprod\n' | fzf --height=40% --prompt='dev env> ' --header='Select dev environment')
+case "$DEV_ENV" in
     local) DEV_CMD="yarn dev -p $PORT" ;;
     stg)   DEV_CMD="doppler run --project k8s-parker-frontend --config stg_local -- yarn dev -p $PORT" ;;
     prod)  DEV_CMD="doppler run --project k8s-parker-frontend --config prd_local -- yarn dev -p $PORT" ;;
-    *)     echo "Unknown DEV_ENV: ${DEV_ENV} (expected local|stg|prod)" >&2; exit 1 ;;
+    *)     echo "No dev env selected" >&2; exit 1 ;;
 esac
 
 tmux new-session -d -s "$S" -c "$W" -n nvim
