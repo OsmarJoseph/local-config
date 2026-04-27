@@ -19,18 +19,13 @@ require('minuet').setup({
 
   provider_options = {
     openai_compatible = {
-      api_key = 'OPENROUTER_API_KEY',
-      end_point = 'https://openrouter.ai/api/v1/chat/completions',
-      model = 'moonshotai/kimi-k2',
+      api_key = 'OPENCODE_API_KEY',
+      end_point = 'https://opencode.ai/zen/v1/chat/completions',
+      model = 'claude-haiku-4-5',
       name = 'AI',
       optional = {
         max_tokens = 64,   -- Short completions (faster)
         temperature = 0.2, -- Lower = faster, more deterministic
-        top_p = 0.95,
-        provider = {
-          -- Prioritize throughput for faster completion
-          sort = 'throughput',
-        },
       },
     },
   },

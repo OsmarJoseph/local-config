@@ -32,6 +32,7 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="$PATH:$HOME/scripts"
 export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH="$PATH:$JAVA_HOME/bin"
+export GITHUB_PACKAGE_TOKEN=$(gh auth token)
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
