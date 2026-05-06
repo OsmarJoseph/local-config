@@ -88,7 +88,6 @@ outer.right =      0
 # end tell'
 # '''
 
-cmd-h = [] # Disable "hide application"
 cmd-alt-h = [] # Disable "hide others"
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout

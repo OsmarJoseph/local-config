@@ -2,12 +2,6 @@
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
-  "permissions": {
-    "allow": [
-      "mcp__figma__get_design_context"
-    ],
-    "defaultMode": "auto"
-  },
   "statusLine": {
     "type": "command",
     "command": "bash \"/Users/osmarjoseph/.claude/plugins/cache/caveman/caveman/63e797cd753b/hooks/caveman-statusline.sh\""

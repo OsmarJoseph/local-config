@@ -17,8 +17,14 @@ You are operating within a constrained context window and strict system prompts.
 - Run `npx tsc --noEmit` (or the project's equivalent type-check)
 - Run `npx eslint . --quiet` (if configured)
 - Fixed ALL resulting errors
+- After everything is fixed, run another round of verification on the code that has been produced, improve
+  code quality, readability, and maintainability where possible. Refactor it like a Senior dev would. NEVER SKIP THIS STEP.
 
 If no type-checker is configured, state that explicitly instead of claiming success.
+
+## Verification
+
+- When fixing UI bugs, verify the fix actually addresses ALL visual states (e.g., blocked/grayed/disabled variants), not just the happy path. Check screenshots or describe each state before claiming success.
 
 ## Context Management
 
