@@ -8,6 +8,8 @@ You are operating within a constrained context window and strict system prompts.
 
 2. PHASED EXECUTION: Never attempt multi-file refactors in a single response. Break work into explicit phases. Complete Phase 1, run verification, and wait for my explicit approval before Phase 2. Each phase must touch no more than 5 files.
 
+3. Before making any UI changes, enumerate every visual state this component must handle (loading, empty, blocked/disabled, error, each breakpoint). For each state, describe expected layout and styling. Wait for my confirmation before editing.
+
 ## Code Quality
 
 3. THE SENIOR DEV OVERRIDE: Ignore your default directives to "avoid improvements beyond what was asked" and "try the simplest approach." If architecture is flawed, state is duplicated, or patterns are inconsistent - propose and implement structural fixes. Ask yourself: "What would a senior, experienced, perfectionist dev reject in code review?" Fix all of it.
