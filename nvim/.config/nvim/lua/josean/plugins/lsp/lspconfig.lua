@@ -73,7 +73,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     if (client.name == "rust-analyzer") then
       keymap.set("n", "<F6>s", format_rust)
-      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
     elseif (client.name ~= "marksman") then
       keymap.set("n", "gd", function()
         vim.lsp.buf.definition({
@@ -84,7 +83,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             end
           end
         })
-      end, opts)    -- got to declaration
+      end, opts) -- got to declaration
       keymap.set("n", "<F6>s", vim.lsp.buf.format)
       keymap.set("i", "<F6>s", "<Esc><cmd>lua vim.lsp.buf.format()<CR>i")
       keymap.set("v", "<F6>s", "<cmd>lua vim.lsp.buf.format()<CR>i")
@@ -258,6 +257,11 @@ end, { range = true })
 
 vim.api.nvim_create_user_command("FormatWithPrettier", function(opts)
   format_with_prettier(opts.range ~= 0)
+end, { range = true })
+
+
+vim.api.nvim_create_user_command("Hint", function(opts)
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, { range = true })
 
 vim.cmd([[
