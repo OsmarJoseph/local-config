@@ -57,11 +57,6 @@ local function format_with_prettier_and_write()
   vim.api.nvim_command("write")
 end
 
-local function format_rust()
-  vim.cmd("w")
-  vim.cmd("lua vim.lsp.buf.format()")
-end
-
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
@@ -71,9 +66,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- keybind options
     local opts = { noremap = true, silent = true, buffer = bufnr }
 
-    if (client.name == "rust-analyzer") then
-      keymap.set("n", "<F6>s", format_rust)
-    elseif (client.name ~= "marksman") then
+    if (client.name ~= "marksman") then
       keymap.set("n", "gd", function()
         vim.lsp.buf.definition({
           on_list = function(options)
@@ -306,6 +299,10 @@ vim.api.nvim_create_user_command("Sort", function()
 end, {})
 
 vim.diagnostic.config({
+  virtual_text = {
+    source = "if_many",
+    prefix = "",
+  },
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "",
