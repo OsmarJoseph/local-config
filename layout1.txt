@@ -1,12 +1,10 @@
 <base>
-[eql]>[hyph]
-[hyph]>[eql]
-[caps]>[xaxs]
-[left]>[caxx]
-[rght]>[grav]
+[caps]>[eql]
+[left]>[null]
+[rght]>[pgup]
 [up]>[obrk]
 [down]>[cbrk]
-[obrk]>[xaxs]
+[obrk]>[hyph]
 [cbrk]>[caps]
 [lctr]>[lwin]
 [lalt]>[lctr]
@@ -16,6 +14,8 @@
 [pgup]>[ralt]
 [end]>[cxwx]
 [pgdn]>[rctr]
+{null}>{s9}{x1}{-lshf}{9}{+lshf}
+{pgup}>{s9}{x1}{-lshf}{0}{+lshf}
 <keypad>
 <function1>
 <function2>
