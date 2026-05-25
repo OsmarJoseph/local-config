@@ -132,7 +132,6 @@ alt-shift-g = ['move-node-to-workspace g', 'focus-monitor main']
 alt-shift-s = ['move-node-to-workspace s', 'focus-monitor main']
 alt-shift-w = ['move-node-to-workspace w', 'focus-monitor main']
 alt-shift-e = ['move-node-to-workspace e', 'focus-monitor secondary']
-alt-shift-r = ['move-node-to-workspace r', 'focus-monitor secondary']
 alt-shift-x = ['move-node-to-workspace x', 'focus-monitor secondary']
 alt-shift-a = ['move-node-to-workspace a', 'focus-monitor secondary']
 
@@ -185,10 +184,6 @@ if.app-id = 'com.linear'
 run = 'move-node-to-workspace l'
 
 [[on-window-detected]]
-if.app-id = 'inc.wonder.roam'
-run = 'move-node-to-workspace r'
-
-[[on-window-detected]]
 if.app-id = 'md.obsidian'
 run = 'move-node-to-workspace o'
 
@@ -235,11 +230,10 @@ run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
 z = 'main'                            
-s = 'main'                            
-w = 'main'
+s = 'secondary'                            
+w = 'secondary'
 p = 'main'
 g = 'main'
-r = 'main'
 x = 'secondary'
 i = 'secondary'
 o = 'secondary'
