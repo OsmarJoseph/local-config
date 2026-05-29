@@ -2,15 +2,86 @@
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
-  "statusLine": {
-    "type": "command",
-    "command": "bash \"/Users/osmarjoseph/.claude/plugins/cache/caveman/caveman/63e797cd753b/hooks/caveman-statusline.sh\""
+  "model": "claude-opus-4-8",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/osmarjoseph/.local/bin/oso-hook",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/osmarjoseph/.local/bin/oso-hook",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/osmarjoseph/.local/bin/oso-hook",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/osmarjoseph/.local/bin/oso-hook",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/osmarjoseph/.local/bin/oso-hook",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/osmarjoseph/.local/bin/oso-hook",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
     "tmux-status@tmux-status-dev": true,
     "worktrunk@worktrunk": true,
-    "caveman@caveman": true
+    "rust-analyzer-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "claude-code-plugins": {
@@ -30,16 +101,10 @@
         "source": "github",
         "repo": "max-sixty/worktrunk"
       }
-    },
-    "caveman": {
-      "source": {
-        "source": "github",
-        "repo": "JuliusBrussee/caveman"
-      }
     }
   },
   "skipDangerousModePermissionPrompt": true,
-  "skipAutoPermissionPrompt": true,
   "editorMode": "vim",
-  "remoteControlAtStartup": false
+  "remoteControlAtStartup": false,
+  "skipAutoPermissionPrompt": true
 }

@@ -121,13 +121,13 @@ alt-shift-equal = 'resize smart +50'
 alt-shift-m = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-ctrl-cmd-f = 'workspace z'
+ctrl-cmd-f = 'workspace f'
 ctrl-cmd-x = 'workspace x'
 ctrl-cmd-a = 'workspace a'
 ctrl-cmd-u = 'workspace d'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-alt-shift-f = ['move-node-to-workspace z', 'focus-monitor main']
+alt-shift-f = ['move-node-to-workspace f', 'focus-monitor main']
 alt-shift-g = ['move-node-to-workspace g', 'focus-monitor main']
 alt-shift-s = ['move-node-to-workspace s', 'focus-monitor main']
 alt-shift-w = ['move-node-to-workspace w', 'focus-monitor main']
@@ -165,7 +165,7 @@ run = 'move-node-to-workspace w'
 
 [[on-window-detected]]
 if.app-id = 'app.zen-browser.zen'
-run = 'move-node-to-workspace z'
+run = 'move-node-to-workspace f'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari.WebApp.9003DDEF-5962-431C-BA64-373201BEEDA3'
@@ -208,6 +208,10 @@ if.app-id = 'com.apple.iCal'
 run = 'move-node-to-workspace x'
 
 [[on-window-detected]]
+if.app-id = 'us.zoom.xos'
+run = 'move-node-to-workspace z'
+
+[[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 run = 'move-node-to-workspace c'
 
@@ -229,7 +233,7 @@ if.app-id = 'com.riotgames.RiotGames.RiotClient'
 run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
-z = 'main'                            
+f = 'main'
 s = 'secondary'                            
 w = 'secondary'
 p = 'main'
@@ -242,5 +246,5 @@ c = 'secondary'
 d = 'secondary'
 e = 'secondary'
 l = 'secondary'
-f = 'secondary'
+z = 'secondary'
 y = 'secondary'

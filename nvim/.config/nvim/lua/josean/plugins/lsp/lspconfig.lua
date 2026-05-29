@@ -204,6 +204,15 @@ vim.lsp.config('marksman', {
 
     if isInNotesPath then
       vim.opt.wrap = true
+
+      local persist = require("arrow.persist")
+
+      keymap.set("n", "<F6>2", "<cmd>ObsidianToday<cr>")
+
+      keymap.set("n", "<F6>3", function() persist.go_to(2) end)
+      keymap.set("n", "<F6>4", function() persist.go_to(3) end)
+      keymap.set("n", "<F6>5", function() persist.go_to(4) end)
+
       vim.api.nvim_create_user_command("ZK", obsidianConfig.create_zettelkasten_note, {})
     end
   end,
