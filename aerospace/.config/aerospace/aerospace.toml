@@ -122,6 +122,7 @@ alt-shift-m = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 ctrl-cmd-f = 'workspace f'
+ctrl-cmd-g = 'workspace g'
 ctrl-cmd-x = 'workspace x'
 ctrl-cmd-a = 'workspace a'
 ctrl-cmd-u = 'workspace d'
@@ -215,10 +216,6 @@ run = 'move-node-to-workspace z'
 if.app-id = 'com.google.Chrome'
 run = 'move-node-to-workspace c'
 
-[[on-window-detected]]
-if.app-id = 'com.apple.Safari.WebApp.88DE6704-6CFF-4F25-9EFC-88A3EAAD7949'
-run = 'move-node-to-workspace y'
-
 # floating windows
 [[on-window-detected]]
 if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
@@ -234,17 +231,16 @@ run = 'layout floating'
 
 [workspace-to-monitor-force-assignment]
 f = 'main'
-s = 'secondary'                            
-w = 'secondary'
+s = 'main'                            
 p = 'main'
 g = 'main'
+e = 'main'
+w = 'secondary'
 x = 'secondary'
 i = 'secondary'
 o = 'secondary'
 a = 'secondary'
 c = 'secondary'
 d = 'secondary'
-e = 'secondary'
 l = 'secondary'
 z = 'secondary'
-y = 'secondary'

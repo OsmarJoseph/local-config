@@ -307,6 +307,32 @@ vim.api.nvim_create_user_command("Sort", function()
   import_sort_run()
 end, {})
 
+-- :Archive — move every completed task (- [x], and anything under a "Done" heading)
+-- into a "## Concluídas" section at the end of the buffer, grouped by the same
+-- heading hierarchy. Idempotent: re-running folds newly-done items into it.
+local function archive_done_run()
+  local current_bufnr = vim.api.nvim_get_current_buf()
+  local archive_executable = vim.fn.expand("~/.config/nvim/scripts/archive_done.py")
+  local content = table.concat(vim.api.nvim_buf_get_lines(current_bufnr, 0, -1, false), "\n")
+
+  local result = vim.fn.systemlist({ "python3", archive_executable }, content)
+
+  if vim.v.shell_error ~= 0 then
+    vim.notify("Archive failed:\n" .. table.concat(result, "\n"), vim.log.levels.ERROR)
+    return
+  end
+
+  if result and #result > 0 then
+    vim.api.nvim_buf_set_lines(current_bufnr, 0, -1, false, result)
+  else
+    print("No content returned.")
+  end
+end
+
+vim.api.nvim_create_user_command("Archive", function()
+  archive_done_run()
+end, {})
+
 vim.diagnostic.config({
   virtual_text = {
     source = "if_many",
