@@ -22,13 +22,14 @@ dotfiles/
   herdr/                 # herdr config (AI-agent terminal multiplexer)
   claude/                # Claude Code config (settings, hooks, plugins)
   worktrunk/             # Worktrunk (git worktree manager) config
+  hunk/                  # hunk (review-first terminal diff viewer) config
 ```
 
 Each top-level directory mirrors `$HOME` with a `.config/` prefix. Running
 `stow <dir>` from the repo root creates symlinks (e.g., `stow nvim` links
 `~/.config/nvim`).
 
-**Stow-managed directories:** aerospace, ghostty, gh, karabiner, nvim, claude, worktrunk, herdr
+**Stow-managed directories:** aerospace, ghostty, gh, karabiner, nvim, claude, worktrunk, herdr, hunk
 
 ## Commands
 
@@ -173,6 +174,7 @@ These are the Neovim settings that reflect the owner's coding preferences
 | GNU Stow           | Symlink management for dotfiles    |
 | Neovim (lazy.nvim) | Editor with ~40 plugins            |
 | herdr              | AI-agent terminal multiplexer      |
+| hunk               | Review-first terminal diff viewer  |
 | Ghostty            | Primary terminal emulator          |
 | AeroSpace          | Tiling window manager (macOS)      |
 | fzf + fd + rg      | Fuzzy finding and search           |

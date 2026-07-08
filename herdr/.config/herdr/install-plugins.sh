@@ -41,6 +41,9 @@ have_plugin vim-herdr-navigation || herdr plugin link "$PLUGDIR/vim-herdr-naviga
 # --- fuzzy command palette over all plugin actions (prefix+p) ---
 have_plugin jt.command-palette || herdr plugin install JanTvrdik/herdr-command-palette --yes
 
+# --- auto-open `hunk diff --watch` in a split when an agent goes idle with a dirty tree (hunk.autodiff) ---
+have_plugin hunk.autodiff || herdr plugin install scott306lr/herdr-plugin-hunk-autodiff --yes
+
 herdr server reload-config >/dev/null 2>&1 || true
 if [ "$started_server" = 1 ]; then herdr server stop >/dev/null 2>&1 || true; fi
 echo "herdr plugins bootstrapped into $PLUGDIR"

@@ -5,3 +5,6 @@ herdr/.config/herdr/herdr-server.log
 herdr/.config/herdr/*.sock
 herdr/.config/herdr/session.json
 herdr/.config/herdr/plugins
+
+# hunk writes runtime state into ~/.config/hunk; only config.toml is tracked
+hunk/.config/hunk/state.json

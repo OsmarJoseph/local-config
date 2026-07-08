@@ -1,0 +1,15 @@
+# ~/.config/hunk/config.toml  — Stow: dotfiles/hunk/.config/hunk/config.toml
+# hunk: review-first terminal diff viewer (https://github.com/modem-dev/hunk)
+# Seeded from hunk's defaults; some have since been changed. Tweak as needed.
+
+theme = "tokyo-night"    # UI color scheme; a named theme override
+mode = "auto"                    # layout mode: "auto", "split", "stack"
+vcs = "git"                      # version control system: "git", "jj", "sl"
+watch = false                    # auto-reload when the diff input changes
+exclude_untracked = false        # hide untracked files in working-tree reviews
+line_numbers = false             # show the line-number gutter
+wrap_lines = false               # wrap long diff lines instead of truncating
+hunk_headers = false             # show hunk metadata rows (file & @@ headers)
+menu_bar = false                 # show the menu bar
+agent_notes = false              # show inline agent notes by default
+transparent_background = false   # let the terminal background show through

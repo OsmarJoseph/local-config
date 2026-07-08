@@ -85,7 +85,7 @@ description = "navigate right (vim/herdr)"
 [[keys.command]]
 key = "prefix+c"
 type = "shell"
-command = '''herdr pane run "$(herdr tab create --cwd "${HERDR_ACTIVE_PANE_CWD:-$HOME}" --label claude --focus | jq -r '.result.root_pane.pane_id')" "claude --effort max --dangerously-skip-permissions --verbose"'''
+command = '''herdr pane run "$(herdr tab create --cwd "${HERDR_ACTIVE_PANE_CWD:-$HOME}" --focus | jq -r '.result.root_pane.pane_id')" "claude --effort max --dangerously-skip-permissions --verbose"'''
 description = "new Claude Code tab"
 
 # fuzzy command palette across all plugin actions (herdr-command-palette)
