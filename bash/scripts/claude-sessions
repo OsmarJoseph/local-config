@@ -1,0 +1,107 @@
+#!/usr/bin/env bash
+#
+# claude-sessions -- store Claude session IDs per git branch and list them back.
+#
+# Usage:
+#   claude-sessions add <session-id> [branch]   Store a session id (branch defaults to current)
+#   claude-sessions list [branch]               List session ids for a branch (defaults to current)
+#   claude-sessions help                        Show this help
+#
+# Sessions are keyed by repo + branch (the repo is auto-detected from the
+# current directory), so identically named branches in different repos don't
+# collide. Data is stored as TSV (repo, branch, session-id, epoch) at:
+#   $CLAUDE_SESSIONS_FILE
+#   (default: ${XDG_DATA_HOME:-~/.local/share}/claude-sessions/sessions.tsv)
+
+set -euo pipefail
+
+DATA_FILE="${CLAUDE_SESSIONS_FILE:-${XDG_DATA_HOME:-$HOME/.local/share}/claude-sessions/sessions.tsv}"
+
+die() {
+  echo "claude-sessions: $*" >&2
+  exit 1
+}
+
+usage() {
+  sed -n '3,15p' "$0" | sed 's/^# \{0,1\}//'
+}
+
+repo_root() {
+  git rev-parse --show-toplevel 2>/dev/null || die "not inside a git repository"
+}
+
+current_branch() {
+  local branch
+  branch=$(git branch --show-current 2>/dev/null) || die "not inside a git repository"
+  [ -n "$branch" ] || die "detached HEAD -- pass a branch name explicitly"
+  printf '%s' "$branch"
+}
+
+cmd_add() {
+  local session_id="${1:-}"
+  local branch="${2:-}"
+  [ -n "$session_id" ] || die "usage: claude-sessions add <session-id> [branch]"
+
+  local repo
+  repo=$(repo_root)
+  [ -n "$branch" ] || branch=$(current_branch)
+
+  mkdir -p "$(dirname "$DATA_FILE")"
+  touch "$DATA_FILE"
+
+  # Skip exact duplicates for this repo+branch+session.
+  if awk -F'\t' -v r="$repo" -v b="$branch" -v s="$session_id" \
+       '$1==r && $2==b && $3==s {found=1} END {exit !found}' "$DATA_FILE"; then
+    echo "claude-sessions: already stored for '$branch': $session_id" >&2
+    return 0
+  fi
+
+  printf '%s\t%s\t%s\t%s\n' "$repo" "$branch" "$session_id" "$(date +%s)" >> "$DATA_FILE"
+  echo "claude-sessions: stored for '$branch': $session_id" >&2
+}
+
+cmd_list() {
+  local branch="${1:-}"
+
+  local repo
+  repo=$(repo_root)
+  [ -n "$branch" ] || branch=$(current_branch)
+
+  local out=""
+  if [ -f "$DATA_FILE" ]; then
+    # Emit "epoch<TAB>line-no<TAB>session" for matches, sort most-recently-added
+    # first (by epoch, then insertion order as tiebreaker), then keep just the id.
+    out=$(awk -F'\t' -v r="$repo" -v b="$branch" \
+            '$1==r && $2==b {print $4"\t"NR"\t"$3}' "$DATA_FILE" \
+          | sort -t"$(printf '\t')" -k1,1nr -k2,2nr \
+          | cut -f3-)
+  fi
+
+  if [ -z "$out" ]; then
+    echo "claude-sessions: no sessions for branch '$branch'" >&2
+    return 0
+  fi
+  printf '%s\n' "$out"
+}
+
+main() {
+  local cmd="${1:-help}"
+  case "$cmd" in
+    add)
+      shift
+      cmd_add "$@"
+      ;;
+    list | ls)
+      shift
+      cmd_list "$@"
+      ;;
+    help | -h | --help)
+      usage
+      ;;
+    *)
+      die "unknown command '$cmd' (try: claude-sessions help)"
+      ;;
+  esac
+}
+
+main "$@"
