@@ -42,6 +42,7 @@ reload_config = "prefix+r"                     # tmux `r`
 [ui]
 prompt_new_tab_name = false                    # tmux new-window is immediate, no name prompt
 mouse_capture = true                           # tmux `set -g mouse on`
+pane_gaps = false
 
 show_agent_labels_on_pane_borders = true
 [ui.toast]

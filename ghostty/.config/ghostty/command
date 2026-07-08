@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-/opt/homebrew/bin/tmux attach || /opt/homebrew/bin/tmux

@@ -59,10 +59,6 @@ keymap.set("n", "<F6>w", ":close<CR>")  -- close current split window
 keymap.set("c", "<F6>w", ":close<CR>")  -- close current split window
 keymap.set("n", "<F6><S-w>", ":on<CR>") -- close all split windows except current
 keymap.set("c", "<F6><S-w>", ":on<CR>") -- close all split windows except current
-keymap.set("n", "<C-h>", ":TmuxNavigateLeft<CR>")
-keymap.set("n", "<C-j>", ":TmuxNavigateDown<CR>")
-keymap.set("n", "<C-k>", ":TmuxNavigateUp<CR>")
-keymap.set("n", "<C-l>", ":TmuxNavigateRight<CR>")
 
 -- tabs
 keymap.set("n", "<leader>tn", ":tabnew<CR>")   -- open new tab
@@ -301,10 +297,10 @@ keymap.set("v", "<leader>cp", function()
   end)
 end, { desc = "Copy lines with file path" })
 
--- send content to Claude Code in a tmux split alongside Neovim
+-- send content to Claude Code in a herdr split alongside Neovim
 local function send_to_claude_split(start_line, end_line, question)
-  if not vim.env.TMUX then
-    vim.notify("Not inside a tmux session", vim.log.levels.ERROR)
+  if vim.env.HERDR_ENV ~= "1" or not vim.env.HERDR_PANE_ID then
+    vim.notify("Not inside a herdr pane", vim.log.levels.ERROR)
     return
   end
 
@@ -320,8 +316,35 @@ local function send_to_claude_split(start_line, end_line, question)
   f:write(content)
   f:close()
 
+  local herdr = vim.env.HERDR_BIN_PATH
+  if herdr == nil or herdr == "" then
+    herdr = "herdr"
+  end
+  local src = vim.env.HERDR_PANE_ID
+
+  -- Split Neovim's pane 45% to the right and focus the new pane.
+  local split_out = vim.fn.system(string.format(
+    "%s pane split --pane %s --direction right --ratio 0.45 --focus",
+    vim.fn.shellescape(herdr),
+    vim.fn.shellescape(src)
+  ))
+  -- The new pane is the pane_id in the result that isn't Neovim's own pane
+  -- (read from the split's own output, so there's no focus race).
+  local new_pane = vim.fn.system(
+    "jq -r --arg src "
+      .. vim.fn.shellescape(src)
+      .. " '[.. | .pane_id? // empty] | map(select(. != $src)) | first // empty'",
+    split_out
+  ):gsub("%s+$", "")
+
+  if new_pane == "" then
+    vim.notify("herdr: could not resolve the new split pane", vim.log.levels.ERROR)
+    return
+  end
   vim.fn.system(string.format(
-    "tmux split-window -h -l '45%%' %s",
+    "%s pane run %s %s",
+    vim.fn.shellescape(herdr),
+    vim.fn.shellescape(new_pane),
     vim.fn.shellescape("claude-ask " .. tmpfile)
   ))
 end
@@ -336,7 +359,7 @@ end
 keymap.set("n", "c?", function()
   local lnum = vim.fn.line(".")
   prompt_and_send(lnum, lnum)
-end, { desc = "Send current line to Claude in tmux split" })
+end, { desc = "Send current line to Claude in herdr split" })
 
 keymap.set("v", "<leader>c?", function()
   local start_line = vim.fn.line("v")
@@ -348,7 +371,7 @@ keymap.set("v", "<leader>c?", function()
   vim.schedule(function()
     prompt_and_send(start_line, end_line)
   end)
-end, { desc = "Send selection to Claude in tmux split" })
+end, { desc = "Send selection to Claude in herdr split" })
 
 local prev = { new_name = "", old_name = "" } -- Prevents duplicate events
 vim.api.nvim_create_autocmd("User", {

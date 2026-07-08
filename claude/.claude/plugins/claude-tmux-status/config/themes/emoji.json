@@ -1,9 +1,0 @@
-{
-  "name": "emoji",
-  "description": "Default emoji icons (works everywhere)",
-  "icons": {
-    "idle": "😴",
-    "processing": "🧑‍🍳",
-    "attention": "👀"
-  }
-}

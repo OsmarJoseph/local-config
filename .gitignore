@@ -1,5 +1,4 @@
 node_modules
-tmux/.config/tmux/plugins
 
 # herdr writes runtime state into ~/.config/herdr (a real dir); only config.toml + install-plugins.sh are tracked
 herdr/.config/herdr/herdr-server.log

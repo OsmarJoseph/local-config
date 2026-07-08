@@ -5,7 +5,7 @@
 Personal dotfiles repository for a macOS development environment. Managed with
 **GNU Stow** (symlink farm manager). No build system, test framework, or CI
 pipeline. The owner primarily works with TypeScript/React and uses a
-terminal-centric workflow (Neovim + tmux + Ghostty).
+terminal-centric workflow (Neovim + herdr + Ghostty).
 
 ## Repository Structure
 
@@ -19,14 +19,16 @@ dotfiles/
   ghostty/               # Ghostty terminal emulator config
   karabiner/             # Karabiner-Elements keyboard remapping (JSON)
   nvim/                  # Neovim configuration (Lua, lazy.nvim)
-  tmux/                  # tmux config
+  herdr/                 # herdr config (AI-agent terminal multiplexer)
+  claude/                # Claude Code config (settings, hooks, plugins)
+  worktrunk/             # Worktrunk (git worktree manager) config
 ```
 
 Each top-level directory mirrors `$HOME` with a `.config/` prefix. Running
 `stow <dir>` from the repo root creates symlinks (e.g., `stow nvim` links
 `~/.config/nvim`).
 
-**Stow-managed directories:** aerospace, ghostty, gh, karabiner, nvim, tmux
+**Stow-managed directories:** aerospace, ghostty, gh, karabiner, nvim, claude, worktrunk, herdr
 
 ## Commands
 
@@ -69,14 +71,14 @@ stylua <file>.lua
 :make
 ```
 
-### tmux
+### herdr
 
 ```bash
-# Reload tmux config
-tmux source-file ~/.config/tmux/tmux.conf   # or prefix + r
+# Reload herdr config after editing config.toml
+herdr server reload-config              # or prefix + r inside herdr
 
-# Install tmux plugins (TPM)
-# prefix + I (capital i)
+# Bootstrap herdr plugins (installs are not stored in config.toml)
+bash ~/.config/herdr/install-plugins.sh
 ```
 
 ### Shell
@@ -144,7 +146,7 @@ frameworks, or test commands.
 
 - **Indentation:** 2 spaces universally (Lua, shell, TOML, JSON)
 - **Line width:** No hard wrap; editor has `wrap = false`
-- **Colorscheme:** tokyonight-night (used across Neovim, tmux, fzf, Ghostty)
+- **Colorscheme:** tokyonight-night (used across Neovim, herdr, fzf, Ghostty)
 - **Naming:** snake_case for Lua variables and functions; kebab-case for
   shell script filenames
 - **Error handling (Lua):** Use `pcall` for plugin requires that may fail;
@@ -170,7 +172,7 @@ These are the Neovim settings that reflect the owner's coding preferences
 | ------------------ | ---------------------------------- |
 | GNU Stow           | Symlink management for dotfiles    |
 | Neovim (lazy.nvim) | Editor with ~40 plugins            |
-| tmux (TPM)         | Terminal multiplexer               |
+| herdr              | AI-agent terminal multiplexer      |
 | Ghostty            | Primary terminal emulator          |
 | AeroSpace          | Tiling window manager (macOS)      |
 | fzf + fd + rg      | Fuzzy finding and search           |

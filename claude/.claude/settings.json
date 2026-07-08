@@ -2,8 +2,7 @@
   "editorMode": "vim",
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true,
-    "tmux-status@tmux-status-dev": true
+    "rust-analyzer-lsp@claude-plugins-official": true
   },
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
@@ -13,12 +12,6 @@
       "source": {
         "repo": "anthropics/claude-code",
         "source": "github"
-      }
-    },
-    "tmux-status-dev": {
-      "source": {
-        "path": "/Users/osmarjoseph/.claude/plugins/claude-tmux-status",
-        "source": "directory"
       }
     }
   },

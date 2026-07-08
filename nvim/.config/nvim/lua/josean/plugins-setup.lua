@@ -104,21 +104,20 @@ local plugins = {
   "nvim-tree/nvim-web-devicons",
 
   {
-    "christoomey/vim-tmux-navigator", -- navigate between vim/nvim & tmux/herdr panes
+    -- Loader for vim-herdr-navigation's <C-hjkl> (flows between nvim splits and herdr
+    -- panes). The module is bootstrapped by ~/.config/herdr/install-plugins.sh; guarded
+    -- on it existing so a not-yet-bootstrapped machine falls back gracefully.
+    "christoomey/vim-tmux-navigator",
     lazy = false,
-    -- Inside herdr, hand <C-hjkl> to vim-herdr-navigation (bootstrapped by
-    -- ~/.config/herdr/install-plugins.sh). Outside herdr, native vim-tmux-navigator
-    -- keeps working. Guarded on the module existing so a not-yet-bootstrapped machine
-    -- falls back gracefully instead of erroring.
     init = function()
       local m = vim.fn.expand("~/.local/share/herdr/plugins/vim-herdr-navigation/editor/nvim.lua")
-      if vim.env.HERDR_ENV == "1" and vim.fn.filereadable(m) == 1 then
+      if vim.fn.filereadable(m) == 1 then
         vim.g.tmux_navigator_no_mappings = 1
       end
     end,
     config = function()
       local m = vim.fn.expand("~/.local/share/herdr/plugins/vim-herdr-navigation/editor/nvim.lua")
-      if vim.env.HERDR_ENV == "1" and vim.fn.filereadable(m) == 1 then
+      if vim.fn.filereadable(m) == 1 then
         dofile(m)
       end
     end,
