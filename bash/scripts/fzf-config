@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-export PATH="/opt/homebrew/bin:$PATH"
-
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --highlight-line \
   --info=inline-right \
