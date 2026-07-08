@@ -644,6 +644,22 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "disable command + tab (do nothing)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "tab",
+                                    "modifiers": {
+                                        "mandatory": ["command"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [{ "key_code": "vk_none" }],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
@@ -1162,6 +1178,22 @@
                                     }
                                 },
                                 "to": [{ "shell_command": "$HOME/scripts/tmux-toggle-notes" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "disable command + tab (do nothing)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "tab",
+                                    "modifiers": {
+                                        "mandatory": ["command"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [{ "key_code": "vk_none" }],
                                 "type": "basic"
                             }
                         ]

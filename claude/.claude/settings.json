@@ -77,16 +77,11 @@
       }
     ]
   },
-  "statusLine": {
-    "type": "command",
-    "command": "bash \"/Users/osmarjoseph/.claude/plugins/cache/caveman/caveman/655b7d9c5431/src/hooks/caveman-statusline.sh\""
-  },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
     "tmux-status@tmux-status-dev": true,
     "worktrunk@worktrunk": true,
-    "rust-analyzer-lsp@claude-plugins-official": true,
-    "caveman@caveman": true
+    "rust-analyzer-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "claude-code-plugins": {
@@ -105,12 +100,6 @@
       "source": {
         "source": "github",
         "repo": "max-sixty/worktrunk"
-      }
-    },
-    "caveman": {
-      "source": {
-        "source": "github",
-        "repo": "JuliusBrussee/caveman"
       }
     }
   },
