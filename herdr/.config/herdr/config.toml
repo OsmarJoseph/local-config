@@ -33,6 +33,7 @@ goto         = "prefix+s"                       # searchable workspace/tab/pane 
 # workspaces (tmux sessions)
 new_workspace      = "prefix+n"                # tmux `n`  new-session
 workspace_picker   = "prefix+x"                # native workspace picker
+focus_agent        = "ctrl+1..9"                # native workspace picker
 previous_workspace = "prefix+="                # tmux `=`  switch-client -l (nearest; sequential, not MRU)
 
 # misc
