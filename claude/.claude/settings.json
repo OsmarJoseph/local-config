@@ -1,109 +1,109 @@
 {
-  "editorMode": "vim",
-  "enabledPlugins": {
-    "frontend-design@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true
-  },
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
-  "extraKnownMarketplaces": {
-    "claude-code-plugins": {
-      "source": {
-        "repo": "anthropics/claude-code",
-        "source": "github"
-      }
-    }
-  },
+  "model": "claude-fable-5[1m]",
   "hooks": {
     "PostToolUse": [
       {
+        "matcher": "",
         "hooks": [
           {
+            "type": "command",
             "command": "/Users/osmarjoseph/.local/bin/oso-hook",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
-        ],
-        "matcher": ""
+        ]
       }
     ],
     "PostToolUseFailure": [
       {
+        "matcher": "",
         "hooks": [
           {
+            "type": "command",
             "command": "/Users/osmarjoseph/.local/bin/oso-hook",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
-        ],
-        "matcher": ""
+        ]
       }
     ],
     "PreToolUse": [
       {
+        "matcher": "",
         "hooks": [
           {
+            "type": "command",
             "command": "/Users/osmarjoseph/.local/bin/oso-hook",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
-        ],
-        "matcher": ""
+        ]
       }
     ],
     "SessionStart": [
       {
+        "matcher": "*",
         "hooks": [
           {
+            "type": "command",
             "command": "bash '/Users/osmarjoseph/.claude/hooks/herdr-agent-state.sh' session",
-            "timeout": 10,
-            "type": "command"
+            "timeout": 10
           }
-        ],
-        "matcher": "*"
+        ]
       }
     ],
     "Stop": [
       {
+        "matcher": "",
         "hooks": [
           {
+            "type": "command",
             "command": "/Users/osmarjoseph/.local/bin/oso-hook",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
-        ],
-        "matcher": ""
+        ]
       }
     ],
     "SubagentStop": [
       {
+        "matcher": "",
         "hooks": [
           {
+            "type": "command",
             "command": "/Users/osmarjoseph/.local/bin/oso-hook",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
-        ],
-        "matcher": ""
+        ]
       }
     ],
     "UserPromptSubmit": [
       {
+        "matcher": "",
         "hooks": [
           {
+            "type": "command",
             "command": "/Users/osmarjoseph/.local/bin/oso-hook",
-            "timeout": 5,
-            "type": "command"
+            "timeout": 5
           }
-        ],
-        "matcher": ""
+        ]
       }
     ]
   },
-  "model": "opus[1m]",
-  "remoteControlAtStartup": false,
-  "skipAutoPermissionPrompt": true,
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-code-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-code"
+      }
+    }
+  },
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
-  "tui": "fullscreen"
+  "editorMode": "vim",
+  "remoteControlAtStartup": false,
+  "skipAutoPermissionPrompt": true
 }
