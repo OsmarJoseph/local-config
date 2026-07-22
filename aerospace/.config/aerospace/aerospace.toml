@@ -169,10 +169,6 @@ if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace f'
 
 [[on-window-detected]]
-if.app-id = 'com.apple.Safari.WebApp.9003DDEF-5962-431C-BA64-373201BEEDA3'
-run = 'move-node-to-workspace p'
-
-[[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace g'
 
@@ -186,7 +182,7 @@ run = 'move-node-to-workspace l'
 
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
-run = 'move-node-to-workspace o'
+run = 'move-node-to-workspace n'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
@@ -232,13 +228,12 @@ run = 'layout floating'
 [workspace-to-monitor-force-assignment]
 f = 'main'
 s = 'main'                            
-p = 'main'
 g = 'main'
 e = 'main'
 w = 'main'
+n = 'main'
 x = 'secondary'
 i = 'secondary'
-o = 'secondary'
 a = 'secondary'
 c = 'secondary'
 d = 'secondary'
