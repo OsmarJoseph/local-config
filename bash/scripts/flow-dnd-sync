@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+#
+# flow-dnd-sync — keep macOS Do Not Disturb in step with Flow (flow.app).
+#
+# DND on  : a focus session is actively running.
+# DND off : break, paused session, stopped, or Flow not running.
+#
+# "Actively running" == getPhase is "Flow" AND the timer is counting down
+# (getTime differs across 1s).
+#
+# Run every ~15s by the com.osmarjoseph.flow-dnd-sync launchd agent. DND is
+# toggled through the existing "DND Raycast" shortcut (input "on"/"off"), and
+# only on a state change — so a manual DND override mid-session is left alone
+# until the next phase transition.
+#
+#   flow-dnd-sync            sync DND to Flow's current state
+#   flow-dnd-sync --check    print the detected state (on/off) without changing DND
+
+set -u
+
+DND_SHORTCUT="DND Raycast"
+STATE_FILE="/tmp/flow-dnd-sync.state"
+
+desired="off"
+
+# pgrep guard: `tell application "Flow"` would relaunch Flow if it were quit,
+# so only talk to it when it is already running.
+if pgrep -x Flow >/dev/null 2>&1; then
+  status="$(osascript \
+    -e 'tell application "Flow"' \
+    -e 'set p to getPhase' \
+    -e 'if p is "Flow" then' \
+    -e 'set r1 to getTime' \
+    -e 'delay 1' \
+    -e 'set r2 to getTime' \
+    -e 'if r1 is not r2 then return "active"' \
+    -e 'end if' \
+    -e 'end tell' \
+    -e 'return "idle"' 2>/dev/null)"
+  [ "$status" = "active" ] && desired="on"
+fi
+
+if [ "${1:-}" = "--check" ]; then
+  echo "$desired"
+  exit 0
+fi
+
+last=""
+[ -f "$STATE_FILE" ] && last="$(cat "$STATE_FILE" 2>/dev/null)"
+
+if [ "$desired" != "$last" ]; then
+  if printf '%s' "$desired" | shortcuts run "$DND_SHORTCUT" -i - >/dev/null 2>&1; then
+    printf '%s' "$desired" >"$STATE_FILE"
+  fi
+fi
