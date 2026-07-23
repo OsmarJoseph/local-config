@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+#
+# karabiner-toggle-profile — toggle the active Karabiner-Elements profile
+# between "Mac" and "Kinesis" by editing karabiner.json directly.
+#
+#   on Mac      -> switch to Kinesis
+#   on Kinesis  -> switch to Mac
+#
+# Sets "selected": true on the target profile and false on all others, then
+# writes the file back atomically. Karabiner-Elements watches karabiner.json
+# and reloads it on external changes, so the profile switch takes effect
+# without restarting Karabiner.
+
+set -euo pipefail
+
+PROFILE_MAC="Mac"
+PROFILE_KINESIS="Kinesis"
+FILE="${KARABINER_JSON:-$HOME/.config/karabiner/karabiner.json}"
+
+if [ ! -f "$FILE" ]; then
+  echo "error: $FILE not found (is Karabiner-Elements installed?)" >&2
+  exit 1
+fi
+
+# Name of the profile currently flagged "selected": true (empty if none).
+current="$(jq -r 'first(.profiles[] | select(.selected == true) | .name) // ""' "$FILE")"
+
+case "$current" in
+  "$PROFILE_MAC") target="$PROFILE_KINESIS" ;;
+  "$PROFILE_KINESIS") target="$PROFILE_MAC" ;;
+  *)
+    echo "warning: current profile '${current:-none}' is neither '$PROFILE_MAC' nor '$PROFILE_KINESIS'; switching to '$PROFILE_MAC'" >&2
+    target="$PROFILE_MAC"
+    ;;
+esac
+
+# Write to a temp file in the same directory, then atomically rename over the
+# original so a crash mid-write can never leave a truncated karabiner.json.
+tmp="$(mktemp "${FILE}.XXXXXX")"
+trap 'rm -f "$tmp"' EXIT
+
+jq --indent 4 --arg target "$target" \
+  '.profiles |= map(.selected = (.name == $target))' "$FILE" >"$tmp"
+jq empty "$tmp" # abort (via set -e) if jq produced invalid JSON
+mv -f "$tmp" "$FILE"
+
+echo "Karabiner profile: ${current:-none} -> $target"
