@@ -16,10 +16,11 @@ local plugins = {
   "nvim-lua/plenary.nvim", -- lua functions that many plugins
   { 'nvim-mini/mini.nvim',                      version = false },
   {
-    "folke/tokyonight.nvim",
+    "rose-pine/neovim",
+    name = "rose-pine", -- repo is `neovim`; alias it so `require("rose-pine")` resolves
     lazy = false,
     priority = 1000,
-    opts = {},
+    -- setup() lives in josean.plugins.colorscheme
   },
   {
     "folke/snacks.nvim",

@@ -3,7 +3,7 @@ onboarding = false
 # Mirrors tmux/.config/tmux/tmux.conf.  workspace=tmux session, tab=tmux window, pane=pane.
 
 [theme]
-name = "tokyo-night"
+name = "rose-pine"
 
 auto_switch = false
 [terminal]
